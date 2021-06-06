@@ -6,7 +6,7 @@
     <modelVersion>4.0.0</modelVersion>
     <packaging>maven-archetype</packaging>
     <groupId>org.ylzl</groupId>
-    <artifactId>eden-maven-archetype-standard</artifactId>
+    <artifactId>eden-maven-archetype-api-first</artifactId>
 
     <parent>
         <groupId>org.ylzl</groupId>
