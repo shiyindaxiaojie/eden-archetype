@@ -1,0 +1,16 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+spring:
+  cloud:
+    nacos:
+      config:
+        username:
+        password:
+        server-addr:
+        namespace: # TODO
+      discovery:
+        username:
+        password:
+        server-addr:
+        namespace: # TODO

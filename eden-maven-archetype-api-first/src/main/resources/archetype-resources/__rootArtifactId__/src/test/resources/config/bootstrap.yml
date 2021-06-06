@@ -1,0 +1,23 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+info:
+  description: test
+
+spring:
+  application:
+    name: lazada-report
+  cloud:
+    nacos:
+      config:
+        username: lazada
+        password: kxCH6hTWihWtZ2H!nH
+        server-addr: 192.168.100.202:8848
+        namespace: # TODO
+        file-extension: yaml
+        context-path: /nacos
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: dev
+

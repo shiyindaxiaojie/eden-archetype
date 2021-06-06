@@ -1,0 +1,59 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+logging:
+  level:
+    ROOT: INFO
+    org.ylzl: INFO
+    ${package}: INFO
+    ${package}.dao.mybatis: DEBUG
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: TODO
+    send-message-timeout: 5000
+
+server:
+  port: 9090
+
+spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://127.0.0.1:3306/test?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 5000
+      validation-query: select 1
+      validation-query-timeout: 3
+      test-on-return: false
+      test-while-idle: true
+      test-on-borrow: true
+      stat-view-servlet:
+        enabled: true
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          slow-sql-millis: 5000
+          log-slow-sql: true
+      web-stat-filter:
+        enabled: true
+        login-username: admin
+        login-password: admin
+      min-evictable-idle-time-millis: 600000
+  elasticsearch:
+    rest:
+      uris: 127.0.0.1:9200,127.0.0.1:9201,127.0.0.1:9202
+  redis:
+    database: 1
+    host: 127.0.0.1
+    port: 6379
+    password:
+  thymeleaf:
+    cache: false

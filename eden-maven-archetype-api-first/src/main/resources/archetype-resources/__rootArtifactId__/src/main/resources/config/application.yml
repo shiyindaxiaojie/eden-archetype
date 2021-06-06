@@ -1,0 +1,60 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+application:
+  ram-api:
+    base-path: http://ram/v1
+  currency-api:
+    base-path: https://www.mycurrency.net
+
+mybatis-plus:
+  config-location: classpath:config/mybatis/mybatis-config.xml
+  global-config:
+    banner: false
+
+server:
+  servlet:
+    context-path:
+    session:
+      cookie:
+        http-only: true
+
+spring:
+  application:
+    name: ${symbol_pound}project.name${symbol_pound}
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+    redis:
+      repositories:
+        enabled: true
+    repositories:
+      bootstrap-mode: deferred
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    default-property-inclusion: non_null
+    serialization:
+      indent-output: true
+    time-zone: GMT+8
+  jmx:
+    default-domain: ${symbol_dollar}{spring.application.name}
+  main:
+    allow-bean-definition-overriding: true
+  messages:
+    basename: i18n/messages
+  mvc:
+    favicon:
+      enabled: false
+  output:
+    ansi:
+      console-available: true
+  profiles:
+    active: ${symbol_pound}spring.profiles.active${symbol_pound}
+  shardingsphere:
+    enabled: true
+    props:
+      sql.show: true
+      allow.range.query.with.inline.sharding: true
+  thymeleaf:
+    mode: HTML

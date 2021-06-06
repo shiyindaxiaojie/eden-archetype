@@ -1,0 +1,52 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+stages:
+  - build
+  - deploy
+
+# 开发环境
+dev_build:
+  stage: build
+  script:
+    - sh mvnw -Pdev clean install -DskipTests -U
+  only:
+    - /^feature.*$/
+
+# 集成测试环境
+int_test_build:
+  stage: build
+  script:
+    - sh mvnw -Ptest clean install -DskipTests -U
+  only:
+    - /^develop.*$/
+
+# 系统测试环境
+pre_build:
+  stage: build
+  script:
+    - sh mvnw -Ppre clean compile install -DskipTests -U
+  only:
+    - release/1.0.x
+
+pre_deploy:
+  stage: deploy
+  script:
+    - sh mvnw -Ppre -pl ${artifactId} package jib:build -DskipTests
+  only:
+    - release/1.0.x
+
+# 生产环境
+prod_build:
+  stage: build
+  script:
+    - sh mvnw -Pprod clean compile install -DskipTests -U
+  only:
+    - master
+
+prod_deploy:
+  stage: deploy
+  script:
+    - sh mvnw -Pprod -pl ${artifactId} package jib:build -DskipTests -U
+  only:
+    - master

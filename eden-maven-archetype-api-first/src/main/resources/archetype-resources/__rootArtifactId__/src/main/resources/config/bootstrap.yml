@@ -1,0 +1,29 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+info:
+  description: ${symbol_pound}project.description${symbol_pound}
+
+spring:
+  application:
+    name: ${symbol_pound}project.name${symbol_pound}
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+  main:
+    allow-bean-definition-overriding: true
+  profiles:
+    active: ${symbol_pound}spring.profiles.active${symbol_pound}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+    logfile:
+      external-file: logs/${symbol_dollar}{spring.application.name}.log
+
