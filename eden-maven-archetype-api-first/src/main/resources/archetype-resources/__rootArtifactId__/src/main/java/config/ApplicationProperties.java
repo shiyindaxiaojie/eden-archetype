@@ -17,19 +17,4 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationProperties {
 
-	private final RamApi ramApi = new RamApi();
-
-  private final CurrencyApi currencyApi = new CurrencyApi();
-
-	@Data
-	public static class RamApi {
-
-		private String basePath;
-	}
-
-  @Data
-  public static class CurrencyApi {
-
-    private String basePath;
-  }
 }

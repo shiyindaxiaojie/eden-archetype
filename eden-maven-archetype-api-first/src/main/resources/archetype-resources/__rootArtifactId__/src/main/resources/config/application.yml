@@ -2,8 +2,6 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 application:
-  ram-api:
-    base-path: http://ram/v1
   currency-api:
     base-path: https://www.mycurrency.net
 
@@ -51,10 +49,5 @@ spring:
       console-available: true
   profiles:
     active: ${symbol_pound}spring.profiles.active${symbol_pound}
-  shardingsphere:
-    enabled: true
-    props:
-      sql.show: true
-      allow.range.query.with.inline.sharding: true
   thymeleaf:
     mode: HTML

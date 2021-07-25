@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.nio.charset.Charset;
 
 /**
- * TODO
+ * Swagger 自动配置
  *
  * @author gyl
  * @version 1.0.0

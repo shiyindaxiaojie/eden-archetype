@@ -16,6 +16,7 @@ import org.ylzl.eden.spring.boot.framework.web.rest.errors.ErrorAssert;
 @Getter
 @AllArgsConstructor
 public enum AuthErrorEnum implements ErrorAssert {
+
   LOGIN_INVALID("获取不到当前登录用户");
 
   private String message;

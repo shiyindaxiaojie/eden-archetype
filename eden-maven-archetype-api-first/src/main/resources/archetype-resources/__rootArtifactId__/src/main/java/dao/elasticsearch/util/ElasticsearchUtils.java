@@ -25,7 +25,7 @@ import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilde
 public class ElasticsearchUtils {
 
 	/**
-	 * 获取表名
+	 * 获取索引名称
 	 *
 	 * @param clazz domain
 	 * @return
@@ -69,7 +69,7 @@ public class ElasticsearchUtils {
 	}
 
 	/**
-	 * 返回字段
+	 * 设置返回的字段
 	 *
 	 * @param queryBuilder
 	 * @param includes
@@ -81,7 +81,7 @@ public class ElasticsearchUtils {
 	}
 
 	/**
-	 * 返回字段
+	 * 设置返回的字段
 	 *
 	 * @param queryBuilder
 	 * @param includes

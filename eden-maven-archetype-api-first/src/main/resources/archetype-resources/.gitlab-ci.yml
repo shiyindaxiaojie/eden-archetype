@@ -13,7 +13,7 @@ dev_build:
   only:
     - /^feature.*$/
 
-# 集成测试环境
+# 测试环境
 int_test_build:
   stage: build
   script:
@@ -21,7 +21,7 @@ int_test_build:
   only:
     - /^develop.*$/
 
-# 系统测试环境
+# 预发布环境
 pre_build:
   stage: build
   script:
@@ -32,7 +32,7 @@ pre_build:
 pre_deploy:
   stage: deploy
   script:
-    - sh mvnw -Ppre -pl ${artifactId} package jib:build -DskipTests
+    - sh mvnw -Pstaging -pl ${artifactId} package jib:build -DskipTests
   only:
     - release/1.0.x
 

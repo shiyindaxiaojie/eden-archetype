@@ -16,6 +16,7 @@ import org.ylzl.eden.spring.boot.framework.web.rest.errors.ErrorAssert;
 @Getter
 @AllArgsConstructor
 public enum PageableErrorEnum implements ErrorAssert {
+
   WRONG_SORT_COLUMN_PARAMETER("排序列参数错误"),
   WRONG_SORT_RULE_PARAMETER("排序规则参数错误");
 
