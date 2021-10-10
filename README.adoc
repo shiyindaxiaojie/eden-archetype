@@ -1,0 +1,4 @@
+= Eden* Maven Archetype
+
+image:src/docs/readme/language-java-blue.svg[]
+image:src/docs/readme/license-apache 2.0-red.svg["License",link="https://www.apache.org/licenses/LICENSE-2.0.html"]

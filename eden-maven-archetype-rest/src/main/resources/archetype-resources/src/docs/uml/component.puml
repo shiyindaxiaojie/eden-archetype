@@ -1,0 +1,9 @@
+@startuml
+[${rootArtifactId}-start] --> [${rootArtifactId}-web]
+[${rootArtifactId}-web] --> [${rootArtifactId}-api]
+[${rootArtifactId}-web] --> [${rootArtifactId}-service]
+[${rootArtifactId}-service] --> [${rootArtifactId}-api]
+[${rootArtifactId}-service] --> [${rootArtifactId}-dao]
+[${rootArtifactId}-service] --> [${rootArtifactId}-manager]
+[${rootArtifactId}-manager] --> [${rootArtifactId}-dao]
+@enduml
