@@ -21,14 +21,37 @@ spring:
   application:
     name: ${symbol_pound}project.name${symbol_pound}
   data:
-    elasticsearch:
-      repositories:
-        enabled: true
     redis:
       repositories:
         enabled: true
     repositories:
       bootstrap-mode: deferred
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 5
+      max-wait: 5000
+      validation-query: select 1
+      validation-query-timeout: 3
+      test-on-return: false
+      test-while-idle: true
+      test-on-borrow: true
+      stat-view-servlet:
+        enabled: true
+      filter:
+        stat:
+          enabled: true
+          db-type: mysql
+          slow-sql-millis: 5000
+          log-slow-sql: true
+      web-stat-filter:
+        enabled: true
+        login-username: admin
+        login-password: admin
+      min-evictable-idle-time-millis: 600000
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     default-property-inclusion: non_null

@@ -1,0 +1,70 @@
+Configuration:
+  status: WARN
+  monitorInterval: 30
+
+  Properties:
+    Property:
+      - name: project.name
+        value: ${rootArtifactId}
+      - name: log.level.console
+        value: INFO
+      - name: log.path
+        value: logs
+      - name: log.pattern
+        value: "%d{yyyy-MM-dd HH:mm:ss}%5p [%t] [%F:%L] %m%n"
+
+  Appenders:
+    Console:
+      name: CONSOLE
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: ${log.pattern}
+    RollingFile:
+      - name: ROLLING_FILE
+        ignoreExceptions: false
+        fileName: ${log.path}/${project.name}.log
+        filePattern: "${log.path}/${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
+        PatternLayout:
+          pattern: ${log.pattern}
+        Policies:
+          TimeBasedTriggeringPolicy:
+            modulate: true
+            interval: 1
+          SizeBasedTriggeringPolicy:
+            size: "1024 MB"
+        DefaultRolloverStrategy:
+          max: 100
+  Loggers:
+    Root:
+      level: INFO
+      AppenderRef:
+        - ref: CONSOLE
+
+    Logger:
+      - name: ${groupId}
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE
+
+      - name: com.alibaba.druid
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE
+
+      - name: druid.sql.Statement
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE
+
+      - name: druid.sql.ResultSet
+        additivity: false
+        level: INFO
+        AppenderRef:
+          - ref: CONSOLE
+          - ref: ROLLING_FILE

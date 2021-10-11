@@ -5,12 +5,12 @@ spring:
   cloud:
     nacos:
       config:
-        username:
-        password:
-        server-addr:
-        namespace: # TODO
+        username: admin
+        password: admin
+        server-addr: 127.0.0.1:8848
+        namespace: ylzl
       discovery:
-        username:
-        password:
-        server-addr:
-        namespace: # TODO
+        username: admin
+        password: admin
+        server-addr: 127.0.0.1:8848
+        namespace: ylzl
