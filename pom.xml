@@ -20,6 +20,14 @@
 		<module>eden-maven-archetype-rest</module>
 	</modules>
 
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub OWNER Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/eden-lab/eden-spring-boot</url>
+		</repository>
+	</distributionManagement>
+
 	<build>
 		<extensions>
 			<extension>

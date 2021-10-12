@@ -22,14 +22,14 @@ int_test_build:
     - /^develop.*$/
 
 # 预发布环境
-pre_build:
+staging_build:
   stage: build
   script:
-    - sh mvnw -Ppre clean compile install -DskipTests -U
+    - sh mvnw -Pstaging clean compile install -DskipTests -U
   only:
     - release/1.0.x
 
-pre_deploy:
+staging_deploy:
   stage: deploy
   script:
     - sh mvnw -Pstaging -pl ${artifactId} package jib:build -DskipTests

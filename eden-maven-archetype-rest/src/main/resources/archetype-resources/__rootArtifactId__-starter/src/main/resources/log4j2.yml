@@ -18,14 +18,14 @@ Configuration:
       name: CONSOLE
       target: SYSTEM_OUT
       PatternLayout:
-        pattern: ${log.pattern}
+        pattern: ${symbol_dollar}{log.pattern}
     RollingFile:
       - name: ROLLING_FILE
         ignoreExceptions: false
-        fileName: ${log.path}/${project.name}.log
-        filePattern: "${log.path}/${date:yyyy-MM}/${project.name}-%d{yyyy-MM-dd}-%i.log.gz"
+        fileName: ${symbol_dollar}{log.path}/${symbol_dollar}{project.name}.log
+        filePattern: "${symbol_dollar}{log.path}/${symbol_dollar}{date:yyyy-MM}/${symbol_dollar}{project.name}-%d{yyyy-MM-dd}-%i.log.gz"
         PatternLayout:
-          pattern: ${log.pattern}
+          pattern: ${symbol_dollar}{log.pattern}
         Policies:
           TimeBasedTriggeringPolicy:
             modulate: true
