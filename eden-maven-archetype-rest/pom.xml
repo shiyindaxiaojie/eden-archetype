@@ -13,12 +13,4 @@
 	<groupId>org.ylzl</groupId>
 	<artifactId>eden-maven-archetype-rest</artifactId>
 	<packaging>maven-archetype</packaging>
-
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
 </project>

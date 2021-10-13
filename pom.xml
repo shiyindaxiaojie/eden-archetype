@@ -24,7 +24,7 @@
 		<repository>
 			<id>github</id>
 			<name>GitHub OWNER Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/eden-lab/eden-spring-boot</url>
+			<url>https://maven.pkg.github.com/eden-lab/eden-maven-archetype</url>
 		</repository>
 	</distributionManagement>
 

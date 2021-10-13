@@ -15,6 +15,16 @@
 	<version>${version}</version>
 	<description>基于分层架构的多模块管理</description>
 
+	<modules>
+		<module>${artifactId}-api</module>
+		<module>${artifactId}-common</module>
+		<module>${artifactId}-dao</module>
+		<module>${artifactId}-manager</module>
+		<module>${artifactId}-service</module>
+		<module>${artifactId}-starter</module>
+		<module>${artifactId}-web</module>
+	</modules>
+
 	<developers>
 		<developer>
 			<id>gyl</id>
@@ -53,6 +63,11 @@
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${artifactId}-api</artifactId>
+				<version>${app.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}</groupId>
+				<artifactId>${artifactId}-common</artifactId>
 				<version>${app.version}</version>
 			</dependency>
 			<dependency>

@@ -1,10 +1,9 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.config;
+package ${package}.common.config;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -17,4 +16,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "application")
 public class ApplicationProperties {
 
+	private final CurrencyApi currencyApi = new CurrencyApi();
+
+	@Data
+	public static class CurrencyApi {
+
+		private String basePath;
+	}
 }

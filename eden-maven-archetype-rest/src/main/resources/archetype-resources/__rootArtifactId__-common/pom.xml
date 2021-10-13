@@ -8,11 +8,11 @@
 		<version>${version}</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>${rootArtifactId}-service</artifactId>
+	<artifactId>${rootArtifactId}-common</artifactId>
 	<version>${version}</version>
 	<packaging>jar</packaging>
-	<name>${rootArtifactId}-service</name>
-	<description>业务逻辑层</description>
+	<name>${rootArtifactId}-common</name>
+	<description>通用封装层</description>
 
 	<build>
 		<plugins>
@@ -32,19 +32,6 @@
 	</build>
 
 	<dependencies>
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-common</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-dao</artifactId>
-		</dependency>
-
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-annotation-processer-spring-boot-starter</artifactId>

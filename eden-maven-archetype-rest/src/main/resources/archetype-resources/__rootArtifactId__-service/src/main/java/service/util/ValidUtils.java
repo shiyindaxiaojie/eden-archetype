@@ -4,11 +4,10 @@
 package ${package}.service.util;
 
 import com.google.common.base.CaseFormat;
-import ${package}.constant.ApplicationConstants;
-import ${package}.dao.enums.SortRuleEnum;
 import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.StringUtils;
 import org.ylzl.eden.spring.boot.commons.lang.reflect.ReflectionUtils;
+import org.ylzl.eden.spring.boot.support.dao.util.SortRuleEnum;
 
 import java.util.Arrays;
 
@@ -20,36 +19,6 @@ import java.util.Arrays;
  */
 @UtilityClass
 public class ValidUtils {
-
-  /**
-   * 检查字符串是否为缺省值
-   *
-   * @param str
-   * @return
-   */
-  public static boolean isNotNull(String str) {
-    return StringUtils.isNotEmpty(str) && !ApplicationConstants.DEFAULT_STR_VALUE.equals(str);
-  }
-
-  /**
-   * 检查参数是否为非缺省值
-   *
-   * @param num
-   * @return
-   */
-  public static boolean isNotNull(Integer num) {
-    return num != null && ApplicationConstants.DEFAULT_INT_VALUE != num.intValue();
-  }
-
-  /**
-   * 检查参数是否为缺省值
-   *
-   * @param num
-   * @return
-   */
-  public static boolean isNull(Integer num) {
-    return !isNotNull(num);
-  }
 
   /**
    * 是否属于有效排序列

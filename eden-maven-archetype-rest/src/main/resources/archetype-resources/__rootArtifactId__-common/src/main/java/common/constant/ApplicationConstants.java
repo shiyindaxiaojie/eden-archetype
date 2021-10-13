@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package ${package}.constant;
+package ${package}.common.constant;
 
 import lombok.experimental.UtilityClass;
 
@@ -13,9 +13,6 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public class ApplicationConstants {
-
-  /** Application Package */
-  public static final String BASE_PACKAGE = "${package}";
 
   /** 所有业务字符串类型的默认值（前端缺省条件） */
   public static final String DEFAULT_STR_VALUE = "-1";

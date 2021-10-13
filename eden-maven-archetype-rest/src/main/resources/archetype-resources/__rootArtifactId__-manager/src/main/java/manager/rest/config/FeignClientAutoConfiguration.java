@@ -1,7 +1,6 @@
 package ${package}.manager.rest.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ${package}.config.ApplicationProperties;
 import feign.Feign;
 import feign.jackson.JacksonDecoder;
 import feign.jackson.JacksonEncoder;
@@ -13,6 +12,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import ${package}.common.config.ApplicationProperties;
+import ${package}.manager.rest.CurrencyApi;
 
 /**
  * Feign 客户端自动配置类

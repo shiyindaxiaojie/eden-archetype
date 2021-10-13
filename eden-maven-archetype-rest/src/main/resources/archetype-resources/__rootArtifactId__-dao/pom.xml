@@ -33,6 +33,11 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>${groupId}</groupId>
+			<artifactId>${rootArtifactId}-common</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		  <scope>runtime</scope>

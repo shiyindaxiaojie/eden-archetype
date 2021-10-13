@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.manager.rest;
 
-import ${package}.manager.rest.vm.CurrencyVM;
+import ${package}.manager.rest.model.CurrencyVM;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
