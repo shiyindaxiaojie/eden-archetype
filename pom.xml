@@ -17,6 +17,7 @@
 	<description>脚手架工具</description>
 
 	<modules>
+		<module>eden-maven-archetype-bom</module>
 		<module>eden-maven-archetype-rest</module>
 	</modules>
 
