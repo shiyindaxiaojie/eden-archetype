@@ -13,7 +13,7 @@
 	<packaging>pom</packaging>
 	<name>${artifactId}</name>
 	<version>${version}</version>
-	<description>基于分层架构的多模块管理</description>
+	<description>${descritpion}</description>
 
 	<modules>
 		<module>${artifactId}-api</module>
