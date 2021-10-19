@@ -48,10 +48,10 @@ public class LoggingAspect {
           + " || within(@org.springframework.web.bind.annotation.RestController *)")
   public void springBeanPointcut() {}
 
-  @Pointcut(
-      "within(${package}.client..*)"
-          + " || within(${package}.repository..*)"
-          + " || within(${package}.service..*)")
+	@Pointcut(
+		"within(${package}.dao..*)"
+			+ " || within(${package}.manager..*)"
+			+ " || within(${package}.service..*)")
   public void applicationPackagePointcut() {}
 
   @AfterThrowing(pointcut = "applicationPackagePointcut() && springBeanPointcut()", throwing = "e")
