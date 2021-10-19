@@ -18,7 +18,12 @@
 
 	<modules>
 		<module>eden-maven-archetype-bom</module>
+		<module>eden-maven-archetype-cola</module>
+		<module>eden-maven-archetype-ddd</module>
+		<module>eden-maven-archetype-middleware</module>
+		<module>eden-maven-archetype-mvc</module>
 		<module>eden-maven-archetype-rest</module>
+		<module>eden-maven-archetype-rpc</module>
 	</modules>
 
 	<distributionManagement>

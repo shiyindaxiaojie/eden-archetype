@@ -1,0 +1,12 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - sh mvnw clean install -DskipTests -U
+  only:
+    - master

@@ -1,0 +1,16 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+spring:
+  cloud:
+    nacos:
+      config:
+        username: admin
+        password: admin
+        server-addr: 127.0.0.1:8848
+        namespace: ylzl
+      discovery:
+        username: admin
+        password: admin
+        server-addr: 127.0.0.1:8848
+        namespace: ylzl

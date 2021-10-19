@@ -34,7 +34,7 @@ public class Application extends SpringBootApplicationTemplate {
    * @param args 命令行参数
    */
   public static void main(String[] args) {
-		SpringApplication app = new SpringApplicationBuilder(Application.class).web(true).build();
+		SpringApplication app = new SpringApplicationBuilder(Application.class).web(false).build();
     Environment env = run(app, args);
     logApplicationServerAfterRunning(env);
   }
