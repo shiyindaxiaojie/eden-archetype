@@ -1,0 +1,35 @@
+@startuml
+
+autonumber
+
+== 场景一：更新数据请求 ==
+
+"外部请求（WEB/RPC/WAP）" -> "${artifactId}-adapter": 发送写请求报文
+"${artifactId}-adapter" -> "${artifactId}-app": 适配器组装数据传输对象
+"${artifactId}-app" -> "${artifactId}-app": CQRS 解析出命令参数
+"${artifactId}-app" -> "${artifactId}-domain": 调用领域层
+"${artifactId}-domain" -> "${artifactId}-infrastructure": 通过防腐层执行数据写操作
+"${artifactId}-infrastructure" -> "技术实现细节（DB/ES/RPC/REST/Redis）": 调用底层组件进行写操作
+"${artifactId}-infrastructure" -> "扩展点（Extension）": 调用扩展功能（可选项）
+"${artifactId}-infrastructure" --> "${artifactId}-app": 返回查询数据
+"${artifactId}-app" --> "${artifactId}-adapter": 组装数据并响应报文
+
+== 场景二：查询数据请求 ==
+
+"外部请求（WEB/RPC/WAP）" -> "${artifactId}-adapter": 场景二：发送读请求报文
+"${artifactId}-adapter" -> "${artifactId}-app": 适配器组装数据传输对象
+"${artifactId}-app" -> "${artifactId}-app": CQRS 解析出查询参数
+"${artifactId}-app" -> "${artifactId}-infrastructure": 执行数据读操作
+"${artifactId}-infrastructure" -> "技术实现细节（DB/ES/RPC/REST/Redis）": 调用底层组件进行读操作
+"${artifactId}-infrastructure" -> "扩展点（Extension）": 调用扩展功能（可选项）
+"${artifactId}-infrastructure" --> "${artifactId}-app": 返回查询数据
+"${artifactId}-app" --> "${artifactId}-adapter": 组装数据并响应报文
+
+
+
+
+
+
+
+
+@enduml

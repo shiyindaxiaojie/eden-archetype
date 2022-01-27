@@ -6,51 +6,76 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.ylzl</groupId>
-		<artifactId>eden-spring-boot-parent</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
-		<relativePath>../</relativePath>
+		<artifactId>eden-parent</artifactId>
+		<version>2.4.13-SNAPSHOT</version>
+		<relativePath/>
 	</parent>
-	<groupId>org.ylzl</groupId>
-	<artifactId>eden-maven-archetype</artifactId>
+	<artifactId>eden-archetype</artifactId>
 	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
-	<description>脚手架工具</description>
+	<version>2.4.13-SNAPSHOT</version>
+	<description>项目脚手架</description>
 
 	<modules>
-		<module>eden-maven-archetype-bom</module>
-		<module>eden-maven-archetype-cola</module>
-		<module>eden-maven-archetype-ddd</module>
-		<module>eden-maven-archetype-middleware</module>
-		<module>eden-maven-archetype-mvc</module>
-		<module>eden-maven-archetype-rest</module>
-		<module>eden-maven-archetype-rpc</module>
+		<module>eden-archetype-cola</module>
+		<module>eden-archetype-layer</module>
 	</modules>
 
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub OWNER Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/eden-lab/eden-maven-archetype</url>
-		</repository>
-	</distributionManagement>
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/eden-lab/eden-archetype</url>
+		<connection>scm:git:git://github.com/eden-lab/eden-archetype.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/eden-lab/eden-archetype.git
+		</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/eden-lab/eden-archetype/issues</url>
+	</issueManagement>
+
+	<developers>
+		<developer>
+			<id>sion</id>
+			<name>梦想歌</name>
+			<email>shiyindaxiaojie@gmail.com</email>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>zx</id>
+			<name>欣熙林林</name>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<build>
 		<extensions>
 			<extension>
 				<groupId>org.apache.maven.archetype</groupId>
 				<artifactId>archetype-packaging</artifactId>
-				<version>${archetype-packaging.version}</version>
+				<version>${maven-archetype-plugin.version}</version>
 			</extension>
 		</extensions>
 
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-archetype-plugin</artifactId>
-					<version>${maven-archetype-plugin.version}</version>
-				</plugin>
-			</plugins>
-		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-archetype-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
 	</build>
 </project>

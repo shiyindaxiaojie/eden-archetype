@@ -1,0 +1,14 @@
+@startuml
+
+autonumber
+
+"外部请求（WEB）" -> "${artifactId}-web": 发送请求报文
+"${artifactId}-web" -> "${artifactId}-service": 调用业务逻辑层
+"${artifactId}-service" -> "${artifactId}-manager": 调用通用业务处理层
+"${artifactId}-service" -> "${artifactId}-dao": 调用数据访问层（可选）
+"${artifactId}-manager" -> "中间件（Redis/MQ/XXLJob）": 管理和调用第三方中间件，例如缓存，消息队列，任务调度
+"${artifactId}-dao" -> "存储组件（DB/ES）": 执行数据库读写操作
+"${artifactId}-dao" --> "${artifactId}-service": 返回数据库执行结果
+"${artifactId}-service" --> "${artifactId}-web": 组装数据响应报文
+
+@enduml

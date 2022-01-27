@@ -1,0 +1,8 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+${symbol_dollar}{AnsiColor.BRIGHT_MAGENTA}
+Application Title: ${artifactId}
+Application Version: ${symbol_dollar}{application.version}${symbol_dollar}{application.formatted-version}
+Spring Boot Version: ${symbol_dollar}{spring-boot.version}${symbol_dollar}{spring-boot.formatted-version}
+${symbol_dollar}{AnsiColor.BRIGHT_MAGENTA}
