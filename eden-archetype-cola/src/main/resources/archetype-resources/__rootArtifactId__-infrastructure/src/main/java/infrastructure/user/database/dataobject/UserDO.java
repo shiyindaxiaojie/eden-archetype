@@ -17,7 +17,7 @@ import java.util.Date;
  * 用户信息表数据库对象
  *
  * @author gyl
- * @since 0.0.1
+ * @since 2.4.x
  */
 @Data
 @AllArgsConstructor

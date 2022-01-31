@@ -10,6 +10,7 @@ ${artifactId} 使用 COLA 架构构建，COLA 架构是一个整洁的，面向�
 ## 组件构成
 
 ![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/${artifactId}/component.png)
+
 * **${artifactId}-adapter**：适配层，六边形架构中的入站适配器
 * **${artifactId}-app**：应用层，负责 CQRS 的处理工作，接收更新指令并调用领域层，对于查询视图操作直接绕过领域层调用基础设施层
 * **${artifactId}-client**：API层，对外以 jar 包的形式提供接口

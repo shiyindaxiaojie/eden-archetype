@@ -30,7 +30,7 @@ public interface UserGateway {
 	/**
 	 * 删除用户
 	 *
-	 * @param authority
+	 * @param user
 	 */
 	void deleteById(User user);
 }

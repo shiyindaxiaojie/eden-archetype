@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package};
 
-import org.ylzl.eden.spring.framework.util.SpringProfileUtils;
+import org.ylzl.eden.spring.framework.core.util.SpringProfileUtils;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 

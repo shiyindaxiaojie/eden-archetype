@@ -14,7 +14,7 @@ import java.util.List;
  * 用户信息表数据库映射
  *
  * @author gyl
- * @since 0.0.1
+ * @since 2.4.x
  */
 @Mapper
 public interface UserMapper extends BaseMapper<UserDO> {

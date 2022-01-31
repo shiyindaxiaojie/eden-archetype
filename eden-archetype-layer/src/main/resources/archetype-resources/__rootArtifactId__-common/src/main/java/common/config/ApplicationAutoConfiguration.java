@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 应用自动配置
+ * 应用自动装配
  *
  * @author gyl
  * @since 2.4.x

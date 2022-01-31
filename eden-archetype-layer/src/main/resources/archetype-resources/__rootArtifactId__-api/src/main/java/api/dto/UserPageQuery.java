@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
  * 用户分页查询（数据传输对象）
  *
  * @author gyl
- * @since 0.0.1
+ * @since 2.4.x
  */
 @NoArgsConstructor // 扩展的时候需要重新定义无参构造
 @AllArgsConstructor
