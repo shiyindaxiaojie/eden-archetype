@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.query;
 
-import com.alibaba.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import ${package}.app.user.assembler.UserAssembler;

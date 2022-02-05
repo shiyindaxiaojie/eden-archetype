@@ -30,14 +30,6 @@
 			<groupId>org.mapstruct</groupId>
 			<artifactId>mapstruct</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-dto</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-domain-starter</artifactId>
-		</dependency>
 
 		<!-- 日志组件 -->
 		<dependency>

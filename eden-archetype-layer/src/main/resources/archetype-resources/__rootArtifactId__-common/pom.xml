@@ -15,7 +15,7 @@
 	<description>通用封装层</description>
 
 	<dependencies>
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spring-framework</artifactId>

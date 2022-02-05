@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.adapter.user.web;
 
-import com.alibaba.cola.dto.PageResponse;
-import com.alibaba.cola.dto.Response;
-import com.alibaba.cola.dto.SingleResponse;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 import ${package}.adapter.constant.ApiConstant;
 import ${package}.client.user.api.UserService;
 import ${package}.client.user.dto.UserVO;

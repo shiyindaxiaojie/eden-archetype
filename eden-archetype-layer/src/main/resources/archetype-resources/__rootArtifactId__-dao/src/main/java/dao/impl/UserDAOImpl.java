@@ -76,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
 	 */
 	@Override
 	public Page<UserDO> findByPage(UserPageQuery query) {
-		return PageHelper.startPage(query.getPageNum().intValue(), query.getPageSize().intValue())
+		return PageHelper.startPage(query.getPageIndex(), query.getPageSize())
 			.doSelectPage(() -> userMapper.selectPage(query));
 	}
 }

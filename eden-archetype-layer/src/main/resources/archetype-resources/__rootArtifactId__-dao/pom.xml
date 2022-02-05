@@ -26,7 +26,7 @@
 			<artifactId>${rootArtifactId}-api</artifactId>
 		</dependency>
 
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spring-framework</artifactId>
@@ -72,8 +72,8 @@
 		</dependency>-->
 		<!-- Sharding JDBC -->
 		<!--<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-sharding-jdbc-spring-boot-starter</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-sharding-jdbc-spring-boot-starter</artifactId>
 		</dependency>-->
 	</dependencies>
 </project>

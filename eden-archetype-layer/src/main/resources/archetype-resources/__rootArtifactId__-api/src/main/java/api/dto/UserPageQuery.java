@@ -3,9 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.api.dto;
 
-import org.ylzl.eden.adapter.dto.PageQuery;
+import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 import lombok.*;
-import lombok.experimental.SuperBuilder;
 
 /**
  * 用户分页查询（数据传输对象）
@@ -15,7 +14,6 @@ import lombok.experimental.SuperBuilder;
  */
 @NoArgsConstructor // 扩展的时候需要重新定义无参构造
 @AllArgsConstructor
-@SuperBuilder
 @EqualsAndHashCode(callSuper = true)
 @ToString(callSuper = true)
 @Data

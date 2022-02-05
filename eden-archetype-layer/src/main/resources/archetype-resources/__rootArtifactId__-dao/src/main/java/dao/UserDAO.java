@@ -6,7 +6,6 @@ package ${package}.dao;
 import com.github.pagehelper.Page;
 import ${package}.api.dto.UserPageQuery;
 import ${package}.dao.dataobject.UserDO;
-import org.apache.ibatis.annotations.Param;
 
 /**
  * 用户（数据对象）存储访问接口

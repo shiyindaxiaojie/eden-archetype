@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.service;
 
-import com.alibaba.cola.dto.PageResponse;
-import com.alibaba.cola.dto.Response;
-import com.alibaba.cola.dto.SingleResponse;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 import ${package}.app.user.executor.command.UserAddCmdExe;
 import ${package}.app.user.executor.command.UserModifyCmdExe;
 import ${package}.app.user.executor.command.UserRemoveCmdExe;

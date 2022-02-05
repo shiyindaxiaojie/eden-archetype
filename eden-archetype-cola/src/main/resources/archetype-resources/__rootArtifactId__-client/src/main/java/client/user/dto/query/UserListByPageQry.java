@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.dto.query;
 
-import com.alibaba.cola.dto.PageQuery;
+import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 import lombok.*;
 
 import java.io.Serializable;

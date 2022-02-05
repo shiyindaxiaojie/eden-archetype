@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.command;
 
-import com.alibaba.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
 import ${package}.client.user.dto.command.UserRemoveCmd;
 import ${package}.domain.user.entity.User;
 import ${package}.domain.user.gateway.UserGateway;

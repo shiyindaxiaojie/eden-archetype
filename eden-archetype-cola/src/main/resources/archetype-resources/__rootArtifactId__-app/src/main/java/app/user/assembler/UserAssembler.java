@@ -3,11 +3,11 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.assembler;
 
-import ${package}.client.user.dto.UserDTO;
-import ${package}.client.user.dto.UserVO;
+{package}.client.user.dto.UserDTO;
+{package}.client.user.dto.UserVO;
 import ${package}.domain.user.entity.User;
-import ${package}.infrastructure.user.database.dataobject.UserDO;
-import org.ylzl.eden.spring.framework.cola.DTOAssembler;
+{package}.infrastructure.user.database.dataobject.UserDO;
+import org.ylzl.eden.spring.framework.cola.dto.DTOAssembler;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;

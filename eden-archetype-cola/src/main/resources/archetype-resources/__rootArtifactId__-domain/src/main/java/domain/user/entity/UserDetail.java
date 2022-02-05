@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.domain.user.entity;
 
-import com.alibaba.cola.domain.Entity;
+import org.ylzl.eden.spring.framework.cola.domain.Entity;
 import lombok.*;
 
 import java.time.LocalDateTime;

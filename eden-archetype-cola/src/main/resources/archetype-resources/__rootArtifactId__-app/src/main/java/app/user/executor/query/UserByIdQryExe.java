@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.query;
 
-import com.alibaba.cola.dto.SingleResponse;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 import ${package}.app.user.assembler.UserAssembler;
 import ${package}.client.user.dto.UserVO;
 import ${package}.client.user.dto.query.UserByIdQry;
