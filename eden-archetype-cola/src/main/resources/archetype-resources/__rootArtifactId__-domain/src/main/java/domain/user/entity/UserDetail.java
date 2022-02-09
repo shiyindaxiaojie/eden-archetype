@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 /**
  * 用户详情领域（实体）
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Builder

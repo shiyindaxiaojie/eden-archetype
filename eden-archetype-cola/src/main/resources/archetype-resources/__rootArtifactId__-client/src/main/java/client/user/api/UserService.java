@@ -16,7 +16,7 @@ import ${package}.client.user.dto.query.UserListByPageQry;
 /**
  * 用户领域业务接口
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 public interface UserService {

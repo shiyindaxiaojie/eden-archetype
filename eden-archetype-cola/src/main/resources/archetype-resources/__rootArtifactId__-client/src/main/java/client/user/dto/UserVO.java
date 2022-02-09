@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * 用户已创建（值对象）
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Builder

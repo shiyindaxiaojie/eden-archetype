@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 /**
  * 用户领域防腐层实现
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Repository
