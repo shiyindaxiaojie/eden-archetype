@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.domain.user.entity;
 
-import org.ylzl.eden.spring.framework.cola.domain.Entity;
 import lombok.*;
+import org.ylzl.eden.spring.framework.cola.domain.Entity;
 
 /**
  * 用户领域（聚合根）
@@ -22,17 +22,17 @@ import lombok.*;
 public class User {
 
 	/**
-	 * 用户ID
+	 * 用户 ID
 	 */
-	private Long userId;
+	private Long id;
 
 	/**
-	 * 用户账号
+	 * 账号
 	 */
-	private String userName;
+	private String login;
 
 	/**
-	 * 用户邮箱
+	 * 邮箱
 	 */
 	private String email;
 
@@ -40,19 +40,4 @@ public class User {
 	 * 密码
 	 */
 	private String password;
-
-	/**
-	 * 帐号状态（0正常 1停用）
-	 */
-	private String status;
-
-	/**
-	 * 删除标志（0代表存在 2代表删除）
-	 */
-	private Integer delFlag;
-
-	/**
-	 * 用户详情
-	 */
-	private UserDetail userDetail;
 }

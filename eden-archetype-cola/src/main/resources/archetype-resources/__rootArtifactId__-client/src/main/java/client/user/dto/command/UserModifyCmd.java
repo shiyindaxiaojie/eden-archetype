@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.dto.command;
 
-import ${package}.client.user.dto.UserDTO;
 import lombok.*;
+import ${package}.client.user.dto.UserDTO;
 
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
@@ -24,7 +24,7 @@ import java.io.Serializable;
 public class UserModifyCmd implements Serializable {
 
 	@NotNull(message = "用户ID 不能为空")
-	private Long userId;
+	private Long id;
 
 	private UserDTO userDTO;
 }

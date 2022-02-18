@@ -4,8 +4,8 @@
 package ${package}.client.user.dto;
 
 import lombok.*;
-import javax.validation.constraints.NotBlank;
 
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -23,10 +23,10 @@ import java.io.Serializable;
 public class UserDTO implements Serializable {
 
 	/**
-	 * 用户账号
+	 * 账号
 	 */
-	@NotBlank(message = "用户不能为空")
-	private String userName;
+	@NotBlank(message = "账号不能为空")
+	private String login;
 
 	/**
 	 * 密码
@@ -39,9 +39,4 @@ public class UserDTO implements Serializable {
 	 */
 	@NotBlank(message = "邮箱不能为空")
 	private String email;
-
-	/**
-	 * 真实名称
-	 */
-	private String realName;
 }

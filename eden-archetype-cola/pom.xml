@@ -12,4 +12,6 @@
 	</parent>
 	<artifactId>eden-archetype-cola</artifactId>
 	<packaging>maven-archetype</packaging>
+	<name>eden-archetype-cola</name>
+	<description>COLA应用架构项目脚手架</description>
 </project>

@@ -19,11 +19,9 @@ import lombok.*;
 @Data
 public class UserVO {
 
-	private Long userId;
+	private Long id;
 
-	private String userName;
+	private String login;
 
 	private String email;
-
-	private String realName;
 }

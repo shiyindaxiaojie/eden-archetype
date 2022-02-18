@@ -19,5 +19,5 @@ import lombok.*;
 @Data
 public class UserPageQuery extends PageQuery {
 
-	private String userName;
+	private String login;
 }

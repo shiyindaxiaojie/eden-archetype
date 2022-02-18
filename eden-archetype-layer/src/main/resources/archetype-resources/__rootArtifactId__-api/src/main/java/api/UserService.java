@@ -3,12 +3,12 @@
 #set( $symbol_escape = '\' )
 package ${package}.api;
 
-import ${package}.api.dto.UserDTO;
-import ${package}.api.dto.UserPageQuery;
-import ${package}.api.dto.UserVO;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import ${package}.api.dto.UserDTO;
+import ${package}.api.dto.UserPageQuery;
+import ${package}.api.dto.UserVO;
 
 /**
  * 用户业务逻辑接口

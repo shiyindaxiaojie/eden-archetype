@@ -5,7 +5,7 @@ package ${package}.dao;
 
 import com.github.pagehelper.Page;
 import ${package}.api.dto.UserPageQuery;
-import ${package}.dao.dataobject.UserDO;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
 
 /**
  * 用户（数据对象）存储访问接口

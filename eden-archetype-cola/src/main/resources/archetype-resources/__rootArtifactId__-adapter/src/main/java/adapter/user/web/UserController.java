@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.adapter.user.web;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
-import org.ylzl.eden.spring.framework.cola.dto.Response;
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 import ${package}.adapter.constant.ApiConstant;
 import ${package}.client.user.api.UserService;
 import ${package}.client.user.dto.UserVO;
@@ -14,9 +14,9 @@ import ${package}.client.user.dto.command.UserModifyCmd;
 import ${package}.client.user.dto.command.UserRemoveCmd;
 import ${package}.client.user.dto.query.UserByIdQry;
 import ${package}.client.user.dto.query.UserListByPageQry;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.*;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 
 import javax.validation.Valid;
 
@@ -57,7 +57,7 @@ public class UserController {
 	 */
 	@PutMapping("/{id}")
 	public Response modifyUser(@PathVariable Long id, @Valid @RequestBody UserModifyCmd cmd) {
-		cmd.setUserId(id);
+		cmd.setId(id);
 		return userService.modifyUser(cmd);
 	}
 
@@ -69,7 +69,7 @@ public class UserController {
 	 */
 	@DeleteMapping("/{id}")
 	public Response removeUserById(@PathVariable Long id) {
-		return userService.removeUser(UserRemoveCmd.builder().userId(id).build());
+		return userService.removeUser(UserRemoveCmd.builder().id(id).build());
 	}
 
 	/**
@@ -80,7 +80,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}")
 	public SingleResponse<UserVO> getUserById(@PathVariable Long id) {
-		return userService.getUserById(UserByIdQry.builder().userId(id).build());
+		return userService.getUserById(UserByIdQry.builder().id(id).build());
 	}
 
 	/**

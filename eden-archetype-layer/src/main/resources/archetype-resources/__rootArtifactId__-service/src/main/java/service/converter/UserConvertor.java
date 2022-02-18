@@ -5,7 +5,7 @@ package ${package}.service.converter;
 
 import ${package}.api.dto.UserDTO;
 import ${package}.api.dto.UserVO;
-import ${package}.dao.dataobject.UserDO;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;

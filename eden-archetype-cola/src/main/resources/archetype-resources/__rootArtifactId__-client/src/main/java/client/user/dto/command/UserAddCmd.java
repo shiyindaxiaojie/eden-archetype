@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.dto.command;
 
-import ${package}.client.user.dto.UserDTO;
 import lombok.*;
+import ${package}.client.user.dto.UserDTO;
 
 import java.io.Serializable;
 

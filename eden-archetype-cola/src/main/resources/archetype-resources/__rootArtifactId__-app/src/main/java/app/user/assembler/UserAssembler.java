@@ -3,15 +3,15 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.assembler;
 
-{package}.client.user.dto.UserDTO;
-{package}.client.user.dto.UserVO;
-import ${package}.domain.user.entity.User;
-{package}.infrastructure.user.database.dataobject.UserDO;
-import org.ylzl.eden.spring.framework.cola.dto.DTOAssembler;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
+import ${package}.client.user.dto.UserDTO;
+import ${package}.client.user.dto.UserVO;
+import ${package}.domain.user.entity.User;
+import ${package}.infrastructure.user.database.dataobject.UserDO;
+import org.ylzl.eden.spring.framework.cola.dto.DTOAssembler;
 
 import java.util.List;
 

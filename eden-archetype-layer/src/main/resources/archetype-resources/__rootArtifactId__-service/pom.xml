@@ -20,11 +20,6 @@
 			<groupId>${groupId}</groupId>
 			<artifactId>${rootArtifactId}-api</artifactId>
 		</dependency>
-		<!-- 公共组件 -->
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-common</artifactId>
-		</dependency>
 		<!-- 数据访问组件 -->
 		<dependency>
 			<groupId>${groupId}</groupId>
@@ -36,11 +31,15 @@
 			<artifactId>${rootArtifactId}-manager</artifactId>
 		</dependency>
 
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
 		<!-- 分布式组件 -->

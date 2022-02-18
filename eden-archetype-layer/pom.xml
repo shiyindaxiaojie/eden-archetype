@@ -12,4 +12,6 @@
 	</parent>
 	<artifactId>eden-archetype-layer</artifactId>
 	<packaging>maven-archetype</packaging>
+	<name>eden-archetype-layer</name>
+	<description>分层应用架构项目脚手架</description>
 </project>

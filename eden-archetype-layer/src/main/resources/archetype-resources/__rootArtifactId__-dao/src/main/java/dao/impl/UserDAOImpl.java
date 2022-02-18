@@ -7,8 +7,8 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import ${package}.api.dto.UserPageQuery;
 import ${package}.dao.UserDAO;
-import ${package}.dao.dataobject.UserDO;
-import ${package}.dao.mybatis.mapper.UserMapper;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
+import ${package}.dao.repository.mybatis.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 /**

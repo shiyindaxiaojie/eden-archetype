@@ -3,15 +3,15 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.query;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.springframework.stereotype.Component;
 import ${package}.app.user.assembler.UserAssembler;
 import ${package}.client.user.dto.UserVO;
 import ${package}.client.user.dto.query.UserListByPageQry;
 import ${package}.infrastructure.user.database.dataobject.UserDO;
 import ${package}.infrastructure.user.database.mapper.UserMapper;
-import org.springframework.stereotype.Component;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 
 /**
  * 根据分页查询获取用户列表指令执行器

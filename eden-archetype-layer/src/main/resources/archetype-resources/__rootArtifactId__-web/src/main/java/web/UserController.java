@@ -3,15 +3,17 @@
 #set( $symbol_escape = '\' )
 package ${package}.web;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 import ${package}.api.UserService;
 import ${package}.api.dto.UserDTO;
 import ${package}.api.dto.UserPageQuery;
 import ${package}.api.dto.UserVO;
-import ${package}.common.constant.ApiConstant;
-import org.ylzl.eden.adapter.dto.JsonResult;
-import org.ylzl.eden.adapter.dto.Page;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.*;
+import ${package}.web.constant.ApiConstant;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 
 import javax.validation.Valid;
 
@@ -28,7 +30,7 @@ public class UserController {
 
 	private final UserService userService;
 
-	public UserController(UserService userService) {
+	public UserController(@Qualifier("userService") UserService userService) {
 		this.userService = userService;
 	}
 
@@ -39,7 +41,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public JsonResult createUser(@Valid @RequestBody UserDTO dto) {
+	public Response createUser(@Valid @RequestBody UserDTO dto) {
 		return userService.createUser(dto);
 	}
 
@@ -51,7 +53,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping("/{id}")
-	public JsonResult modifyUser(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
+	public Response modifyUser(@PathVariable Long id, @Valid @RequestBody UserDTO dto) {
 		return userService.modifyUser(id, dto);
 	}
 
@@ -62,7 +64,7 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public JsonResult removeUser(@PathVariable Long id) {
+	public Response removeUser(@PathVariable Long id) {
 		return userService.removeUser(id);
 	}
 
@@ -73,7 +75,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public JsonResult<UserVO> getUserById(@PathVariable Long id) {
+	public SingleResponse<UserVO> getUserById(@PathVariable Long id) {
 		return userService.getUserById(id);
 	}
 
@@ -84,7 +86,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public JsonResult<Page<UserVO>> listUserByPage(@Valid @ModelAttribute UserPageQuery query) {
+	public PageResponse<UserVO> listUserByPage(@Valid @ModelAttribute UserPageQuery query) {
 		return userService.listUserByPage(query);
 	}
 }

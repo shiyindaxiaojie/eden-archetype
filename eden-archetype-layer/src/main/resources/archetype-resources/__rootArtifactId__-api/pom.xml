@@ -15,11 +15,15 @@
 	<description>开放 API 层</description>
 
 	<dependencies>
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
 		<!-- 校验工具 -->

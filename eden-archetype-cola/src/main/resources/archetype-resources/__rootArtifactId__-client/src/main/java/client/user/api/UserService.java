@@ -3,15 +3,15 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.api;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
-import org.ylzl.eden.spring.framework.cola.dto.Response;
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 import ${package}.client.user.dto.UserVO;
 import ${package}.client.user.dto.command.UserAddCmd;
 import ${package}.client.user.dto.command.UserModifyCmd;
 import ${package}.client.user.dto.command.UserRemoveCmd;
 import ${package}.client.user.dto.query.UserByIdQry;
 import ${package}.client.user.dto.query.UserListByPageQry;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 
 /**
  * 用户领域业务接口

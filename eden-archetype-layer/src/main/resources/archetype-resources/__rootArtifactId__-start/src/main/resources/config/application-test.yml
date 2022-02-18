@@ -1,13 +1,14 @@
 logging:
   level:
     ROOT: INFO
-    ${groupId}: INFO
-    ${groupId}.dao.mybatis.mapper: DEBUG
+    org.ylzl.eden.demo: INFO
+    org.ylzl.eden.demo.infrastructure: DEBUG
 
 spring:
   # 关系数据库
   datasource:
     # 单数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username:
     password:
     url: jdbc:mysql://localhost:3306/demo?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
@@ -74,4 +75,5 @@ spring:
 #      port: 9999
 #      log-path: /data/applogs/xxl-job/jobhandler/
 #      log-retention-days: 7
+
 

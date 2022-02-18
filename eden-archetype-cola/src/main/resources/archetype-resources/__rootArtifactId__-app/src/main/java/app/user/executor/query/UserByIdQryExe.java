@@ -3,14 +3,14 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.query;
 
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import org.springframework.stereotype.Component;
 import ${package}.app.user.assembler.UserAssembler;
 import ${package}.client.user.dto.UserVO;
 import ${package}.client.user.dto.query.UserByIdQry;
 import ${package}.infrastructure.user.database.dataobject.UserDO;
 import ${package}.infrastructure.user.database.mapper.UserMapper;
-import org.ylzl.eden.spring.framework.web.errors.ErrorEnum;
-import org.springframework.stereotype.Component;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import org.ylzl.eden.spring.framework.cola.exception.ClientErrorType;
 
 /**
  * 根据主键获取用户信息指令执行器
@@ -28,8 +28,8 @@ public class UserByIdQryExe {
 	}
 
 	public SingleResponse<UserVO> execute(UserByIdQry query) {
-		UserDO userDO = userMapper.selectById(query.getUserId());
-		ErrorEnum.ENTITY_NOT_FOUND.notNull(userDO);
+		UserDO userDO = userMapper.selectById(query.getId());
+		ClientErrorType.A0201.notNull(userDO);
 		return SingleResponse.of(UserAssembler.INSTANCE.toVO(userDO));
 	}
 }

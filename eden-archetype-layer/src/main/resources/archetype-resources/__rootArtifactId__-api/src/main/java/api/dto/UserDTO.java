@@ -22,10 +22,8 @@ import javax.validation.constraints.NotBlank;
 public class UserDTO {
 
 	@NotBlank(message = "用户不能为空")
-	private String userName;
+	private String login;
 
 	@NotBlank(message = "邮箱不能为空")
 	private String email;
-
-	private String realName;
 }

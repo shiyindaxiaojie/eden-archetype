@@ -3,9 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.service;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
-import org.ylzl.eden.spring.framework.cola.dto.Response;
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ${package}.app.user.executor.command.UserAddCmdExe;
 import ${package}.app.user.executor.command.UserModifyCmdExe;
 import ${package}.app.user.executor.command.UserRemoveCmdExe;
@@ -18,8 +17,9 @@ import ${package}.client.user.dto.command.UserModifyCmd;
 import ${package}.client.user.dto.command.UserRemoveCmd;
 import ${package}.client.user.dto.query.UserByIdQry;
 import ${package}.client.user.dto.query.UserListByPageQry;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 
 /**
  * 用户领域业务实现
@@ -27,7 +27,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
-//@DS(DataSourceType.BIZCOLLEGE) // 多数据源示例
+//@DS("ds2") // 多数据源示例
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
@@ -79,7 +79,7 @@ public class UserServiceImpl implements UserService {
 	@Transactional(rollbackFor = Exception.class)
 	@Override
 	public Response removeUser(UserRemoveCmd cmd) {
-		this.getUserById(UserByIdQry.builder().userId(cmd.getUserId()).build());
+		this.getUserById(UserByIdQry.builder().id(cmd.getId()).build());
 		return userRemoveCmdExe.execute(cmd);
 	}
 

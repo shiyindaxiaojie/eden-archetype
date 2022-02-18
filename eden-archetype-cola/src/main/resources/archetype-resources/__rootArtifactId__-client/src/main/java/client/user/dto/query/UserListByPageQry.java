@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.dto.query;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 import lombok.*;
+import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 
 import java.io.Serializable;
 
@@ -17,14 +17,12 @@ import java.io.Serializable;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
 @Data
 public class UserListByPageQry extends PageQuery implements Serializable {
 
-	private String userName;
+	private String login;
 
 	private String email;
-
-	private String phone;
 }

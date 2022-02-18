@@ -3,11 +3,11 @@
 #set( $symbol_escape = '\' )
 package ${package}.app.user.executor.command;
 
-import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.springframework.stereotype.Component;
 import ${package}.client.user.dto.command.UserRemoveCmd;
 import ${package}.domain.user.entity.User;
 import ${package}.domain.user.gateway.UserGateway;
-import org.springframework.stereotype.Component;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
 
 /**
  * 删除用户指令执行器
@@ -25,7 +25,7 @@ public class UserRemoveCmdExe {
 	}
 
 	public Response execute(UserRemoveCmd cmd) {
-		userGateway.deleteById(User.builder().userId(cmd.getUserId()).build());
+		userGateway.deleteById(User.builder().id(cmd.getId()).build());
 		return Response.buildSuccess();
 	}
 }

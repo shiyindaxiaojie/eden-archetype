@@ -6,12 +6,11 @@ package ${package}.infrastructure.user.database.dataobject;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * 用户信息表数据库对象
@@ -25,228 +24,90 @@ import java.util.Date;
 @EqualsAndHashCode
 @SuperBuilder
 @ToString
-@TableName("sys_user")
+@TableName("demo_user")
 public class UserDO implements Serializable {
 
 	/**
-	 * 用户id
+	 * 用户 ID
 	 */
-	@TableId("user_id")
-	private Long userId;
+	@TableId("id")
+	private Long id;
 
 	/**
-	 * 部门id
+	 * 登录账户
 	 */
-	@TableField("dept_id")
-	private Long deptId;
+	@TableField("login")
+	private String login;
 
 	/**
-	 * 用户账号
+	 * 密码哈希
 	 */
-	@TableField("user_name")
-	private String userName;
+	@TableField("password_hash")
+	private String passwordHash;
 
 	/**
-	 * 用户昵称
-	 */
-	@TableField("nick_name")
-	private String nickName;
-
-	/**
-	 * 用户类型
-	 */
-	@TableField("user_type")
-	private String userType;
-
-	/**
-	 * 用户真实姓名
-	 */
-	@TableField("real_name")
-	private String realName;
-
-	/**
-	 * 用户邮箱
+	 * 邮箱
 	 */
 	@TableField("email")
 	private String email;
 
 	/**
-	 * 手机号码
+	 * 账户是否已激活
 	 */
-	@TableField("phonenumber")
-	private String phonenumber;
+	@TableField("activated")
+	private Boolean activated;
 
 	/**
-	 * 用户性别（0男 1女 2未知）
+	 * 账户是否被锁定
 	 */
-	@TableField("sex")
-	private String sex;
+	@TableField("locked")
+	private Boolean locked;
 
 	/**
-	 * 头像地址
+	 * 语言
 	 */
-	@TableField("avatar")
-	private String avatar;
+	@TableField("lang_key")
+	private String langKey;
 
 	/**
-	 * 密码
+	 * 激活账户的代码
 	 */
-	@TableField("password")
-	private String password;
+	@TableField("activation_key")
+	private String activationKey;
 
 	/**
-	 * 帐号状态（0正常 1停用）
+	 * 重置密码的代码
 	 */
-	@TableField("status")
-	private String status;
+	@TableField("reset_key")
+	private String resetKey;
 
 	/**
-	 * 删除标志（0代表存在 2代表删除）
+	 * 重置密码的时间
 	 */
-	@TableField("del_flag")
-	private Integer delFlag;
+	@TableField("reset_date")
+	private LocalDateTime resetDate;
 
 	/**
-	 * 最后登录ip
+	 * 创建的账户
 	 */
-	@TableField("login_ip")
-	private String loginIp;
+	@TableField("created_by")
+	private String createdBy;
 
 	/**
-	 * 最后登录时间
+	 * 创建的时间
 	 */
-	@TableField("login_date")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date loginDate;
+	@TableField("created_date")
+	private LocalDateTime createdDate;
 
 	/**
-	 * 创建者
+	 * 最后修改的账户
 	 */
-	@TableField("create_by")
-	private String createBy;
+	@TableField("last_modified_by")
+	private String lastModifiedBy;
 
 	/**
-	 * 创建时间
+	 * 最后修改的时间
 	 */
-	@TableField("create_time")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date createTime;
-
-	/**
-	 * 更新者
-	 */
-	@TableField("update_by")
-	private String updateBy;
-
-	/**
-	 * 更新时间
-	 */
-	@TableField("update_time")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date updateTime;
-
-	/**
-	 * 备注
-	 */
-	@TableField("remark")
-	private String remark;
-
-	/**
-	 * 密码提示
-	 */
-	@TableField("pwd_tip")
-	private String pwdTip;
-
-	/**
-	 * 有效期限类型(0不限,1固定期限)
-	 */
-	@TableField("valid_type")
-	private String validType;
-
-	/**
-	 * 使用开始时间
-	 */
-	@TableField("valid_start_time")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date validStartTime;
-
-	/**
-	 * 使用结束时间
-	 */
-	@TableField("valid_end_time")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date validEndTime;
-
-	/**
-	 * 是否通知（0不通知，1通知）
-	 */
-	@TableField("inform")
-	private String inform;
-
-	/**
-	 * 证件类型
-	 */
-	@TableField("id_type")
-	private String idType;
-
-	/**
-	 * 证件号
-	 */
-	@TableField("id_no")
-	private String idNo;
-
-	/**
-	 * 职位id
-	 */
-	@TableField("post_id")
-	private Long postId;
-
-	/**
-	 * 出生日期
-	 */
-	@TableField("birthday")
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-	private Date birthday;
-
-	/**
-	 * 身份证
-	 */
-	@TableField("id_card")
-	private String idCard;
-
-	/**
-	 * 学历（0初中，1高中，2中专，3大专，4本科，5硕士，6博士，7其他）
-	 */
-	@TableField("education")
-	private String education;
-
-	/**
-	 * 工号
-	 */
-	@TableField("job_no")
-	private String jobNo;
-
-	/**
-	 * 导师
-	 */
-	@TableField("tutor")
-	private String tutor;
-
-	/**
-	 * 普益基金部门
-	 */
-	@TableField("pyfund_dept")
-	private String pyfundDept;
-
-	/**
-	 * 普益基金用户id
-	 */
-	@TableField("puyitou_user_id")
-	private String puyitouUserId;
-
-	/**
-	 * 学习寄语
-	 */
-	@TableField("motto")
-	private String motto;
+	@TableField("last_modified_date")
+	private LocalDateTime lastModifiedDate;
 }

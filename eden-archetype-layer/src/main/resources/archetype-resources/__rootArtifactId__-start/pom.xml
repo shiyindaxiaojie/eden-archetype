@@ -25,13 +25,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -76,35 +69,38 @@
 						<artifactId>jib-maven-plugin</artifactId>
 						<configuration>
 							<from>
-								<image>openjdk:8-jdk-alpine</image>
+								<image>openjdk:11-jre-slim</image>
 							</from>
 							<to>
-								<image>ccr.ccs.tencentyun.com/bizcollege/${project.name}</image>
+								<image>${docker.image}</image>
 								<auth>
 									<username>${docker.username}</username>
 									<password>${docker.password}</password>
 								</auth>
 								<tags>
-									<tag>latest</tag>
+									<tag>${project.version}</tag>
 								</tags>
 							</to>
 							<container>
 								<entrypoint>
-									<shell>/bin/sh</shell>
+									<shell>bash</shell>
 									<option>-c</option>
 									<arg>/entrypoint.sh</arg>
 								</entrypoint>
 								<ports>
-									<port>9090</port>
+									<port>8080</port>
 								</ports>
 								<environment>
+									<TZ>Asia/Shanghai</TZ>
 									<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-									<RUN_SLEEP>1</RUN_SLEEP>
+									<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
+									<JAVA_SLEEP>1</JAVA_SLEEP>
 								</environment>
 								<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+								<mainClass>${start-class}</mainClass>
 							</container>
 							<extraDirectories>
-								<paths>src/main/jib</paths>
+								<paths>src/main/docker/jib</paths>
 								<permissions>
 									<permission>
 										<file>/entrypoint.sh</file>
@@ -112,6 +108,7 @@
 									</permission>
 								</permissions>
 							</extraDirectories>
+							<allowInsecureRegistries>true</allowInsecureRegistries>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -129,10 +126,10 @@
 						<artifactId>jib-maven-plugin</artifactId>
 						<configuration>
 							<from>
-								<image>openjdk:8-jdk-alpine</image>
+								<image>openjdk:11-jre-slim</image>
 							</from>
 							<to>
-								<image>ccr.ccs.tencentyun.com/bizcollege/${project.name}</image>
+								<image>${docker.image}</image>
 								<auth>
 									<username>${docker.username}</username>
 									<password>${docker.password}</password>
@@ -143,21 +140,24 @@
 							</to>
 							<container>
 								<entrypoint>
-									<shell>/bin/sh</shell>
+									<shell>bash</shell>
 									<option>-c</option>
 									<arg>/entrypoint.sh</arg>
 								</entrypoint>
 								<ports>
-									<port>9090</port>
+									<port>8080</port>
 								</ports>
 								<environment>
+									<TZ>Asia/Shanghai</TZ>
 									<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-									<RUN_SLEEP>0</RUN_SLEEP>
+									<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
+									<JAVA_SLEEP>1</JAVA_SLEEP>
 								</environment>
 								<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+								<mainClass>${start-class}</mainClass>
 							</container>
 							<extraDirectories>
-								<paths>src/main/jib</paths>
+								<paths>src/main/docker/jib</paths>
 								<permissions>
 									<permission>
 										<file>/entrypoint.sh</file>
@@ -165,6 +165,7 @@
 									</permission>
 								</permissions>
 							</extraDirectories>
+							<allowInsecureRegistries>true</allowInsecureRegistries>
 						</configuration>
 					</plugin>
 				</plugins>
@@ -179,32 +180,18 @@
 			<artifactId>${rootArtifactId}-web</artifactId>
 		</dependency>
 
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>logback-core</artifactId>
-					<groupId>ch.qos.logback</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>logback-classic</artifactId>
-					<groupId>ch.qos.logback</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>spring-boot-starter-logging</artifactId>
-					<groupId>org.springframework.boot</groupId>
-				</exclusion>
-			</exclusions>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
-		<!-- 测试框架 -->
+		<!-- 测试组件 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-test</artifactId>
@@ -213,31 +200,20 @@
 
 		<!-- 配置中心 -->
 		<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-nacos-config-spring-boot-starter</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-nacos-config-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- 注册中心 -->
 		<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-nacos-discovery-spring-boot-starter</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-nacos-discovery-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- 分布式组件 -->
 		<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-dubbo-spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>dubbo-common</artifactId>
-					<groupId>org.apache.dubbo</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-zookeeper-spring-boot-starter</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-dubbo-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>
-
 </project>

@@ -1,53 +1,67 @@
 logging:
   level:
     ROOT: INFO
-    ${groupId}: INFO
-    ${groupId}.dao.mybatis.mapper: DEBUG
+    org.ylzl.eden: INFO
+    org.ylzl.eden.demo.dao.repository.mybatis.mapper: DEBUG
 
 spring:
+  # 内存数据库
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        trace: false
+        web-allow-others: false
   # 关系数据库
   datasource:
+    # 内存数据源
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:db;DB_CLOSE_ON_EXIT=TRUE
+    username: sa
+    password: demo
     # 单数据源
-    username: root
-    password: admin123
-    url: jdbc:mysql://10.2.2.47:5306/demo?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    #    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    username:
+    #    password:
+    #    url: jdbc:mysql://127.0.0.1:3306/dev?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
     # 多数据源，使用 @DS 切换
-#    dynamic:
-#      datasource:
-#        demo:
-#          username: root
-#          password: admin123
-#          url: jdbc:mysql://10.2.2.47:5306/demo?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-#          type: ${spring.datasource.type}
-#          driver-class-name: ${spring.datasource.driver-class-name}
-#        bizcollege:
-#          username: root
-#          password: admin123
-#          url: jdbc:mysql://10.2.2.47:5306/db_bizcollege?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
-#          driver-class-name: ${spring.datasource.driver-class-name}
-#          type: ${spring.datasource.type}
-#      primary: demo
-#      strict: true
+  #    dynamic:
+  #      datasource:
+  #        ds1:
+  #          username:
+  #          password:
+  #          url: jdbc:mysql://localhost:3306/ds1?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+  #          type: ${spring.datasource.type}
+  #          driver-class-name: ${spring.datasource.driver-class-name}
+  #        ds2:
+  #          username:
+  #          password:
+  #          url: jdbc:mysql://localhost:3306/ds2?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&characterEncoding=utf-8&serverTimezone=GMT%2B8
+  #          driver-class-name: ${spring.datasource.driver-class-name}
+  #          type: ${spring.datasource.type}
+  #      primary: ds1
+  #      strict: true
   # 分库分表组件
-#    shardingsphere:
-#      props:
-#        sql.show: true
-#      datasource:
-#        names: demo
-#        demo:
-#          username: ${spring.datasource.dynamic.datasource.demo.username}
-#          password: ${spring.datasource.dynamic.datasource.demo.password}
-#          driver-class-name: ${spring.datasource.dynamic.datasource.demo.driver-class-name}
-#          jdbc-url: ${spring.datasource.dynamic.datasource.demo.url}
-#          type: ${spring.datasource.dynamic.datasource.demo.type}
-#      sharding:
-#        defaultDataSourceName: demo
+  #    shardingsphere:
+  #      props:
+  #        sql.show: true
+  #      datasource:
+  #        names: demo
+  #        demo:
+  #          username: ${spring.datasource.dynamic.datasource.demo.username}
+  #          password: ${spring.datasource.dynamic.datasource.demo.password}
+  #          driver-class-name: ${spring.datasource.dynamic.datasource.demo.driver-class-name}
+  #          jdbc-url: ${spring.datasource.dynamic.datasource.demo.url}
+  #          type: ${spring.datasource.dynamic.datasource.demo.type}
+  #      sharding:
+  #        defaultDataSourceName: demo
   # 缓存数据库
   redis:
     database: 1
-    host: 10.2.2.47
+    host: localhost
     port: 6379
-    password: puyiwm
+    password:
     timeout: 5000
   # 模板引擎
   thymeleaf:
@@ -56,7 +70,7 @@ spring:
 #  kafka:
 #    enable: false
 #    producer:
-#      bootstrap-servers: 10.2.2.35:9092
+#      bootstrap-servers: localhost:9092
 #      batch-size: 4096
 #      buffer-memory: 40960
 #      key-serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -68,11 +82,9 @@ spring:
 #    enable: false
 #    access-token:
 #    admin:
-#      addresses: http://10.2.2.36:8090/xxljob
+#      addresses: http://localhost:8090/xxljob
 #    executor:
 #      app-name: demo-job
 #      port: 9999
 #      log-path: /data/applogs/xxl-job/jobhandler/
 #      log-retention-days: 7
-
-

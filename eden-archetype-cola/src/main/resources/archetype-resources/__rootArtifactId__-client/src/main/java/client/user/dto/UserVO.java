@@ -24,20 +24,15 @@ public class UserVO implements Serializable {
 	/**
 	 * 用户ID
 	 */
-	private Long userId;
+	private Long id;
 
 	/**
 	 * 用户账号
 	 */
-	private String userName;
+	private String login;
 
 	/**
 	 * 用户邮箱
 	 */
 	private String email;
-
-	/**
-	 * 真实名称
-	 */
-	private String realName;
 }

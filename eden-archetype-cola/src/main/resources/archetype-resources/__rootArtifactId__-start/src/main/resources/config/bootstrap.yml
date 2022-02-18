@@ -1,6 +1,6 @@
 spring:
   application:
-    name: ${artifactId}
+    name: eden-demo-cola-start
   cloud:
     nacos:
       config:
