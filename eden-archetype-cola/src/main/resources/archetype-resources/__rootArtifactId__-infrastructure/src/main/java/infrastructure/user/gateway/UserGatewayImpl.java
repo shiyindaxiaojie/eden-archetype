@@ -3,16 +3,16 @@
 #set( $symbol_escape = '\' )
 package ${package}.infrastructure.user.gateway;
 
+import org.springframework.stereotype.Repository;
 import ${package}.domain.user.entity.User;
 import ${package}.domain.user.gateway.UserGateway;
 import ${package}.infrastructure.user.database.convertor.UserConvertor;
 import ${package}.infrastructure.user.database.mapper.UserMapper;
-import org.springframework.stereotype.Repository;
 
 /**
  * 用户领域防腐层实现
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Repository
@@ -51,6 +51,6 @@ public class UserGatewayImpl implements UserGateway {
 	 */
 	@Override
 	public void deleteById(User user) {
-		userMapper.deleteById(user.getUserId());
+		userMapper.deleteById(user.getId());
 	}
 }

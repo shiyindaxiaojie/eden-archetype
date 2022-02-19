@@ -27,10 +27,6 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-catchlog-starter</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
@@ -40,27 +36,42 @@
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spring-data</artifactId>
 		</dependency>
+		<!-- HikariCP -->
 		<dependency>
 			<groupId>com.zaxxer</groupId>
 			<artifactId>HikariCP</artifactId>
 		</dependency>
+		<!-- MySQL -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+		<!-- Mybatis -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-mybatis-spring-boot-starter</artifactId>
 		</dependency>
-		<!--
+		<!-- Liquibase -->
 		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-liquibase-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- Dynamic Datasource -->
+		<!--<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-dynamic-datasource-spring-boot-starter</artifactId>
-		</dependency>
-		<dependency>
+		</dependency>-->
+		<!-- Sharding JDBC -->
+		<!--<dependency>
 			<groupId>org.ylzl</groupId>
-			<artifactId>eden-sharding-sphere-spring-boot-starter</artifactId>
+			<artifactId>eden-sharding-jdbc-spring-boot-starter</artifactId>
 		</dependency>-->
 	</dependencies>
 </project>

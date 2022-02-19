@@ -50,11 +50,6 @@
 				<include>LICENSE</include>
 				<include>mvnw</include>
 				<include>mvnw.cmd</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory/>
-			<includes>
 				<include>README.md</include>
 			</includes>
 		</fileSet>
@@ -231,7 +226,7 @@
 						<include>**/*.gitkeep</include>
 					</includes>
 				</fileSet>
-				<fileSet encoding="UTF-8">
+				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/jib</directory>
 					<includes>
 						<include>**/*.sh</include>

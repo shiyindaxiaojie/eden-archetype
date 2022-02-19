@@ -18,6 +18,7 @@
 	<modules>
 		<module>eden-archetype-cola</module>
 		<module>eden-archetype-layer</module>
+		<module>eden-archetype-mvc</module>
 	</modules>
 
 	<licenses>

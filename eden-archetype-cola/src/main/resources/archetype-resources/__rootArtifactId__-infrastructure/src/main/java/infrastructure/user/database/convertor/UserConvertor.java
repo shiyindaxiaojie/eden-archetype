@@ -3,18 +3,18 @@
 #set( $symbol_escape = '\' )
 package ${package}.infrastructure.user.database.convertor;
 
-import ${package}.domain.user.entity.User;
-import ${package}.infrastructure.user.database.dataobject.UserDO;
-import org.ylzl.eden.spring.framework.cola.EntityConvertor;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
 import org.mapstruct.factory.Mappers;
+import ${package}.domain.user.entity.User;
+import ${package}.infrastructure.user.database.dataobject.UserDO;
+import org.ylzl.eden.spring.framework.cola.domain.EntityConvertor;
 
 /**
  * 用户领域实体转换器
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Mapper(componentModel = "spring",

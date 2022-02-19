@@ -3,22 +3,19 @@
 #set( $symbol_escape = '\' )
 package ${package}.api;
 
+import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
+import org.ylzl.eden.spring.framework.cola.dto.Response;
+import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
 import ${package}.api.dto.UserDTO;
 import ${package}.api.dto.UserPageQuery;
 import ${package}.api.dto.UserVO;
-import org.ylzl.eden.adapter.dto.JsonResult;
-import org.ylzl.eden.adapter.dto.Page;
-
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
 
 /**
  * 用户业务逻辑接口
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
-@Path("/users")
 public interface UserService {
 
 	/**
@@ -26,10 +23,7 @@ public interface UserService {
 	 *
 	 * @param dto
 	 */
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	@POST
-	JsonResult createUser(UserDTO dto);
+	Response createUser(UserDTO dto);
 
 	/**
 	 * 修改用户
@@ -37,20 +31,14 @@ public interface UserService {
 	 * @param id
 	 * @param dto
 	 */
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}")
-	@PUT
-	JsonResult modifyUser(@PathParam("id") Long id, UserDTO dto);
+	Response modifyUser(Long id, UserDTO dto);
 
 	/**
 	 * 删除用户
 	 *
 	 * @param id
 	 */
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}")
-	@DELETE
-	JsonResult removeUser(@PathParam("id") Long id);
+	Response removeUser(Long id);
 
 	/**
 	 * 获取用户信息
@@ -58,10 +46,7 @@ public interface UserService {
 	 * @param id
 	 * @return
 	 */
-	@Produces(MediaType.APPLICATION_JSON)
-	@Path("/{id}")
-	@GET
-	JsonResult<UserVO> getUserById(@PathParam("id") Long id);
+	SingleResponse<UserVO> getUserById(Long id);
 
 	/**
 	 * 获取用户分页
@@ -69,7 +54,5 @@ public interface UserService {
 	 * @param query
 	 * @return
 	 */
-	@Produces(MediaType.APPLICATION_JSON)
-	@GET
-	JsonResult<Page<UserVO>> listUserByPage(UserPageQuery query);
+	PageResponse<UserVO> listUserByPage(UserPageQuery query);
 }

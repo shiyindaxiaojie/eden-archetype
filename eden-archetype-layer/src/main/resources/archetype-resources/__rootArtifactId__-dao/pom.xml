@@ -15,36 +15,31 @@
 	<description>数据持久层</description>
 
 	<dependencies>
-		<!-- 公共组件 -->
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-common</artifactId>
-		</dependency>
 		<!-- API组件 -->
 		<dependency>
 			<groupId>${groupId}</groupId>
 			<artifactId>${rootArtifactId}-api</artifactId>
 		</dependency>
 
-		<!-- 开发框架 -->
-		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spring-framework</artifactId>
-		</dependency>
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
+		</dependency>
 
-		<!-- 测试框架 -->
+		<!-- 测试组件 -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- 持久化框架 -->
+		<!-- 持久化组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spring-data</artifactId>
@@ -60,10 +55,21 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		<!-- H2 -->
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
 		<!-- Mybatis -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-mybatis-spring-boot-starter</artifactId>
+		</dependency>
+		<!-- Liquibase -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-liquibase-spring-boot-starter</artifactId>
 		</dependency>
 		<!-- Dynamic Datasource -->
 		<!--<dependency>
@@ -72,8 +78,8 @@
 		</dependency>-->
 		<!-- Sharding JDBC -->
 		<!--<dependency>
-			<groupId>com.puyiwm</groupId>
-			<artifactId>puyiwm-sharding-jdbc-spring-boot-starter</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-sharding-jdbc-spring-boot-starter</artifactId>
 		</dependency>-->
 	</dependencies>
 </project>

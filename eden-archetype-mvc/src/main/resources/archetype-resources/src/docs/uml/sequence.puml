@@ -1,0 +1,12 @@
+@startuml
+
+autonumber
+
+"外部请求（WEB）" -> "${artifactId}-web": 发送请求报文
+"${artifactId}-web" -> "${artifactId}-service": 调用业务逻辑层
+"${artifactId}-service" -> "${artifactId}-model": 调用数据访问层
+"${artifactId}-model" -> "存储组件（DB）": 执行数据库读写操作
+"${artifactId}-model" --> "${artifactId}-service": 返回数据库执行结果
+"${artifactId}-service" --> "${artifactId}-web": 组装数据响应报文
+
+@enduml

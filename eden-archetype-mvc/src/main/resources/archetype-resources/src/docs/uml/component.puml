@@ -1,0 +1,12 @@
+@startuml
+[${artifactId}-start（启动入口）] --> [${artifactId}-web（请求控制层）]
+[${artifactId}-web（请求控制层）] --> [${artifactId}-service（业务逻辑服务层）]
+[${artifactId}-service（业务逻辑服务层）] --> [${artifactId}-model（数据模型层）]
+
+database MySQL
+
+[APP] --> http: 前端请求
+http - [${artifactId}-web（请求控制层）]: 暴露 REST 接口
+[${artifactId}-model（数据模型层）] ..> MySQL : 数据持久化
+
+@enduml

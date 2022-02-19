@@ -4,16 +4,16 @@
 package ${package}.infrastructure.user.database.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Mapper;
 import ${package}.client.user.dto.query.UserListByPageQry;
 import ${package}.infrastructure.user.database.dataobject.UserDO;
-import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * 用户记录表映射器
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Mapper

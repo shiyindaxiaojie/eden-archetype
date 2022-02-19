@@ -10,7 +10,7 @@ import java.io.Serializable;
 /**
  * 用户已创建（值对象）
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Builder
@@ -24,20 +24,15 @@ public class UserVO implements Serializable {
 	/**
 	 * 用户ID
 	 */
-	private Long userId;
+	private Long id;
 
 	/**
 	 * 用户账号
 	 */
-	private String userName;
+	private String login;
 
 	/**
 	 * 用户邮箱
 	 */
 	private String email;
-
-	/**
-	 * 真实名称
-	 */
-	private String realName;
 }

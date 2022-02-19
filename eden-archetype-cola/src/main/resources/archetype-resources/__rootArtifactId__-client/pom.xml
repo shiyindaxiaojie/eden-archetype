@@ -32,8 +32,8 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-dto</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
 		<!-- 校验组件 -->

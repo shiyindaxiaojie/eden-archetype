@@ -8,7 +8,7 @@ import ${package}.domain.user.entity.User;
 /**
  * 用户领域防腐层
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 public interface UserGateway {
@@ -30,7 +30,7 @@ public interface UserGateway {
 	/**
 	 * 删除用户
 	 *
-	 * @param authority
+	 * @param user
 	 */
 	void deleteById(User user);
 }

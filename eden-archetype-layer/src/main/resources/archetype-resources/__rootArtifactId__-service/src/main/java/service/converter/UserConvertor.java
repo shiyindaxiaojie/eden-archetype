@@ -5,7 +5,7 @@ package ${package}.service.converter;
 
 import ${package}.api.dto.UserDTO;
 import ${package}.api.dto.UserVO;
-import ${package}.dao.dataobject.UserDO;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;
@@ -17,7 +17,7 @@ import java.util.List;
 /**
  * 用户转换器
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Mapper(componentModel = "spring",

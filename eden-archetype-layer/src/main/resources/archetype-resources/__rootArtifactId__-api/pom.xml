@@ -15,21 +15,21 @@
 	<description>开放 API 层</description>
 
 	<dependencies>
-		<!-- 开发框架 -->
+		<!-- 开发组件 -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
+		</dependency>
 
-		<!-- REST工具 -->
+		<!-- 校验工具 -->
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.resteasy</groupId>
-			<artifactId>resteasy-jaxrs</artifactId>
 		</dependency>
 	</dependencies>
 </project>

@@ -31,16 +31,8 @@
 			<artifactId>mapstruct</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-dto</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-domain-starter</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>com.alibaba.cola</groupId>
-			<artifactId>cola-component-exception</artifactId>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
 		<!-- 日志组件 -->

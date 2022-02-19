@@ -3,28 +3,26 @@
 #set( $symbol_escape = '\' )
 package ${package}.client.user.dto.query;
 
-import com.alibaba.cola.dto.PageQuery;
 import lombok.*;
+import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 
 import java.io.Serializable;
 
 /**
  * 根据分页查询获取用户列表指令
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode
+@EqualsAndHashCode(callSuper = false)
 @ToString
 @Data
 public class UserListByPageQry extends PageQuery implements Serializable {
 
-	private String userName;
+	private String login;
 
 	private String email;
-
-	private String phone;
 }

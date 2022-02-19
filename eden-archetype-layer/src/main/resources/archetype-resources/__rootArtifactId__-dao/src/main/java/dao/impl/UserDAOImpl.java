@@ -7,14 +7,14 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import ${package}.api.dto.UserPageQuery;
 import ${package}.dao.UserDAO;
-import ${package}.dao.dataobject.UserDO;
-import ${package}.dao.mybatis.mapper.UserMapper;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
+import ${package}.dao.repository.mybatis.mapper.UserMapper;
 import org.springframework.stereotype.Repository;
 
 /**
  * 用户（数据对象）存储访问实现
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Repository
@@ -76,7 +76,7 @@ public class UserDAOImpl implements UserDAO {
 	 */
 	@Override
 	public Page<UserDO> findByPage(UserPageQuery query) {
-		return PageHelper.startPage(query.getPageNum().intValue(), query.getPageSize().intValue())
+		return PageHelper.startPage(query.getPageIndex(), query.getPageSize())
 			.doSelectPage(() -> userMapper.selectPage(query));
 	}
 }

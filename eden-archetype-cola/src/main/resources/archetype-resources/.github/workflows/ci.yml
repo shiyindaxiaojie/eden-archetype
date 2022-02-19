@@ -2,7 +2,7 @@ name: build
 on: [ push, pull_request ]
 jobs:
   applications:
-    name: application test suite
+    name: application ci/cd
     runs-on: ubuntu-latest
     timeout-minutes: 30
     env:

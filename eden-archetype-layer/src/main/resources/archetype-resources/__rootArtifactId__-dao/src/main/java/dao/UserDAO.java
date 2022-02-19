@@ -5,13 +5,12 @@ package ${package}.dao;
 
 import com.github.pagehelper.Page;
 import ${package}.api.dto.UserPageQuery;
-import ${package}.dao.dataobject.UserDO;
-import org.apache.ibatis.annotations.Param;
+import ${package}.dao.repository.mybatis.dataobject.UserDO;
 
 /**
  * 用户（数据对象）存储访问接口
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 public interface UserDAO {

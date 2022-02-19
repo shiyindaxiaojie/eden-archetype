@@ -8,7 +8,7 @@ import lombok.*;
 /**
  * 用户已创建（值对象）
  *
- * @author gyl
+ * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
 @Builder
@@ -19,11 +19,9 @@ import lombok.*;
 @Data
 public class UserVO {
 
-	private Long userId;
+	private Long id;
 
-	private String userName;
+	private String login;
 
 	private String email;
-
-	private String realName;
 }
