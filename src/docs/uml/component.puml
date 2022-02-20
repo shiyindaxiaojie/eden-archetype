@@ -1,0 +1,7 @@
+@startuml
+
+[eden-archetype-cola] --> [eden-archetype]: COLA 架构
+[eden-archetype-layer] --> [eden-archetype]: 分层架构
+[eden-archetype-mvc] --> [eden-archetype]: MVC 架构
+
+@enduml
