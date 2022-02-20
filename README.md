@@ -9,8 +9,11 @@
 
 ## 组件构成
 
+![](https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/eden-archetype/component.png)
+
 * **eden-archetype-cola**：COLA 架构脚手架
 * **eden-archetype-layer**：分层架构脚手架
+* **eden-archetype-mvc**：MVC 架构脚手架
 
 ## 如何构建
 * master 分支对应的是 `eden-archetype 2.4.x`，最低支持 JDK 1.8。
