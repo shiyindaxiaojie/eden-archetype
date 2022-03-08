@@ -1,14 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.client.user.api;
-
-import ${package}.client.user.dto.UserVO;
-import ${package}.client.user.dto.command.UserAddCmd;
-import ${package}.client.user.dto.command.UserModifyCmd;
-import ${package}.client.user.dto.command.UserRemoveCmd;
-import ${package}.client.user.dto.query.UserByIdQry;
-import ${package}.client.user.dto.query.UserListByPageQry;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
@@ -48,7 +37,7 @@ public interface UserService {
 	 * @param query
 	 * @return
 	 */
-	SingleResponse<UserVO> getUserById(UserByIdQry query);
+	SingleResponse<UserDTO> getUserById(UserByIdQry query);
 
 	/**
 	 * 获取用户分页
@@ -56,5 +45,5 @@ public interface UserService {
 	 * @param query
 	 * @return
 	 */
-	PageResponse<UserVO> listUserByPage(UserListByPageQry query);
+	PageResponse<UserDTO> listUserByPage(UserListByPageQry query);
 }

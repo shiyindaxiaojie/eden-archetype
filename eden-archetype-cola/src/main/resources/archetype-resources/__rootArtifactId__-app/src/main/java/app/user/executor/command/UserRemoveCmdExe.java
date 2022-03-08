@@ -1,12 +1,4 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.app.user.executor.command;
-
 import org.springframework.stereotype.Component;
-import ${package}.client.user.dto.command.UserRemoveCmd;
-import ${package}.domain.user.entity.User;
-import ${package}.domain.user.gateway.UserGateway;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 
 /**
@@ -20,12 +12,16 @@ public class UserRemoveCmdExe {
 
 	private final UserGateway userGateway;
 
-	public UserRemoveCmdExe(UserGateway userGateway) {
+	private final UserAssembler userAssembler;
+
+	public UserRemoveCmdExe(UserGateway userGateway, UserAssembler userAssembler) {
 		this.userGateway = userGateway;
+		this.userAssembler = userAssembler;
 	}
 
 	public Response execute(UserRemoveCmd cmd) {
-		userGateway.deleteById(User.builder().id(cmd.getId()).build());
+		User user = userAssembler.toEntity(cmd);
+		userGateway.deleteById(user);
 		return Response.buildSuccess();
 	}
 }

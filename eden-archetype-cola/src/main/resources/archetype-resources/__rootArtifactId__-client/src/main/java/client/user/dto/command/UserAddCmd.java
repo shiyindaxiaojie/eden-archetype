@@ -1,11 +1,4 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.client.user.dto.command;
-
-import lombok.*;
-import ${package}.client.user.dto.UserDTO;
-
+import javax.validation.constraints.NotBlank;
 import java.io.Serializable;
 
 /**
@@ -22,5 +15,12 @@ import java.io.Serializable;
 @Data
 public class UserAddCmd implements Serializable {
 
-	private UserDTO userDTO;
+	@NotBlank(message = "账号不能为空")
+	private String login;
+
+	@NotBlank(message = "密码不能为空")
+	private String password;
+
+	@NotBlank(message = "邮箱不能为空")
+	private String email;
 }
