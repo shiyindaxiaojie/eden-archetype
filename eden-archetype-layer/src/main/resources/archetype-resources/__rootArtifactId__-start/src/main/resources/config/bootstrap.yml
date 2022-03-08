@@ -1,6 +1,6 @@
 spring:
   application:
-    name: eden-demo-layer-start
+    name: ${rootArtifactId}
   cloud:
     nacos:
       config:

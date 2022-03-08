@@ -1,9 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.client.user.dto.query;
-
-import lombok.*;
 import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 
 import java.io.Serializable;

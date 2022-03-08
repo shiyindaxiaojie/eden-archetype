@@ -1,22 +1,5 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-package ${package}.app.user.service;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ${package}.app.user.executor.command.UserAddCmdExe;
-import ${package}.app.user.executor.command.UserModifyCmdExe;
-import ${package}.app.user.executor.command.UserRemoveCmdExe;
-import ${package}.app.user.executor.query.UserByIdQryExe;
-import ${package}.app.user.executor.query.UserListByPageQryExe;
-import ${package}.client.user.api.UserService;
-import ${package}.client.user.dto.UserVO;
-import ${package}.client.user.dto.command.UserAddCmd;
-import ${package}.client.user.dto.command.UserModifyCmd;
-import ${package}.client.user.dto.command.UserRemoveCmd;
-import ${package}.client.user.dto.query.UserByIdQry;
-import ${package}.client.user.dto.query.UserListByPageQry;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
@@ -90,7 +73,7 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public SingleResponse<UserVO> getUserById(UserByIdQry query) {
+	public SingleResponse<UserDTO> getUserById(UserByIdQry query) {
 		return userByIdQryExe.execute(query);
 	}
 
@@ -101,7 +84,7 @@ public class UserServiceImpl implements UserService {
 	 * @return
 	 */
 	@Override
-	public PageResponse<UserVO> listUserByPage(UserListByPageQry query) {
+	public PageResponse<UserDTO> listUserByPage(UserListByPageQry query) {
 		return userListByPageQryExe.execute(query);
 	}
 }
