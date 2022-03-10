@@ -1,3 +1,10 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.client.user.dto.query;
+
+import lombok.*;
+
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 

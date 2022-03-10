@@ -3,12 +3,13 @@
 #set( $symbol_escape = '\' )
 package ${package}.adapter.user.web;
 
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import ${package}.adapter.constant.ApiConstant;
 import ${package}.client.user.api.UserService;
-import ${package}.client.user.dto.UserVO;
+import ${package}.client.user.dto.UserDTO;
 import ${package}.client.user.dto.command.UserAddCmd;
 import ${package}.client.user.dto.command.UserModifyCmd;
 import ${package}.client.user.dto.command.UserRemoveCmd;
@@ -26,16 +27,13 @@ import javax.validation.Valid;
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
+@RequiredArgsConstructor
 @Slf4j
 @RequestMapping(ApiConstant.WEB_API_PATH + "/users")
 @RestController
 public class UserController {
 
 	private final UserService userService;
-
-	public UserController(@Qualifier("userService") UserService userService) {
-		this.userService = userService;
-	}
 
 	/**
 	 * 创建用户
@@ -79,7 +77,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public SingleResponse<UserVO> getUserById(@PathVariable Long id) {
+	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) {
 		return userService.getUserById(UserByIdQry.builder().id(id).build());
 	}
 
@@ -90,7 +88,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public PageResponse<UserVO> listUserByPage(@Valid @ModelAttribute UserListByPageQry query) {
+	public PageResponse<UserDTO> listUserByPage(@Valid @ModelAttribute UserListByPageQry query) {
 		return userService.listUserByPage(query);
 	}
 }

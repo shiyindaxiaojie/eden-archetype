@@ -3,6 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.infrastructure.user.gateway;
 
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import ${package}.domain.user.entity.User;
 import ${package}.domain.user.gateway.UserGateway;
@@ -15,14 +17,13 @@ import ${package}.infrastructure.user.database.mapper.UserMapper;
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
+@RequiredArgsConstructor
 @Repository
 public class UserGatewayImpl implements UserGateway {
 
 	private final UserMapper userMapper;
 
-	public UserGatewayImpl(UserMapper userMapper) {
-		this.userMapper = userMapper;
-	}
+	private final UserConvertor userConvertor;
 
 	/**
 	 * 新增用户
@@ -31,7 +32,7 @@ public class UserGatewayImpl implements UserGateway {
 	 */
 	@Override
 	public void save(User user) {
-		userMapper.insert(UserConvertor.INSTANCE.toDataObject(user));
+		userMapper.insert(userConvertor.toDataObject(user));
 	}
 
 	/**
@@ -41,7 +42,7 @@ public class UserGatewayImpl implements UserGateway {
 	 */
 	@Override
 	public void updateById(User user) {
-		userMapper.updateById(UserConvertor.INSTANCE.toDataObject(user));
+		userMapper.updateById(userConvertor.toDataObject(user));
 	}
 
 	/**

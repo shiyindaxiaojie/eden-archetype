@@ -1,5 +1,24 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.app.user.service;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ${package}.app.user.executor.command.UserAddCmdExe;
+import ${package}.app.user.executor.command.UserModifyCmdExe;
+import ${package}.app.user.executor.command.UserRemoveCmdExe;
+import ${package}.app.user.executor.query.UserByIdQryExe;
+import ${package}.app.user.executor.query.UserListByPageQryExe;
+import ${package}.client.user.api.UserService;
+import ${package}.client.user.dto.UserDTO;
+import ${package}.client.user.dto.command.UserAddCmd;
+import ${package}.client.user.dto.command.UserModifyCmd;
+import ${package}.client.user.dto.command.UserRemoveCmd;
+import ${package}.client.user.dto.query.UserByIdQry;
+import ${package}.client.user.dto.query.UserListByPageQry;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
@@ -11,6 +30,8 @@ import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
  * @since 2.4.x
  */
 //@DS("ds2") // 多数据源示例
+@RequiredArgsConstructor
+@Slf4j
 @Service("userService")
 public class UserServiceImpl implements UserService {
 
@@ -23,14 +44,6 @@ public class UserServiceImpl implements UserService {
 	private final UserByIdQryExe userByIdQryExe;
 
 	private final UserListByPageQryExe userListByPageQryExe;
-
-	public UserServiceImpl(UserAddCmdExe userAddCmdExe, UserModifyCmdExe userModifyCmdExe, UserRemoveCmdExe userRemoveCmdExe, UserByIdQryExe userByIdQryExe, UserListByPageQryExe userListByPageQryExe) {
-		this.userAddCmdExe = userAddCmdExe;
-		this.userModifyCmdExe = userModifyCmdExe;
-		this.userRemoveCmdExe = userRemoveCmdExe;
-		this.userByIdQryExe = userByIdQryExe;
-		this.userListByPageQryExe = userListByPageQryExe;
-	}
 
 	/**
 	 * 创建用户

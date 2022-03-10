@@ -1,6 +1,17 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.app.user.assembler;
+
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
+import ${package}.client.user.dto.UserDTO;
+import ${package}.client.user.dto.command.UserAddCmd;
+import ${package}.client.user.dto.command.UserModifyCmd;
+import ${package}.client.user.dto.command.UserRemoveCmd;
+import ${package}.domain.user.entity.User;
+import ${package}.infrastructure.user.database.dataobject.UserDO;
 import org.ylzl.eden.spring.framework.cola.dto.DTOAssembler;
 
 import java.util.List;

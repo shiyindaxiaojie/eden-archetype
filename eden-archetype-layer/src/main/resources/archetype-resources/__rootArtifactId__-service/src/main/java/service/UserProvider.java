@@ -7,6 +7,7 @@ import org.apache.dubbo.config.annotation.DubboService;
 import ${package}.api.UserService;
 import ${package}.dao.UserDAO;
 import ${package}.service.constant.DubboConstant;
+import ${package}.service.converter.UserConvertor;
 import ${package}.service.impl.UserServiceImpl;
 
 /**
@@ -18,7 +19,7 @@ import ${package}.service.impl.UserServiceImpl;
 @DubboService(timeout = DubboConstant.DEFAULT_TIMEOUT)
 public class UserProvider extends UserServiceImpl implements UserService {
 
-	public UserProvider(UserDAO userDAO) {
-		super(userDAO);
+	public UserProvider(UserDAO userDAO, UserConvertor userConvertor) {
+		super(userDAO, userConvertor);
 	}
 }
