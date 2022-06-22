@@ -3,9 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.adapter.user.web;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 import ${package}.adapter.constant.ApiConstant;
 import ${package}.client.user.api.UserService;
@@ -77,7 +77,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) {
+	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) throws JsonProcessingException {
 		return userService.getUserById(UserByIdQry.builder().id(id).build());
 	}
 

@@ -6,7 +6,6 @@
 		<groupId>org.ylzl</groupId>
 		<artifactId>eden-parent</artifactId>
 		<version>2.4.13-SNAPSHOT</version>
-		<relativePath/>
 	</parent>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
@@ -35,11 +34,6 @@
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${rootArtifactId}-api</artifactId>
-				<version>${version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${groupId}</groupId>
-				<artifactId>${rootArtifactId}-common</artifactId>
 				<version>${version}</version>
 			</dependency>
 			<dependency>

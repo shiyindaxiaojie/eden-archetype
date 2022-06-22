@@ -1,12 +1,13 @@
+#set( $symbol_dollar = '$' )
 @startuml
-[${artifactId}-start（启动入口）] --> [${artifactId}-web（请求处理层）]
-[${artifactId}-web（请求处理层）] --> [${artifactId}-api（API层）]
-[${artifactId}-web（请求处理层）] --> [${artifactId}-service（业务逻辑服务层）]
-[${artifactId}-service（业务逻辑服务层）] --> [${artifactId}-api（API层）]: 实现接口
-[${artifactId}-service（业务逻辑服务层）] --> [${artifactId}-dao（数据持久层）]
-[${artifactId}-service（业务逻辑服务层）] --> [${artifactId}-manager（通用业务处理层）]
-[${artifactId}-manager（通用业务处理层）] --> [${artifactId}-dao（数据持久层）]
-[${artifactId}-dao（数据持久层）] --> [${artifactId}-common（通用工具集）]
+[${rootArtifactId}-start（启动入口）] --> [${rootArtifactId}-web（请求处理层）]
+[${rootArtifactId}-web（请求处理层）] --> [${rootArtifactId}-api（API层）]
+[${rootArtifactId}-web（请求处理层）] --> [${rootArtifactId}-service（业务逻辑服务层）]
+[${rootArtifactId}-service（业务逻辑服务层）] --> [${rootArtifactId}-api（API层）]: 实现接口
+[${rootArtifactId}-service（业务逻辑服务层）] --> [${rootArtifactId}-dao（数据持久层）]
+[${rootArtifactId}-service（业务逻辑服务层）] --> [${rootArtifactId}-manager（通用业务处理层）]
+[${rootArtifactId}-manager（通用业务处理层）] --> [${rootArtifactId}-dao（数据持久层）]
+[${rootArtifactId}-dao（数据持久层）] --> [${rootArtifactId}-api（API层）]
 
 cloud APP
 cloud 其他应用服务
@@ -21,16 +22,16 @@ database MongoDB
 
 [APP] --> http: 前端请求
 [其他应用服务] --> rpc: 服务调用
-[${artifactId}-service（业务逻辑服务层）] - rpc: 暴露 Dubbo 接口
-http - [${artifactId}-web（请求处理层）]: 暴露 REST 接口
+[${rootArtifactId}-service（业务逻辑服务层）] - rpc: 暴露 Dubbo 接口
+http - [${rootArtifactId}-web（请求处理层）]: 暴露 REST 接口
 
-[${artifactId}-dao（数据持久层）] ..> MySQL : 数据持久化
-[${artifactId}-dao（数据持久层）] ..> Elasticsearch : 数据持久化
-[${artifactId}-dao（数据持久层）] ..> MongoDB : 数据持久化
+[${rootArtifactId}-dao（数据持久层）] ..> MySQL : 数据持久化
+[${rootArtifactId}-dao（数据持久层）] ..> Elasticsearch : 数据持久化
+[${rootArtifactId}-dao（数据持久层）] ..> MongoDB : 数据持久化
 
-[${artifactId}-manager（通用业务处理层）] ..> Redis : 缓存处理
-[${artifactId}-manager（通用业务处理层）] ..> MQ : 消息处理
-[${artifactId}-manager（通用业务处理层）] ..> 第三方接口 : 封装调用
-[${artifactId}-manager（通用业务处理层）] ..> 分布式调度平台 : 定时任务
+[${rootArtifactId}-manager（通用业务处理层）] ..> Redis : 缓存处理
+[${rootArtifactId}-manager（通用业务处理层）] ..> MQ : 消息处理
+[${rootArtifactId}-manager（通用业务处理层）] ..> 第三方接口 : 封装调用
+[${rootArtifactId}-manager（通用业务处理层）] ..> 分布式调度平台 : 定时任务
 
 @enduml

@@ -1,15 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <archetype-descriptor
 	xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
-	name="demo-layer"
+	name="eden-demo-layer"
 	xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<fileSets>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>src/docs</directory>
+			<includes>
+				<include>**/*.puml</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory/>
+			<includes>
+				<include>README.md</include>
+			</includes>
+		</fileSet>
 		<fileSet encoding="UTF-8">
 			<directory>.coding</directory>
 			<includes>
-				<include>Jenkinsfile</include>
-				<include>**/*.xml</include>
+				<include>**/*.</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
@@ -21,22 +32,17 @@
 		<fileSet encoding="UTF-8">
 			<directory>.mvn/wrapper</directory>
 			<includes>
+				<include>**/*.jar</include>
 				<include>**/*.java</include>
 				<include>**/*.properties</include>
-				<include>**/*.jar</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
 			<directory>src/docs</directory>
 			<includes>
+				<include>**/*.puml</include>
 				<include>**/*.svg</include>
 				<include>**/*.png</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/docs</directory>
-			<includes>
-				<include>**/*.puml</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
@@ -83,34 +89,6 @@
 				</fileSet>
 			</fileSets>
 		</module>
-		<module id="${rootArtifactId}-common" dir="__rootArtifactId__-common" name="${rootArtifactId}-common">
-			<fileSets>
-				<fileSet filtered="true" packaged="true" encoding="UTF-8">
-					<directory>src/main/java</directory>
-					<includes>
-						<include>**/*.java</include>
-					</includes>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/main/resources</directory>
-					<includes>
-						<include>**/*.gitkeep</include>
-					</includes>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/test/java</directory>
-					<includes>
-						<include>**/*.gitkeep</include>
-					</includes>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/test/resources</directory>
-					<includes>
-						<include>**/*.gitkeep</include>
-					</includes>
-				</fileSet>
-			</fileSets>
-		</module>
 		<module id="${rootArtifactId}-dao" dir="__rootArtifactId__-dao" name="${rootArtifactId}-dao">
 			<fileSets>
 				<fileSet filtered="true" packaged="true" encoding="UTF-8">
@@ -123,6 +101,12 @@
 					<directory>src/main/resources</directory>
 					<includes>
 						<include>**/*.xml</include>
+					</includes>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.csv</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
@@ -206,7 +190,6 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*.xml</include>
 						<include>**/*.html</include>
 						<include>**/*.properties</include>
 					</includes>
@@ -236,16 +219,29 @@
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*.txt</include>
-						<include>**/*.xml</include>
-						<include>**/*.yml</include>
-						<include>**/*.properties</include>
+						<include>**/application.yml</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/docker</directory>
+					<includes>
+						<include>**/*.sh</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*.gitkeep</include>
+						<include>**/*.txt</include>
+						<include>**/*.properties</include>
+						<include>**/*.yml</include>
+					</includes>
+				</fileSet>
+				<fileSet encoding="UTF-8">
+					<directory>src/main/assembly</directory>
+					<includes>
+						<include>**/*.xml</include>
+						<include>**/*.bat</include>
+						<include>**/*.sh</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
@@ -258,25 +254,6 @@
 					<directory>src/test/resources</directory>
 					<includes>
 						<include>**/*.gitkeep</include>
-					</includes>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/assembly</directory>
-					<includes>
-						<include>**/*.xml</include>
-					</includes>
-				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/main/assembly</directory>
-					<includes>
-						<include>**/*.bat</include>
-						<include>**/*.sh</include>
-					</includes>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/jib</directory>
-					<includes>
-						<include>**/*.sh</include>
 					</includes>
 				</fileSet>
 			</fileSets>

@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import ${package}.model.entity.User;
 import ${package}.model.mapper.UserMapper;
 import ${package}.service.UserService;
-import org.ylzl.eden.spring.framework.cola.catchlog.annotation.CatchLog;
+import org.ylzl.eden.spring.framework.cola.catchlog.autoconfigure.CatchLog;
 
 /**
  * 用户业务逻辑实现
