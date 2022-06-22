@@ -1,4 +1,7 @@
+#set( $symbol_dollar = '$' )
 logging:
+  file:
+    name: ${symbol_dollar}{spring.application.name}
   config: classpath:log4j2.yml
 
 mybatis-plus:
@@ -26,6 +29,8 @@ server:
 spring:
   application:
     name: ${rootArtifactId}
+  profiles:
+    active: dev # 默认启用开发环境
   data:
     redis:
       repositories:

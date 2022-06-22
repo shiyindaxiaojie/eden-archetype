@@ -11,7 +11,7 @@
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 	<packaging>jar</packaging>
-	<name>${rootArtifactId}</name>
+	<name>eden-demo-layer</name>
 	<description>应用启动入口</description>
 
 	<properties>
@@ -24,6 +24,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<configuration>
+					<skip>true</skip>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -198,16 +204,22 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- 监控组件 -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
+		</dependency>
+
 		<!-- 配置中心 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
-			<artifactId>eden-nacos-config-spring-boot-starter</artifactId>
+			<artifactId>eden-nacos-config-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 注册中心 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
-			<artifactId>eden-nacos-discovery-spring-boot-starter</artifactId>
+			<artifactId>eden-nacos-discovery-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 分布式组件 -->

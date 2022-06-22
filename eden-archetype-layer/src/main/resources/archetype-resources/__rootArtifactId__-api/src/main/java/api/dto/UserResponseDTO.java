@@ -5,6 +5,8 @@ package ${package}.api.dto;
 
 import lombok.*;
 
+import java.io.Serializable;
+
 /**
  * 用户已创建（值对象）
  *
@@ -17,7 +19,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 @Data
-public class UserVO {
+public class UserResponseDTO implements Serializable {
 
 	private Long id;
 

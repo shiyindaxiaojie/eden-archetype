@@ -6,9 +6,9 @@ package ${package}.api;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
-import ${package}.api.dto.UserDTO;
+import ${package}.api.dto.UserRequestDTO;
 import ${package}.api.dto.UserPageQuery;
-import ${package}.api.dto.UserVO;
+import ${package}.api.dto.UserResponseDTO;
 
 /**
  * 用户业务逻辑接口
@@ -23,7 +23,7 @@ public interface UserService {
 	 *
 	 * @param dto
 	 */
-	Response createUser(UserDTO dto);
+	Response createUser(UserRequestDTO dto);
 
 	/**
 	 * 修改用户
@@ -31,7 +31,7 @@ public interface UserService {
 	 * @param id
 	 * @param dto
 	 */
-	Response modifyUser(Long id, UserDTO dto);
+	Response modifyUser(Long id, UserRequestDTO dto);
 
 	/**
 	 * 删除用户
@@ -46,7 +46,7 @@ public interface UserService {
 	 * @param id
 	 * @return
 	 */
-	SingleResponse<UserVO> getUserById(Long id);
+	SingleResponse<UserResponseDTO> getUserById(Long id);
 
 	/**
 	 * 获取用户分页
@@ -54,5 +54,5 @@ public interface UserService {
 	 * @param query
 	 * @return
 	 */
-	PageResponse<UserVO> listUserByPage(UserPageQuery query);
+	PageResponse<UserResponseDTO> listUserByPage(UserPageQuery query);
 }

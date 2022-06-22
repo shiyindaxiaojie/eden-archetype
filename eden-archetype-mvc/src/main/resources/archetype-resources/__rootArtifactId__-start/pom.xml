@@ -11,7 +11,7 @@
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 	<packaging>jar</packaging>
-	<name>${rootArtifactId}</name>
+	<name>eden-demo-mvc</name>
 	<description>应用启动入口</description>
 
 	<properties>

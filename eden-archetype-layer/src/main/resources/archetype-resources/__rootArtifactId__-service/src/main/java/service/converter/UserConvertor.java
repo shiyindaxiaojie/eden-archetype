@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.service.converter;
 
-import ${package}.api.dto.UserDTO;
-import ${package}.api.dto.UserVO;
+import ${package}.api.dto.UserRequestDTO;
+import ${package}.api.dto.UserResponseDTO;
 import ${package}.dao.repository.mybatis.dataobject.UserDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -25,13 +25,11 @@ import java.util.List;
 	nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
 public interface UserConvertor {
 
-	UserConvertor INSTANCE = Mappers.getMapper(UserConvertor.class);
+	UserDO dtoToDataObject(UserRequestDTO dto);
 
-	UserDO dtoToDataObject(UserDTO dto);
+	void updateDataObjectFromDTO(UserRequestDTO dto, @MappingTarget UserDO dataObject);
 
-	void updateDataObjectFromDTO(UserDTO dto, @MappingTarget UserDO dataObject);
+	UserResponseDTO dataObjectToVO(UserDO dataObject);
 
-	UserVO dataObjectToVO(UserDO dataObject);
-
-	List<UserVO> dataObjectListToVOList(List<UserDO> dataObjectList);
+	List<UserResponseDTO> dataObjectListToVOList(List<UserDO> dataObjectList);
 }

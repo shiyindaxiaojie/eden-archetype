@@ -12,8 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.ylzl.eden.spring.framework.bootstrap.SpringBootApplicationTemplate;
-import org.ylzl.eden.spring.framework.cola.catchlog.annotation.EnableCatchLog;
-import org.ylzl.eden.spring.framework.cola.exception.annotation.EnableRestExceptionHandler;
+import org.ylzl.eden.spring.framework.cola.rest.autoconfigure.EnableRestExceptionResolver;
 
 /**
  * Spring Boot 引导类
@@ -21,8 +20,7 @@ import org.ylzl.eden.spring.framework.cola.exception.annotation.EnableRestExcept
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
-@EnableRestExceptionHandler
-@EnableCatchLog
+@EnableRestExceptionResolver
 @MapperScan(basePackages = "${package}.dao", annotationClass = Mapper.class)
 @EnableDubbo(scanBasePackages = "${package}.service")
 @EnableDiscoveryClient

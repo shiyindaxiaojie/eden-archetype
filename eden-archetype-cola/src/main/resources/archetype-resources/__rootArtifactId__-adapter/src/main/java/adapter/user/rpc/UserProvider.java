@@ -20,7 +20,7 @@ import ${package}.client.user.api.UserService;
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.x
  */
-@DubboService(timeout = ApiConstant.DEFAULT_TIMEOUT)
+@DubboService(timeout = ApiConstant.DEFAULT_DUBBO_TIMEOUT)
 @Slf4j
 public class UserProvider extends UserServiceImpl implements UserService {
 

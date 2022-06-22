@@ -5,21 +5,22 @@ package ${package}.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.Page;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ${package}.api.UserService;
-import ${package}.api.dto.UserDTO;
 import ${package}.api.dto.UserPageQuery;
-import ${package}.api.dto.UserVO;
+import ${package}.api.dto.UserRequestDTO;
+import ${package}.api.dto.UserResponseDTO;
 import ${package}.dao.UserDAO;
 import ${package}.dao.repository.mybatis.dataobject.UserDO;
 import ${package}.dao.repository.mybatis.mapper.UserMapper;
 import ${package}.service.converter.UserConvertor;
-import org.ylzl.eden.spring.framework.cola.catchlog.annotation.CatchLog;
+import org.ylzl.eden.spring.framework.cola.catchlog.autoconfigure.CatchLog;
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
 import org.ylzl.eden.spring.framework.cola.dto.Response;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
-import org.ylzl.eden.spring.framework.cola.exception.ClientErrorType;
+import org.ylzl.eden.spring.framework.error.ClientErrorType;
 
 import java.util.List;
 
@@ -30,15 +31,14 @@ import java.util.List;
  * @since 2.4.x
  */
 @CatchLog
+@RequiredArgsConstructor
 @Slf4j
 @Service("userService")
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements UserService {
 
 	private final UserDAO userDAO;
 
-	public UserServiceImpl(UserDAO userDAO) {
-		this.userDAO = userDAO;
-	}
+	private final UserConvertor userConvertor;
 
 	/**
 	 * 创建用户
@@ -47,8 +47,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public Response createUser(UserDTO dto) {
-		UserDO userDO = UserConvertor.INSTANCE.dtoToDataObject(dto);
+	public Response createUser(UserRequestDTO dto) {
+		UserDO userDO = userConvertor.dtoToDataObject(dto);
 		userDAO.save(userDO);
 		return Response.buildSuccess();
 	}
@@ -60,11 +60,11 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @param dto
 	 */
 	@Override
-	public Response modifyUser(Long id, UserDTO dto) {
+	public Response modifyUser(Long id, UserRequestDTO dto) {
 		UserDO userDO = userDAO.findById(id);
-		ClientErrorType.A0201.notNull(userDO);
+		ClientErrorType.notNull(userDO, "A0201");
 
-		UserConvertor.INSTANCE.updateDataObjectFromDTO(dto, userDO);
+		userConvertor.updateDataObjectFromDTO(dto, userDO);
 		userDAO.updateById(userDO);
 		return Response.buildSuccess();
 	}
@@ -76,7 +76,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 */
 	@Override
 	public Response removeUser(Long id) {
-		ClientErrorType.A0201.isTrue(userDAO.deleteById(id));
+		ClientErrorType.isTrue(userDAO.deleteById(id), "A0201");
 		return Response.buildSuccess();
 	}
 
@@ -87,10 +87,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public SingleResponse<UserVO> getUserById(Long id) {
+	public SingleResponse<UserResponseDTO> getUserById(Long id) {
 		UserDO userDO = userDAO.findById(id);
-		ClientErrorType.A0201.notNull(userDO);
-		return SingleResponse.of(UserConvertor.INSTANCE.dataObjectToVO(userDO));
+		ClientErrorType.notNull(userDO, "A0201");
+		return SingleResponse.of(userConvertor.dataObjectToVO(userDO));
 	}
 
 	/**
@@ -100,9 +100,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public PageResponse<UserVO> listUserByPage(UserPageQuery query) {
+	public PageResponse<UserResponseDTO> listUserByPage(UserPageQuery query) {
 		Page<UserDO> page = userDAO.findByPage(query);
-		List<UserVO> userVOList = UserConvertor.INSTANCE.dataObjectListToVOList(page.getResult());
+		List<UserResponseDTO> userVOList = userConvertor.dataObjectListToVOList(page.getResult());
 		return PageResponse.of(userVOList,
 			Integer.parseInt(String.valueOf(page.getTotal())),
 			query.getPageSize(), query.getPageIndex());
