@@ -161,12 +161,6 @@
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/resources</directory>
-					<includes>
-						<include>**/*.txt</include>
-					</includes>
-				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/assembly</directory>
 					<includes>
 						<include>**/*.xml</include>
