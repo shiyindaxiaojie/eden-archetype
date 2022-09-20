@@ -7,7 +7,7 @@ package ${package}.infrastructure.constant;
  * 数据源类型
  *
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
- * @since 2021-12-28
+ * @since 2.4.13
  */
 public class DataSourceType {
 
