@@ -107,7 +107,7 @@
 								<mainClass>${start-class}</mainClass>
 							</container>
 							<extraDirectories>
-								<paths>src/main/docker/jib</paths>
+								<paths>src/main/docker</paths>
 								<permissions>
 									<permission>
 										<file>/entrypoint.sh</file>
@@ -165,7 +165,7 @@
 								<mainClass>${start-class}</mainClass>
 							</container>
 							<extraDirectories>
-								<paths>src/main/docker/jib</paths>
+								<paths>src/main/docker</paths>
 								<permissions>
 									<permission>
 										<file>/entrypoint.sh</file>
