@@ -68,7 +68,7 @@ spring:
     cache: false
   # 消息队列
 #  kafka:
-#    bootstrap-servers: 10.2.2.35:9092
+#    bootstrap-servers: localhost:9092
 #    producer:
 #      batch-size: 4096
 #      buffer-memory: 40960
