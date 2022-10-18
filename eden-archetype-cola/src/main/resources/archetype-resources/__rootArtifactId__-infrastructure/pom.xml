@@ -13,16 +13,9 @@
 	<name>${artifactId}</name>
 	<description>基础设施层</description>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 
 	<dependencies>
 		<!-- 领域层依赖 -->
@@ -109,12 +102,6 @@
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-rocketmq-spring-boot-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-cli</artifactId>
-					<groupId>commons-cli</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
-	</dependencies>
+    </dependencies>
 </project>
