@@ -14,16 +14,9 @@
 	<name>${artifactId}</name>
 	<description>业务逻辑服务层</description>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
-				<configuration>
-					<skip>true</skip>
-				</configuration>
-			</plugin>
-		</plugins>
-	</build>
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
 
 	<dependencies>
 		<!-- API 组件 -->
@@ -53,10 +46,17 @@
 			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
+		<!-- 测试组件 -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-spock-spring-boot-starter</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<!-- 分布式组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
-			<artifactId>eden-dubbo-spring-boot-starter</artifactId>
+			<artifactId>eden-dubbo-spring-cloud-starter</artifactId>
 		</dependency>
 	</dependencies>
 </project>

@@ -1,5 +1,5 @@
 #set( $symbol_dollar = '$' )
-@startuml
+@startuml "组件图"
 [${rootArtifactId}-start（启动入口）] --> [${rootArtifactId}-web（请求控制层）]
 [${rootArtifactId}-web（请求控制层）] --> [${rootArtifactId}-service（业务逻辑服务层）]
 [${rootArtifactId}-service（业务逻辑服务层）] --> [${rootArtifactId}-model（数据模型层）]

@@ -14,7 +14,7 @@ import ${package}.service.impl.UserServiceImpl;
  * 用户业务 RPC服务端
  *
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
- * @since 2.4.x
+ * @since 2.4.13
  */
 @DubboService(timeout = DubboConstant.DEFAULT_TIMEOUT)
 public class UserProvider extends UserServiceImpl implements UserService {

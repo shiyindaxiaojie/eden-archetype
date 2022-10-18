@@ -14,6 +14,10 @@
 	<name>${artifactId}</name>
 	<description>MVC业务逻辑服务层</description>
 
+	<properties>
+		<maven.deploy.skip>true</maven.deploy.skip>
+	</properties>
+
 	<dependencies>
 		<!-- MVC数据模型组件 -->
 		<dependency>

@@ -10,11 +10,13 @@
 	</parent>
 	<artifactId>${artifactId}</artifactId>
 	<packaging>jar</packaging>
-	<name>eden-demo-cola</name>
+	<name>${artifactId}</name>
 	<description>启动入口</description>
 
 	<properties>
 		<start-class>${groupId}.Application</start-class>
+		<maven.deploy.skip>true</maven.deploy.skip>
+		<build.layers.enabled>true</build.layers.enabled>
 	</properties>
 
 	<build>
@@ -23,172 +25,96 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<executable>true</executable>
+					<fork>true</fork>
+					<mainClass>${start-class}</mainClass>
+					<layers>
+						<enabled>${build.layers.enabled}</enabled>
+						<includeLayerTools>true</includeLayerTools>
+						<configuration>${project.basedir}/src/main/docker/layers.xml</configuration>
+					</layers>
+				</configuration>
+				<executions>
+					<execution>
+						<id>spring-boot-build-info</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>spring-boot-repackage</id>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
-				<artifactId>maven-deploy-plugin</artifactId>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
 				<configuration>
-					<skip>true</skip>
+					<from>
+						<image>openjdk:11-jdk</image>
+					</from>
+					<to>
+						<image>${docker.image}</image>
+						<auth>
+							<username>${docker.username}</username>
+							<password>${docker.password}</password>
+						</auth>
+						<tags>
+							<tag>${project.version}</tag>
+						</tags>
+					</to>
+					<container>
+						<entrypoint>
+							<shell>bash</shell>
+							<option>-c</option>
+							<arg>/entrypoint.sh</arg>
+						</entrypoint>
+						<ports>
+							<port>8080</port>
+						</ports>
+						<environment>
+							<TZ>Asia/Shanghai</TZ>
+							<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
+							<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
+							<ENV_OPTS />
+							<JAVA_SLEEP>1</JAVA_SLEEP>
+						</environment>
+						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+						<mainClass>${start-class}</mainClass>
+					</container>
+					<extraDirectories>
+						<paths>src/main/docker</paths>
+						<permissions>
+							<permission>
+								<file>/entrypoint.sh</file>
+								<mode>755</mode>
+							</permission>
+						</permissions>
+					</extraDirectories>
+					<allowInsecureRegistries>true</allowInsecureRegistries>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>ru.trylogic.maven.plugins</groupId>
+				<artifactId>redis-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
-
-	<profiles>
-		<profile>
-			<id>dev</id>
-			<properties>
-				<spring.profiles.active>dev</spring.profiles.active>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-assembly-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>test</id>
-			<properties>
-				<spring.profiles.active>test</spring.profiles.active>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-assembly-plugin</artifactId>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>staging</id>
-			<properties>
-				<spring.profiles.active>staging</spring.profiles.active>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.google.cloud.tools</groupId>
-						<artifactId>jib-maven-plugin</artifactId>
-						<configuration>
-							<from>
-								<image>openjdk:11-jre-slim</image>
-							</from>
-							<to>
-								<image>${docker.image}</image>
-								<auth>
-									<username>${docker.username}</username>
-									<password>${docker.password}</password>
-								</auth>
-								<tags>
-									<tag>${project.version}</tag>
-								</tags>
-							</to>
-							<container>
-								<entrypoint>
-									<shell>bash</shell>
-									<option>-c</option>
-									<arg>/entrypoint.sh</arg>
-								</entrypoint>
-								<ports>
-									<port>8080</port>
-								</ports>
-								<environment>
-									<TZ>Asia/Shanghai</TZ>
-									<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-									<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
-									<JAVA_SLEEP>1</JAVA_SLEEP>
-								</environment>
-								<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-								<mainClass>${start-class}</mainClass>
-							</container>
-							<extraDirectories>
-								<paths>src/main/docker/jib</paths>
-								<permissions>
-									<permission>
-										<file>/entrypoint.sh</file>
-										<mode>755</mode>
-									</permission>
-								</permissions>
-							</extraDirectories>
-							<allowInsecureRegistries>true</allowInsecureRegistries>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<spring.profiles.active>prod</spring.profiles.active>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>com.google.cloud.tools</groupId>
-						<artifactId>jib-maven-plugin</artifactId>
-						<configuration>
-							<from>
-								<image>openjdk:11-jre-slim</image>
-							</from>
-							<to>
-								<image>${docker.image}</image>
-								<auth>
-									<username>${docker.username}</username>
-									<password>${docker.password}</password>
-								</auth>
-								<tags>
-									<tag>${project.version}</tag>
-								</tags>
-							</to>
-							<container>
-								<entrypoint>
-									<shell>bash</shell>
-									<option>-c</option>
-									<arg>/entrypoint.sh</arg>
-								</entrypoint>
-								<ports>
-									<port>8080</port>
-								</ports>
-								<environment>
-									<TZ>Asia/Shanghai</TZ>
-									<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-									<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
-									<JAVA_SLEEP>1</JAVA_SLEEP>
-								</environment>
-								<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
-								<mainClass>${start-class}</mainClass>
-							</container>
-							<extraDirectories>
-								<paths>src/main/docker/jib</paths>
-								<permissions>
-									<permission>
-										<file>/entrypoint.sh</file>
-										<mode>755</mode>
-									</permission>
-								</permissions>
-							</extraDirectories>
-							<allowInsecureRegistries>true</allowInsecureRegistries>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<dependencies>
 		<!-- 适配层依赖 -->
 		<dependency>
 			<groupId>${groupId}</groupId>
 			<artifactId>${rootArtifactId}-adapter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-cli</artifactId>
-					<groupId>commons-cli</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<!-- 开发组件 -->
@@ -203,34 +129,12 @@
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-spock-spring-boot-starter</artifactId>
 			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<artifactId>HdrHistogram</artifactId>
-					<groupId>org.hdrhistogram</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>jodd-core</artifactId>
-					<groupId>org.jodd</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<!-- 监控组件 -->
-		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- 配置中心组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-nacos-config-spring-cloud-starter</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>simpleclient</artifactId>
-					<groupId>io.prometheus</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 
 		<!-- 注册中心组件 -->
@@ -242,19 +146,37 @@
 		<!-- 服务调用组件 -->
 		<dependency>
 			<groupId>org.ylzl</groupId>
-			<artifactId>eden-dubbo-spring-boot-starter</artifactId>
+			<artifactId>eden-dubbo-spring-cloud-starter</artifactId>
 		</dependency>
 
-        <!-- 服务熔断降级组件 -->
-		<!--<dependency>
+		<!-- 熔断降级组件 -->
+		<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-sentinel-spring-cloud-starter</artifactId>
-		</dependency>-->
+		</dependency>
 
-		<!-- 服务链路跟踪组件 -->
+		<!-- 链路跟踪组件 -->
 		<!--<dependency>
 			<groupId>org.ylzl</groupId>
 			<artifactId>eden-zipkin-spring-cloud-starter</artifactId>
 		</dependency>-->
+
+		<!-- 服务监控组件 -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- 实时监控组件 -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-cat-spring-boot-starter</artifactId>
+		</dependency>
+
+		<!-- 线上诊断组件 -->
+		<dependency>
+			<groupId>org.ylzl</groupId>
+			<artifactId>eden-arthas-spring-boot-starter</artifactId>
+		</dependency>
 	</dependencies>
 </project>

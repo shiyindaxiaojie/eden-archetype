@@ -3,6 +3,9 @@
 #set( $symbol_escape = '\' )
 package ${package}.adapter.user.web
 
+import org.mockito.InjectMocks
+import org.mockito.Mock
+import org.mockito.MockitoAnnotations
 import org.slf4j.Logger
 import ${package}.client.user.api.UserService
 import ${package}.client.user.dto.UserDTO
@@ -12,11 +15,11 @@ import ${package}.client.user.dto.query.UserListByPageQry
 import org.ylzl.eden.spring.framework.cola.dto.PageResponse
 import org.ylzl.eden.spring.framework.cola.dto.Response
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse
-import spock.lang.*
-import org.mockito.InjectMocks
-import org.mockito.Mock
-import org.mockito.MockitoAnnotations
-import static org.mockito.Mockito.*
+import spock.lang.Specification
+import spock.lang.Unroll
+
+import static org.mockito.ArgumentMatchers.any
+import static org.mockito.Mockito.when
 
 
 class UserControllerTest extends Specification {

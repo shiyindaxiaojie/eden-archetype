@@ -1,5 +1,5 @@
 #set( $symbol_dollar = '$' )
-@startuml
+@startuml "时序图"
 
 autonumber
 

@@ -7,12 +7,12 @@
 	<parent>
 		<groupId>org.ylzl</groupId>
 		<artifactId>eden-parent</artifactId>
-		<version>2.4.13-SNAPSHOT</version>
+		<version>2.4.13.20221019</version>
 		<relativePath>../eden-architect/eden-components/eden-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>eden-archetype</artifactId>
 	<packaging>pom</packaging>
-	<version>2.4.13-SNAPSHOT</version>
+	<version>2.4.13.20221019</version>
 	<description>项目脚手架</description>
 
 	<modules>

@@ -16,7 +16,7 @@ import org.ylzl.eden.spring.framework.cola.catchlog.autoconfigure.CatchLog;
  * 用户业务逻辑实现
  *
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
- * @since 2.4.x
+ * @since 2.4.13
  */
 @CatchLog
 @Slf4j
