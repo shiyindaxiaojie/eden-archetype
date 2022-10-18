@@ -23,7 +23,7 @@ pipeline {
     stage('编译') {
       steps {
         script {
-          CODING_ARTIFACT_VERSION = "2.4.13.20221017"
+          CODING_ARTIFACT_VERSION = "2.4.13.20221019"
         }
 				withEnv([
 					"CODING_ARTIFACT_VERSION=${CODING_ARTIFACT_VERSION}",
