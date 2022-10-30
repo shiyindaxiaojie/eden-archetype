@@ -12,7 +12,7 @@ import ${package}.client.user.dto.query.UserByIdQry;
 import ${package}.infrastructure.user.database.dataobject.UserDO;
 import ${package}.infrastructure.user.database.mapper.UserMapper;
 import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
-import org.ylzl.eden.spring.framework.error.ClientErrorType;
+import org.ylzl.eden.spring.framework.error.ClientAssert;
 
 /**
  * 根据主键获取用户信息指令执行器
@@ -31,7 +31,7 @@ public class UserByIdQryExe {
 
 	public SingleResponse<UserDTO> execute(UserByIdQry query) {
 		UserDO userDO = userMapper.selectById(query.getId());
-		ClientErrorType.notNull(userDO, "A0201", query.getId());
+		ClientAssert.notNull(userDO, "USER-FOUND-404", query.getId());
 		return SingleResponse.of(userAssembler.toDTO(userDO));
 	}
 }

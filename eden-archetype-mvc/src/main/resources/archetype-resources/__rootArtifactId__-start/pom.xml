@@ -16,7 +16,6 @@
 
 	<properties>
 		<start-class>${groupId}.Application</start-class>
-		<maven.deploy.skip>true</maven.deploy.skip>
 		<build.layers.enabled>true</build.layers.enabled>
 	</properties>
 
