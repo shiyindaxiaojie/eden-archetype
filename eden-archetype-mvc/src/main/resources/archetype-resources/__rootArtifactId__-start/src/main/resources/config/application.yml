@@ -28,7 +28,7 @@ server:
 
 spring:
   application:
-    name: eden-demo-mvc
+    name: ${rootArtifactId}
   profiles:
     active: dev # 默认启用开发环境
   data:
