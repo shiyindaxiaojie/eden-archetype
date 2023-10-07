@@ -1,29 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<!--
+  ~ Copyright 2012-2019 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.ylzl</groupId>
+		<groupId>io.github.shiyindaxiaojie</groupId>
 		<artifactId>eden-parent</artifactId>
-		<version>2.4.13.20221019</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<version>${version}</version>
 	<packaging>pom</packaging>
 	<name>${artifactId}</name>
-	<description>COLA 应用架构</description>
+	<description>阿里巴巴COLA应用架构</description>
 
 	<developers>
 		<developer>
-			<id>demo</id>
-			<name>作者</name>
-			<email>demo@ylzl.org</email>
+			<id>sion</id>
+			<name>mengxiangge</name>
+			<email>shiyindaxiaojie@gmail.com</email>
 			<roles>
+				<role>Architect</role>
 				<role>Developer</role>
 			</roles>
 		</developer>
 	</developers>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/shiyindaxiaojie/eden-demo-cola</url>
+		<connection>scm:git:git://github.com/shiyindaxiaojie/eden-demo-cola.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/shiyindaxiaojie/eden-demo-cola.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/shiyindaxiaojie/eden-demo-cola/issues</url>
+	</issueManagement>
+
+	<!--<repositories>
+		<repository>
+			<id>sonatype-ossrh-releases</id>
+			<url>https://s01.oss.sonatype.org/content/groups/public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype-ossrh-snapshots</id>
+			<url>https://s01.oss.sonatype.org/content/groups/staging/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>-->
 
 	<dependencyManagement>
 		<dependencies>
@@ -60,18 +117,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-archetype-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>se.bjurr.gitchangelog</groupId>
-				<artifactId>git-changelog-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

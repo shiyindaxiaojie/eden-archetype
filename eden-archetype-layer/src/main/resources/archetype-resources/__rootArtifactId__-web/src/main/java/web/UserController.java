@@ -7,13 +7,13 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 import ${package}.api.UserService;
-import ${package}.api.dto.UserRequestDTO;
 import ${package}.api.dto.UserPageQuery;
+import ${package}.api.dto.UserRequestDTO;
 import ${package}.api.dto.UserResponseDTO;
-import ${package}.web.constant.ApiConstant;
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
-import org.ylzl.eden.spring.framework.cola.dto.Response;
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
+import ${package}.web.constant.API;
+import org.ylzl.eden.spring.framework.dto.PageResult;
+import org.ylzl.eden.spring.framework.dto.Result;
+import org.ylzl.eden.spring.framework.dto.SingleResult;
 
 import javax.validation.Valid;
 
@@ -25,7 +25,7 @@ import javax.validation.Valid;
  */
 @RequiredArgsConstructor
 @Slf4j
-@RequestMapping(ApiConstant.WEB_API_PATH + "/users")
+@RequestMapping(API.WEB_API_PATH + "/users")
 @RestController
 public class UserController {
 
@@ -38,7 +38,7 @@ public class UserController {
 	 * @return
 	 */
 	@PostMapping
-	public Response createUser(@Valid @RequestBody UserRequestDTO dto) {
+	public Result createUser(@Valid @RequestBody UserRequestDTO dto) {
 		return userService.createUser(dto);
 	}
 
@@ -50,7 +50,7 @@ public class UserController {
 	 * @return
 	 */
 	@PutMapping("/{id}")
-	public Response modifyUser(@PathVariable Long id, @Valid @RequestBody UserRequestDTO dto) {
+	public Result modifyUser(@PathVariable Long id, @Valid @RequestBody UserRequestDTO dto) {
 		return userService.modifyUser(id, dto);
 	}
 
@@ -61,7 +61,7 @@ public class UserController {
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public Response removeUser(@PathVariable Long id) {
+	public Result removeUser(@PathVariable Long id) {
 		return userService.removeUser(id);
 	}
 
@@ -72,7 +72,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public SingleResponse<UserResponseDTO> getUserById(@PathVariable Long id) {
+	public SingleResult<UserResponseDTO> getUserById(@PathVariable Long id) {
 		return userService.getUserById(id);
 	}
 
@@ -83,7 +83,7 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping
-	public PageResponse<UserResponseDTO> listUserByPage(@Valid @ModelAttribute UserPageQuery query) {
+	public PageResult<UserResponseDTO> listUserByPage(@Valid @ModelAttribute UserPageQuery query) {
 		return userService.listUserByPage(query);
 	}
 }

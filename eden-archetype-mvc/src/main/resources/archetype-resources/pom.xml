@@ -25,10 +25,6 @@
 		</developer>
 	</developers>
 
-	<properties>
-		<spring.profiles.active>prod</spring.profiles.active>
-	</properties>
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -50,16 +46,6 @@
 	</dependencyManagement>
 
 	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<artifactId>maven-deploy-plugin</artifactId>
-					<configuration>
-						<skip>true</skip>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -72,6 +58,10 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>flatten-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>se.bjurr.gitchangelog</groupId>
+				<artifactId>git-changelog-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

@@ -19,10 +19,23 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- 测试组件 -->
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-spring-boot-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
@@ -30,6 +43,12 @@
 		<dependency>
 			<groupId>org.hibernate.validator</groupId>
 			<artifactId>hibernate-validator</artifactId>
+		</dependency>
+
+		<!-- 序列化组件 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
 		</dependency>
 	</dependencies>
 </project>

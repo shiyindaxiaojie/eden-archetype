@@ -3,8 +3,8 @@
 #set( $symbol_escape = '\' )
 package ${package}.api.dto;
 
-import org.ylzl.eden.spring.framework.cola.dto.PageQuery;
 import lombok.*;
+import org.ylzl.eden.spring.framework.dto.PageQuery;
 
 /**
  * 用户分页查询（数据传输对象）

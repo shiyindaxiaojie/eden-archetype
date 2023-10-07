@@ -3,27 +3,68 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.ylzl</groupId>
+		<groupId>io.github.shiyindaxiaojie</groupId>
 		<artifactId>eden-parent</artifactId>
-		<version>2.4.13.20221019</version>
+		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	<groupId>${groupId}</groupId>
 	<artifactId>${artifactId}</artifactId>
 	<packaging>pom</packaging>
 	<name>${artifactId}</name>
 	<version>${version}</version>
-	<description>分层应用架构</description>
+	<description>阿里巴巴分层应用架构</description>
 
 	<developers>
 		<developer>
-			<id>demo</id>
-			<name>作者</name>
-			<email>demo@ylzl.org</email>
+			<id>sion</id>
+			<name>mengxiangge</name>
+			<email>shiyindaxiaojie@gmail.com</email>
 			<roles>
+				<role>Architect</role>
 				<role>Developer</role>
 			</roles>
 		</developer>
 	</developers>
+
+	<licenses>
+		<license>
+			<name>Apache License, Version 2.0</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<scm>
+		<url>https://github.com/shiyindaxiaojie/eden-demo-layer</url>
+		<connection>scm:git:git://github.com/shiyindaxiaojie/eden-demo-layer.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/shiyindaxiaojie/eden-demo-layer.git</developerConnection>
+	</scm>
+
+	<issueManagement>
+		<system>Github</system>
+		<url>https://github.com/shiyindaxiaojie/eden-demo-layer/issues</url>
+	</issueManagement>
+
+	<repositories>
+		<repository>
+			<id>sonatype-ossrh-releases</id>
+			<url>https://s01.oss.sonatype.org/content/groups/public/</url>
+			<releases>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype-ossrh-snapshots</id>
+			<url>https://s01.oss.sonatype.org/content/groups/staging/</url>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+			</snapshots>
+		</repository>
+	</repositories>
 
 	<dependencyManagement>
 		<dependencies>
@@ -60,18 +101,6 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-archetype-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>versions-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>flatten-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>se.bjurr.gitchangelog</groupId>
-				<artifactId>git-changelog-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>

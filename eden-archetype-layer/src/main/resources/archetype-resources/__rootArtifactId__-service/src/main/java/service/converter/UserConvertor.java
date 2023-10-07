@@ -5,12 +5,11 @@ package ${package}.service.converter;
 
 import ${package}.api.dto.UserRequestDTO;
 import ${package}.api.dto.UserResponseDTO;
-import ${package}.dao.repository.mybatis.dataobject.UserDO;
+import ${package}.dao.database.dataobject.UserDO;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
 import org.mapstruct.NullValueCheckStrategy;
 import org.mapstruct.NullValuePropertyMappingStrategy;
-import org.mapstruct.factory.Mappers;
 
 import java.util.List;
 

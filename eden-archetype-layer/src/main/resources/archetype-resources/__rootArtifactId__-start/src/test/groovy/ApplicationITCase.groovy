@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import ${package}.api.dto.UserResponseDTO
 import ${package}.web.UserController
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse
+import org.ylzl.eden.spring.framework.dto.SingleResult
 import spock.lang.Specification
 import spock.lang.Unroll
 /**
@@ -26,6 +26,6 @@ class ApplicationITCase extends Specification {
 
 		where:
 		id || expectedResult
-		1l || SingleResponse.of(new UserResponseDTO(1l, "admin", "1813986321@qq.com"))
+		1l || SingleResult.build(new UserResponseDTO(1l, "admin", "1813986321@qq.com"))
 	}
 }

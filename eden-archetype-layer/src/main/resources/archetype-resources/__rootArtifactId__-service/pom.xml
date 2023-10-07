@@ -39,24 +39,38 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<scope>provided</scope>
+			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spring-framework</artifactId>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<optional>true</optional>
 		</dependency>
 
 		<!-- 测试组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spock-spring-boot-starter</artifactId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-spring-boot-test</artifactId>
 			<scope>test</scope>
+		</dependency>
+
+		<!-- 事件审计 -->
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-event-auditor</artifactId>
 		</dependency>
 
 		<!-- 分布式组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-dubbo-spring-cloud-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie.eden.demo</groupId>
+			<artifactId>eden-demo-cola-client</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 </project>

@@ -13,14 +13,13 @@ import ${package}.api.dto.UserPageQuery;
 import ${package}.api.dto.UserRequestDTO;
 import ${package}.api.dto.UserResponseDTO;
 import ${package}.dao.UserDAO;
-import ${package}.dao.repository.mybatis.dataobject.UserDO;
-import ${package}.dao.repository.mybatis.mapper.UserMapper;
+import ${package}.dao.database.dataobject.UserDO;
+import ${package}.dao.database.mapper.UserMapper;
 import ${package}.service.converter.UserConvertor;
-import org.ylzl.eden.spring.framework.cola.catchlog.autoconfigure.CatchLog;
-import org.ylzl.eden.spring.framework.cola.dto.PageResponse;
-import org.ylzl.eden.spring.framework.cola.dto.Response;
-import org.ylzl.eden.spring.framework.cola.dto.SingleResponse;
-import org.ylzl.eden.spring.framework.error.ClientErrorType;
+import org.ylzl.eden.spring.framework.dto.PageResult;
+import org.ylzl.eden.spring.framework.dto.Result;
+import org.ylzl.eden.spring.framework.dto.SingleResult;
+import org.ylzl.eden.spring.framework.error.ClientAssert;
 
 import java.util.List;
 
@@ -30,7 +29,6 @@ import java.util.List;
  * @author <a href="mailto:shiyindaxiaojie@gmail.com">gyl</a>
  * @since 2.4.13
  */
-@CatchLog
 @RequiredArgsConstructor
 @Slf4j
 @Service("userService")
@@ -47,10 +45,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public Response createUser(UserRequestDTO dto) {
+	public Result createUser(UserRequestDTO dto) {
 		UserDO userDO = userConvertor.dtoToDataObject(dto);
 		userDAO.save(userDO);
-		return Response.buildSuccess();
+		return Result.buildSuccess();
 	}
 
 	/**
@@ -60,13 +58,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @param dto
 	 */
 	@Override
-	public Response modifyUser(Long id, UserRequestDTO dto) {
+	public Result modifyUser(Long id, UserRequestDTO dto) {
 		UserDO userDO = userDAO.findById(id);
-		ClientErrorType.notNull(userDO, "A0201");
+		ClientAssert.notNull(userDO, "USER-FOUND-404");
 
 		userConvertor.updateDataObjectFromDTO(dto, userDO);
 		userDAO.updateById(userDO);
-		return Response.buildSuccess();
+		return Result.buildSuccess();
 	}
 
 	/**
@@ -75,9 +73,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @param id
 	 */
 	@Override
-	public Response removeUser(Long id) {
-		ClientErrorType.isTrue(userDAO.deleteById(id), "A0201");
-		return Response.buildSuccess();
+	public Result removeUser(Long id) {
+		ClientAssert.isTrue(userDAO.deleteById(id), "USER-FOUND-404");
+		return Result.buildSuccess();
 	}
 
 	/**
@@ -87,10 +85,10 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public SingleResponse<UserResponseDTO> getUserById(Long id) {
+	public SingleResult<UserResponseDTO> getUserById(Long id) {
 		UserDO userDO = userDAO.findById(id);
-		ClientErrorType.notNull(userDO, "A0201");
-		return SingleResponse.of(userConvertor.dataObjectToVO(userDO));
+		ClientAssert.notNull(userDO, "USER-FOUND-404");
+		return SingleResult.build(userConvertor.dataObjectToVO(userDO));
 	}
 
 	/**
@@ -100,11 +98,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
 	 * @return
 	 */
 	@Override
-	public PageResponse<UserResponseDTO> listUserByPage(UserPageQuery query) {
+	public PageResult<UserResponseDTO> listUserByPage(UserPageQuery query) {
 		Page<UserDO> page = userDAO.findByPage(query);
 		List<UserResponseDTO> userVOList = userConvertor.dataObjectListToVOList(page.getResult());
-		return PageResponse.of(userVOList,
-			Integer.parseInt(String.valueOf(page.getTotal())),
-			query.getPageSize(), query.getPageIndex());
+		return PageResult.build(userVOList, Integer.parseInt(String.valueOf(page.getTotal())));
 	}
 }

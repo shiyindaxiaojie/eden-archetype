@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 <!--
   ~ Licensed to the Apache Software Foundation (ASF) under one or more
   ~ contributor license agreements.  See the NOTICE file distributed with
@@ -36,7 +39,7 @@
 		</fileSet>
 
 		<fileSet>
-			<directory>${project.build.directory}/classes/config</directory>
+			<directory>${symbol_dollar}{project.build.directory}/classes/config</directory>
 			<outputDirectory>conf</outputDirectory>
 			<fileMode>0644</fileMode>
 			<includes>
@@ -46,16 +49,16 @@
 		</fileSet>
 
 		<fileSet>
-			<directory>${project.build.directory}</directory>
+			<directory>${symbol_dollar}{project.build.directory}</directory>
 			<outputDirectory>modules</outputDirectory>
 			<fileMode>0755</fileMode>
 			<includes>
-				<include>${project.build.finalName}.jar</include>
+				<include>${symbol_dollar}{project.build.finalName}.jar</include>
 			</includes>
 		</fileSet>
 
 		<fileSet>
-			<directory>${project.build.directory}</directory>
+			<directory>${symbol_dollar}{project.build.directory}</directory>
 			<outputDirectory>logs</outputDirectory>
 			<fileMode>0644</fileMode>
 			<excludes>
