@@ -1,7 +1,10 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 @startuml
 
-!if %variable_exists("$THEME")
-title 阿里巴巴分层应用架构组件图 - $THEME theme
+!if %variable_exists("${symbol_dollar}THEME")
+title 阿里巴巴分层应用架构组件图 - ${symbol_dollar}THEME theme
 !else
 title 阿里巴巴分层应用架构组件图
 !endif

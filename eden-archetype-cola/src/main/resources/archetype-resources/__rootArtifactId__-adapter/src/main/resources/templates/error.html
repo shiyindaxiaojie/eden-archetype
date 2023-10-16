@@ -1,6 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
 <!--
   ~ Copyright 2012-2019 the original author or authors.
   ~
@@ -21,19 +18,19 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	  xsi:schemaLocation="http://www.thymeleaf.org"
-	  th:lang="${symbol_dollar}{${symbol_pound}locale.language}" lang="en">
+	  th:lang="${#locale.language}" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	<link rel="shortcut icon" href="${symbol_dollar}{baseUrl}/favicon.ico"/>
+	<link rel="shortcut icon" href="${baseUrl}/favicon.ico"/>
 	<title>Your request cannot be processed</title>
 	<style>
 		::-moz-selection {
-			background: ${symbol_pound}b3d4fc;
+			background: #b3d4fc;
 			text-shadow: none;
 		}
 
 		::selection {
-			background: ${symbol_pound}b3d4fc;
+			background: #b3d4fc;
 			text-shadow: none;
 		}
 
@@ -41,8 +38,8 @@
 			padding: 30px 10px;
 			font-size: 20px;
 			line-height: 1.4;
-			color: ${symbol_pound}737373;
-			background: ${symbol_pound}3E8ACC;
+			color: #737373;
+			background: #3E8ACC;
 			-webkit-text-size-adjust: 100%;
 			-ms-text-size-adjust: 100%;
 		}
@@ -56,11 +53,11 @@
 			max-width: 1000px;
 			_width: 500px;
 			padding: 30px 20px 50px;
-			border: 1px solid ${symbol_pound}b3b3b3;
+			border: 1px solid #b3b3b3;
 			border-radius: 4px;
 			margin: 0 auto;
-			box-shadow: 0 1px 10px ${symbol_pound}a7a7a7, inset 0 1px 0 ${symbol_pound}fff;
-			background: ${symbol_pound}fcfcfc;
+			box-shadow: 0 1px 10px #a7a7a7, inset 0 1px 0 #fff;
+			background: #fcfcfc;
 		}
 
 		h1 {
@@ -70,7 +67,7 @@
 		}
 
 		h1 span {
-			color: ${symbol_pound}bbb;
+			color: #bbb;
 		}
 
 		h3 {
@@ -97,18 +94,18 @@
 </head>
 <body>
 <div class="container">
-	<h1 th:text="${symbol_pound}{error.title}">Your request cannot be processed
+	<h1 th:text="#{error.title}">Your request cannot be processed
 		<span>:(</span>
 	</h1>
 
-	<p th:text="${symbol_pound}{error.subtitle}">Sorry, an error has occurred.</p>
+	<p th:text="#{error.subtitle}">Sorry, an error has occurred.</p>
 
-	<span th:text="${symbol_pound}{error.status}">Status:</span>&nbsp;<span
-	th:text="${symbol_dollar}{error}"></span>&nbsp;(<span
-	th:text="${symbol_dollar}{error}"></span>)<br/>
-	<span th:if="${symbol_dollar}{!${symbol_pound}strings.isEmpty(message)}">
-        <span th:text="${symbol_pound}{error.message}">Message:</span>&nbsp;<span
-		th:text="${symbol_dollar}{message}"></span><br/>
+	<span th:text="#{error.status}">Status:</span>&nbsp;<span
+	th:text="${error}"></span>&nbsp;(<span
+	th:text="${error}"></span>)<br/>
+	<span th:if="${!#strings.isEmpty(message)}">
+        <span th:text="#{error.message}">Message:</span>&nbsp;<span
+		th:text="${message}"></span><br/>
     </span>
 </div>
 </body>

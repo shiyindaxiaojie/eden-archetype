@@ -1,9 +1,12 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "{{ include "eden-demo-cola.fullname" . }}-test-connection"
+  name: "{{ include "${project.artifactId}.fullname" . }}-test-connection"
   labels:
-    {{- include "eden-demo-cola.labels" . | nindent 4 }}
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
   annotations:
     "helm.sh/hook": test
 spec:
@@ -11,5 +14,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "eden-demo-cola.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "${project.artifactId}.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

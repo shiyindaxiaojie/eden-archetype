@@ -1,16 +1,19 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "eden-demo-cola.fullname" . }}
+  name: {{ include "${project.artifactId}.fullname" . }}
   labels:
-    {{- include "eden-demo-cola.labels" . | nindent 4 }}
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "eden-demo-cola.selectorLabels" . | nindent 6 }}
+      {{- include "${project.artifactId}.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,13 +21,13 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "eden-demo-cola.selectorLabels" . | nindent 8 }}
+        {{- include "${project.artifactId}.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "eden-demo-cola.serviceAccountName" . }}
+      serviceAccountName: {{ include "${project.artifactId}.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:

@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 @startuml
 
 !if %variable_exists("$THEME")
@@ -9,54 +12,54 @@ title 阿里巴巴分层应用架构时序图
 'skinparam BackgroundColor transparent
 
 autonumber
-participant "主动适配器" #SkyBlue
-participant "eden-demo-layer-web" #LightGreen
-participant "eden-demo-layer-service" #LightGreen
-participant "eden-demo-layer-manager" #LightGreen
-participant "eden-demo-layer-dao" #LightGreen
-participant "被动驱动器" #Pink
-participant "扩展点" #Khaki
+participant "主动适配器" ${symbol_pound}SkyBlue
+participant "${project.artifactId}-web" ${symbol_pound}LightGreen
+participant "${project.artifactId}-service" ${symbol_pound}LightGreen
+participant "${project.artifactId}-manager" ${symbol_pound}LightGreen
+participant "${project.artifactId}-dao" ${symbol_pound}LightGreen
+participant "被动驱动器" ${symbol_pound}Pink
+participant "扩展点" ${symbol_pound}Khaki
 
 == 场景一：HTTP更新数据请求 ==
 
-"主动适配器" -> "eden-demo-layer-web": 发送写请求报文
-"eden-demo-layer-web" -> "eden-demo-layer-service": 进程内请求分发
-"eden-demo-layer-service" -> "eden-demo-layer-dao": 调用数据访问层
-"eden-demo-layer-service" -> "eden-demo-layer-manager": 调用已编排的业务（可选）
-"eden-demo-layer-manager" -> "eden-demo-layer-dao": 调用DAO（可选）
-"eden-demo-layer-manager" -> "被动驱动器": 封装第三方中间件SDK，缓存、MQ、定时任务
-"eden-demo-layer-dao" -> "被动驱动器": 调用底层组件进行写操作
-"eden-demo-layer-dao" --> "eden-demo-layer-service": 返回查询数据
-"eden-demo-layer-service" --> "eden-demo-layer-web": 组装返回数据
-"eden-demo-layer-web" --> "主动适配器": 响应报文
+"主动适配器" -> "${project.artifactId}-web": 发送写请求报文
+"${project.artifactId}-web" -> "${project.artifactId}-service": 进程内请求分发
+"${project.artifactId}-service" -> "${project.artifactId}-dao": 调用数据访问层
+"${project.artifactId}-service" -> "${project.artifactId}-manager": 调用已编排的业务（可选）
+"${project.artifactId}-manager" -> "${project.artifactId}-dao": 调用DAO（可选）
+"${project.artifactId}-manager" -> "被动驱动器": 封装第三方中间件SDK，缓存、MQ、定时任务
+"${project.artifactId}-dao" -> "被动驱动器": 调用底层组件进行写操作
+"${project.artifactId}-dao" --> "${project.artifactId}-service": 返回查询数据
+"${project.artifactId}-service" --> "${project.artifactId}-web": 组装返回数据
+"${project.artifactId}-web" --> "主动适配器": 响应报文
 
 == 场景二：HTTP查询数据请求 ==
 
-"主动适配器" -> "eden-demo-layer-web": 发送读请求报文
-"eden-demo-layer-web" -> "eden-demo-layer-service": 进程内请求分发
-"eden-demo-layer-service" -> "eden-demo-layer-dao": 调用数据访问层
-"eden-demo-layer-service" -> "eden-demo-layer-manager": 调用已编排的业务（可选）
-"eden-demo-layer-manager" -> "eden-demo-layer-dao": 调用DAO（可选）
-"eden-demo-layer-manager" -> "被动驱动器": 封装第三方中间件SDK，缓存、MQ、定时任务
-"eden-demo-layer-dao" -> "被动驱动器": 调用底层组件进行读操作
-"eden-demo-layer-dao" --> "eden-demo-layer-service": 返回查询数据
-"eden-demo-layer-service" --> "eden-demo-layer-web": 组装返回数据
-"eden-demo-layer-web" --> "主动适配器": 响应报文
+"主动适配器" -> "${project.artifactId}-web": 发送读请求报文
+"${project.artifactId}-web" -> "${project.artifactId}-service": 进程内请求分发
+"${project.artifactId}-service" -> "${project.artifactId}-dao": 调用数据访问层
+"${project.artifactId}-service" -> "${project.artifactId}-manager": 调用已编排的业务（可选）
+"${project.artifactId}-manager" -> "${project.artifactId}-dao": 调用DAO（可选）
+"${project.artifactId}-manager" -> "被动驱动器": 封装第三方中间件SDK，缓存、MQ、定时任务
+"${project.artifactId}-dao" -> "被动驱动器": 调用底层组件进行读操作
+"${project.artifactId}-dao" --> "${project.artifactId}-service": 返回查询数据
+"${project.artifactId}-service" --> "${project.artifactId}-web": 组装返回数据
+"${project.artifactId}-web" --> "主动适配器": 响应报文
 
 == 场景三：MQ消息驱动/Job定时任务触发 ==
 
-"主动适配器" -> "eden-demo-layer-manager": 监听事件触发
+"主动适配器" -> "${project.artifactId}-manager": 监听事件触发
 
-alt#Gold #LightBlue 更新操作
-	"eden-demo-layer-manager" -> "eden-demo-layer-dao": 更新数据库
-	"eden-demo-layer-dao" -> "被动驱动器": 调用底层组件进行写操作
-	"eden-demo-layer-dao" --> "eden-demo-layer-manager": 返回数据更新结果
-else #Pink 查询操作
-	"eden-demo-layer-manager" -> "eden-demo-layer-dao": 查询数据库
-	"eden-demo-layer-dao" -> "被动驱动器": 调用底层组件进行读操作
-	"eden-demo-layer-dao" --> "eden-demo-layer-manager": 返回数据查询数据
+alt${symbol_pound}Gold ${symbol_pound}LightBlue 更新操作
+	"${project.artifactId}-manager" -> "${project.artifactId}-dao": 更新数据库
+	"${project.artifactId}-dao" -> "被动驱动器": 调用底层组件进行写操作
+	"${project.artifactId}-dao" --> "${project.artifactId}-manager": 返回数据更新结果
+else ${symbol_pound}Pink 查询操作
+	"${project.artifactId}-manager" -> "${project.artifactId}-dao": 查询数据库
+	"${project.artifactId}-dao" -> "被动驱动器": 调用底层组件进行读操作
+	"${project.artifactId}-dao" --> "${project.artifactId}-manager": 返回数据查询数据
 end
-"eden-demo-layer-manager" -> "eden-demo-layer-manager": 内部处理（ACK确认/Status状态）
-"eden-demo-layer-manager" --> "主动适配器": 处理结果上报
+"${project.artifactId}-manager" -> "${project.artifactId}-manager": 内部处理（ACK确认/Status状态）
+"${project.artifactId}-manager" --> "主动适配器": 处理结果上报
 
 @enduml

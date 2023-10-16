@@ -1,3 +1,6 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 Configuration:
   status: WARN
   monitorInterval: 30
@@ -5,13 +8,13 @@ Configuration:
   Properties:
     Property:
       - name: APP_NAME
-        value: $${spring:spring.application.name:-eden-demo-layer}
+        value: ${symbol_dollar}${symbol_dollar}{spring:spring.application.name:-${project.artifactId}}
       - name: PROFILES
-        value: $${spring:spring.profiles.active}
+        value: ${symbol_dollar}${symbol_dollar}{spring:spring.profiles.active}
       - name: LOG_PATH
-        value: $${spring:logging.file.path:-/app/logs}
+        value: ${symbol_dollar}${symbol_dollar}{spring:logging.file.path:-/app/logs}
       - name: LOG_PATTERN
-        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [${PROFILES}] [%X{traceId}] [%t] %msg%n"
+        value: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level [${symbol_dollar}{PROFILES}] [%X{traceId}] [%t] %msg%n"
       - name: CAT_PATTERN
         value: "%msg%n"
 
@@ -20,14 +23,14 @@ Configuration:
       name: ConsoleAppender # 控制台
       target: SYSTEM_OUT
       PatternLayout:
-        pattern: ${LOG_PATTERN}
+        pattern: ${symbol_dollar}{LOG_PATTERN}
     RollingRandomAccessFile:
       - name: InfoFileAppender # 默认日志文件
-        fileName: ${LOG_PATH}/${APP_NAME}-info.log
-        filePattern: ${LOG_PATH}/${APP_NAME}-info-%d{yyyy-MM-dd}-%i.log.gz
+        fileName: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-info.log
+        filePattern: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-info-%d{yyyy-MM-dd}-%i.log.gz
         ignoreExceptions: false
         PatternLayout:
-          pattern: ${LOG_PATTERN}
+          pattern: ${symbol_dollar}{LOG_PATTERN}
         Policies:
           TimeBasedTriggeringPolicy:
             modulate: true
@@ -47,11 +50,11 @@ Configuration:
             rate: 1000
             maxBurst: 10000
       - name: ErrorFileAppender # 异常日志文件
-        fileName: ${LOG_PATH}/${APP_NAME}-error.log
-        filePattern: ${LOG_PATH}/${APP_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz
+        fileName: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-error.log
+        filePattern: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-error-%d{yyyy-MM-dd}-%i.log.gz
         ignoreExceptions: false
         PatternLayout:
-          pattern: ${LOG_PATTERN}
+          pattern: ${symbol_dollar}{LOG_PATTERN}
         Policies:
           TimeBasedTriggeringPolicy:
             modulate: true
@@ -71,11 +74,11 @@ Configuration:
             rate: 1000
             maxBurst: 10000
       - name: SlowSqlFileAppender # 慢SQL日志文件
-        fileName: ${LOG_PATH}/${APP_NAME}-slow-sql.log
-        filePattern: ${LOG_PATH}/${APP_NAME}-slow-sql-%d{yyyy-MM-dd}-%i.log.gz
+        fileName: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-slow-sql.log
+        filePattern: ${symbol_dollar}{LOG_PATH}/${symbol_dollar}{APP_NAME}-slow-sql-%d{yyyy-MM-dd}-%i.log.gz
         ignoreExceptions: false
         PatternLayout:
-          pattern: ${LOG_PATTERN}
+          pattern: ${symbol_dollar}{LOG_PATTERN}
         Policies:
           TimeBasedTriggeringPolicy:
             modulate: true
@@ -99,16 +102,16 @@ Configuration:
       level: INFO
       maxLength: 200
       PatternLayout:
-        pattern: ${CAT_PATTERN}
+        pattern: ${symbol_dollar}{CAT_PATTERN}
 
   Loggers:
     Root:
       level: INFO
-      includeLocation: false
+      includeLocation: true
       AppenderRef:
         - ref: ConsoleAppender
-        - ref: InfoFileAppender
-        - ref: ErrorFileAppender
+        - ref: InfoFileAppender # 本地开发可以选择注释掉
+        - ref: ErrorFileAppender # 本地开发可以选择注释掉
         - ref: CatAppender # 默认关闭，开启后将日志发送到 CAT 监控平台
     AsyncLogger:
       - name: org.ylzl.eden.demo # 应用日志

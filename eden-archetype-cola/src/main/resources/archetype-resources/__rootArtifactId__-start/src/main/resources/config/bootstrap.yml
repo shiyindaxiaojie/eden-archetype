@@ -1,6 +1,9 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 spring:
   application:
-    name: eden-demo-cola
+    name: ${project.artifactId}
   cloud:
     config:
       enabled: false

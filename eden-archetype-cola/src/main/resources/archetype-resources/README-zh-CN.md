@@ -1,33 +1,34 @@
+#set( $symbol_dollar = '$' )
 <img src="https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/icon.png" align="right" />
 
 [license-apache2.0]:https://www.apache.org/licenses/LICENSE-2.0.html
 
-[github-action]:https://github.com/shiyindaxiaojie/eden-demo-cola/actions
+[github-action]:https://github.com/shiyindaxiaojie/${project.artifactId}/actions
 
-[sonarcloud-dashboard]:https://sonarcloud.io/dashboard?id=shiyindaxiaojie_eden-demo-cola
+[sonarcloud-dashboard]:https://sonarcloud.io/dashboard?id=shiyindaxiaojie_${project.artifactId}
 
 # COLA 架构
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/language-java-blue.svg) [![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/license-apache2.0-red.svg)][license-apache2.0] [![](https://github.com/shiyindaxiaojie/eden-demo-cola/actions/workflows/maven-ci.yml/badge.svg?branch=main)][github-action] [![](https://sonarcloud.io/api/project_badges/measure?project=shiyindaxiaojie_eden-demo-cola&metric=alert_status)][sonarcloud-dashboard]
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/language-java-blue.svg) [![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/license-apache2.0-red.svg)][license-apache2.0] [![](https://github.com/shiyindaxiaojie/${project.artifactId}/actions/workflows/maven-ci.yml/badge.svg?branch=main)][github-action] [![](https://sonarcloud.io/api/project_badges/measure?project=shiyindaxiaojie_${project.artifactId}&metric=alert_status)][sonarcloud-dashboard]
 
 本项目使用 COLA 架构构建，COLA 架构是一个整洁的，面向对象的，分层的，可扩展的应用架构，可以帮助降低复杂应用场景的系统熵值，提升系统开发和运维效率。不管是传统的分层架构、六边形架构、还是洋葱架构，都提倡以业务为核心，解耦外部依赖，分离业务复杂度和技术复杂度等，COLA 架构在此基础上融合了 CQRS、DDD、SOLID 等设计思想，形成一套可落地的应用架构。
 
-> 参考文档请查看 [WIKI](https://github.com/shiyindaxiaojie/eden-demo-cola/wiki) 。
+> 参考文档请查看 [WIKI](https://github.com/shiyindaxiaojie/${project.artifactId}/wiki) 。
 
 ## 组件构成
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/eden-demo-cola/component.png)
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/${project.artifactId}/component.png)
 
-* **eden-demo-cola-adapter**：适配层，**六边形架构**中的入站适配器。
-* **eden-demo-cola-app**：应用层，负责 **CQRS** 的指令处理工作，更新指令，调用领域层，查询视图操作，直接绕过领域层调用基础设施层。
-* **eden-demo-cola-client**：API层，对外以 jar 包的形式提供接口。
-* **eden-demo-cola-domain**：领域层，业务核心实现，不同于传统的分层架构，提供防腐层接口，不依赖基础设施层的技术实现。
-* **eden-demo-cola-infrastructure**：基础设施层，**六边形架构**中的出站适配器，封装技术细节，使用**依赖倒置**实现 Domain 暴露的防腐层接口。
-* **eden-demo-cola-start**：程序启动入口，统一管理应用的配置和交付。
+* **${project.artifactId}-adapter**：适配层，**六边形架构**中的入站适配器。
+* **${project.artifactId}-app**：应用层，负责 **CQRS** 的指令处理工作，更新指令，调用领域层，查询视图操作，直接绕过领域层调用基础设施层。
+* **${project.artifactId}-client**：API层，对外以 jar 包的形式提供接口。
+* **${project.artifactId}-domain**：领域层，业务核心实现，不同于传统的分层架构，提供防腐层接口，不依赖基础设施层的技术实现。
+* **${project.artifactId}-infrastructure**：基础设施层，**六边形架构**中的出站适配器，封装技术细节，使用**依赖倒置**实现 Domain 暴露的防腐层接口。
+* **${project.artifactId}-start**：程序启动入口，统一管理应用的配置和交付。
 
 ## 运行流程
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/eden-demo-cola/sequence.png)
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/${project.artifactId}/sequence.png)
 
 ## 如何构建
 
@@ -46,7 +47,7 @@
 本项目默认设置了 dev 运行环境，为了方便您直接启动项目，所有外部的组件依赖均为关闭状态。
 
 1. 在项目目录下运行 `mvn install`（如果不想运行测试，可以加上 `-DskipTests` 参数）。
-2. 进入 `eden-demo-cola-start` 目录，执行 `mvn spring-boot:run` 或者启动 `ColaApplication` 类。运行成功的话，可以看到 `Spring Boot` 启动成功的界面。
+2. 进入 `${project.artifactId}-start` 目录，执行 `mvn spring-boot:run` 或者启动 `ColaApplication` 类。运行成功的话，可以看到 `Spring Boot` 启动成功的界面。
 3. 本应用中已经实现了一个简单的 `RestController` 接口，可以点击 [演示接口](http://localhost:8081/api/users/1) 进行调试。
 4. 由于目前的主流是前后端分离开发，请按需实现页面。访问 [http://localhost:8081](http://localhost:8081) 将跳转到 404 页面。
 
@@ -54,34 +55,34 @@
 
 ### 微调配置
 
-**开启注册中心和配置管理**：推荐使用 `Nacos` 组件，您可以查阅 [Nacos Quick Start](https://nacos.io/zh-cn/docs/quick-start.html) 快速搭建，请根据您的 Nacos 地址修改配置文件：[bootstrap-dev.yml](https://github.com/shiyindaxiaojie/eden-demo-cola/blob/main/eden-demo-cola-start/src/main/resources/config/bootstrap-dev.yml)，调整以下内容：
+**开启注册中心和配置管理**：推荐使用 `Nacos` 组件，您可以查阅 [Nacos Quick Start](https://nacos.io/zh-cn/docs/quick-start.html) 快速搭建，请根据您的 Nacos 地址修改配置文件：[bootstrap-dev.yml](https://github.com/shiyindaxiaojie/${project.artifactId}/blob/main/${project.artifactId}-start/src/main/resources/config/bootstrap-dev.yml)，调整以下内容：
 
 ```yaml
 spring:
-    cloud:
-        nacos:
-            discovery: # 注册中心
-                enabled: true # 默认关闭，请按需开启
-            config: # 配置中心
-                enabled: true # 默认关闭，请按需开启
+  cloud:
+    nacos:
+      discovery: # 注册中心
+        enabled: true # 默认关闭，请按需开启
+      config: # 配置中心
+        enabled: true # 默认关闭，请按需开启
 ```
 
-**修改默认的数据源**：本项目默认使用 `H2` 内存数据库启动，基于 `Liquibase` 在项目启动时自动初始化 SQL 脚本。如果您使用的是外部的 MySQL 数据库，可以从此处调整下数据库的连接信息：[application-local.yml](https://github.com/shiyindaxiaojie/eden-demo-cola/blob/main/eden-demo-cola-start/src/main/resources/config/application-local.yml)，请删除任何与 `H2` 有关的配置。
+**修改默认的数据源**：本项目默认使用 `H2` 内存数据库启动，基于 `Liquibase` 在项目启动时自动初始化 SQL 脚本。如果您使用的是外部的 MySQL 数据库，可以从此处调整下数据库的连接信息：[application-local.yml](https://github.com/shiyindaxiaojie/${project.artifactId}/blob/main/${project.artifactId}-start/src/main/resources/config/application-local.yml)，请删除任何与 `H2` 有关的配置。
 
 ```yaml
 spring:
-    #  h2: # 内存数据库
-    #    console:
-    #      enabled: true # 线上环境请勿设置
-    #      path: /h2-console
-    #      settings:
-    #        trace: false
-    #        web-allow-others: false
-    datasource: # 数据源管理
-        username:
-        password:
-        url: jdbc:mysql://host:port/schema?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&serverTimezone=GMT%2B8
-        driver-class-name: com.mysql.cj.jdbc.Driver
+#  h2: # 内存数据库
+#    console:
+#      enabled: true # 线上环境请勿设置
+#      path: /h2-console
+#      settings:
+#        trace: false
+#        web-allow-others: false
+  datasource: # 数据源管理
+    username: 
+    password: 
+    url: jdbc:mysql://host:port/schema?rewriteBatchedStatements=true&useSSL=false&useOldAliasMetadataBehavior=true&useUnicode=true&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
 ```
 
 此外，本项目还罗列了 `Redis` 缓存、`RocketMQ` 消息队列、`ShardingSphere` 分库分表等常用组件的使用方案，默认通过 `xxx.enabled` 关闭自动配置。您可以根据实际情况开启配置，直接完成组件的集成。
@@ -93,7 +94,7 @@ spring:
 执行 `mvn clean package` 打包成一个 fat jar，参考如下命令启动编译后的控制台。
 
 ```bash
-java -Dserver.port=8080 -jar target/eden-demo-cola.jar
+java -Dserver.port=8080 -jar target/${project.artifactId}.jar
 ```
 
 ### Jib 镜像部署
@@ -102,7 +103,7 @@ Google Jib 插件允许您在没有安装 Docker 下完成镜像的构建。
 
 ```bash
 mvn -T 4C -U package
-mvn -pl eden-demo-cola-start jib:build -Djib.disableUpdateChecks=true -DskipTests
+mvn -pl ${project.artifactId}-start jib:build -Djib.disableUpdateChecks=true -DskipTests
 ```
 
 ### Docker 容器部署
@@ -110,7 +111,7 @@ mvn -pl eden-demo-cola-start jib:build -Djib.disableUpdateChecks=true -DskipTest
 本项目使用了 Spring Boot 的镜像分层特性优化了镜像的构建效率，请确保正确安装了 Docker 工具，然后执行以下命令。
 
 ```bash
-docker build -f docker/Dockerfile -t eden-demo-cola:{tag} .
+docker build -f docker/Dockerfile -t ${project.artifactId}:{tag} .
 ```
 
 ### Helm 打包部署
@@ -118,8 +119,8 @@ docker build -f docker/Dockerfile -t eden-demo-cola:{tag} .
 以应用为中心，建议使用 Helm 统一管理所需部署的 K8s 资源描述文件，请参考以下命令完成应用的安装和卸载。
 
 ```bash
-helm install eden-demo-cola ./helm # 部署资源
-helm uninstall eden-demo-cola # 卸载资源
+helm install ${project.artifactId} ./helm # 部署资源
+helm uninstall ${project.artifactId} # 卸载资源
 ```
 
 ## 版本规范
@@ -180,4 +181,4 @@ helm uninstall eden-demo-cola # 卸载资源
 
 ## 变更日志
 
-请查阅 [CHANGELOG.md](https://github.com/shiyindaxiaojie/eden-demo-cola/blob/main/CHANGELOG.md)
+请查阅 [CHANGELOG.md](https://github.com/shiyindaxiaojie/${project.artifactId}/blob/main/CHANGELOG.md)

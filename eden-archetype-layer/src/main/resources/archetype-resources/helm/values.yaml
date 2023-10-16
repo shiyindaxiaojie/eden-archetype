@@ -1,7 +1,10 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 replicaCount: 1
 
 image:
-  repository: shiyindaxiaojie/eden-demo-layer
+  repository: repo/${project.artifactId}
   pullPolicy: IfNotPresent
   tag: "latest"
 

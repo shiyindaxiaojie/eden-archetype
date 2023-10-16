@@ -1,9 +1,12 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "eden-demo-cola.fullname" . }}
+  name: {{ include "${project.artifactId}.fullname" . }}
   labels:
-    {{- include "eden-demo-cola.labels" . | nindent 4 }}
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +15,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "eden-demo-cola.selectorLabels" . | nindent 4 }}
+    {{- include "${project.artifactId}.selectorLabels" . | nindent 4 }}

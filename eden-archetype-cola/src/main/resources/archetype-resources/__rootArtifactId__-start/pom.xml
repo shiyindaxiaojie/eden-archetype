@@ -28,7 +28,7 @@
 	<description>启动入口</description>
 
 	<properties>
-		<start-class>org.ylzl.eden.demo.ColaApplication</start-class>
+		<start-class>${groupId}.ColaApplication</start-class>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<build.layers.enabled>true</build.layers.enabled>
 	</properties>

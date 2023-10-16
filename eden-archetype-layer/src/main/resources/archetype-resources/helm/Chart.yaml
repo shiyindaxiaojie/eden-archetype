@@ -1,5 +1,8 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 apiVersion: v2
-name: eden-demo-layer
+name: ${project.artifactId}
 description: A Helm chart for Kubernetes
 
 # A chart can be either an 'application' or a 'library' chart.

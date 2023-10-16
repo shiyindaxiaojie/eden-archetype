@@ -1,15 +1,18 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 {{- if .Values.autoscaling.enabled }}
 apiVersion: autoscaling/v2beta1
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "eden-demo-cola.fullname" . }}
+  name: {{ include "${project.artifactId}.fullname" . }}
   labels:
-    {{- include "eden-demo-cola.labels" . | nindent 4 }}
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "eden-demo-cola.fullname" . }}
+    name: {{ include "${project.artifactId}.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
