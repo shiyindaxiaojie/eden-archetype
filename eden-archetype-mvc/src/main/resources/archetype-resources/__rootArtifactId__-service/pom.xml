@@ -32,7 +32,7 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 	</dependencies>

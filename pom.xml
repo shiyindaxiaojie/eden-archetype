@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-				 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.ylzl</groupId>
+		<groupId>io.github.shiyindaxiaojie</groupId>
 		<artifactId>eden-parent</artifactId>
-		<version>2.4.13.20221019</version>
+		<version>0.0.1-SNAPSHOT</version>
 		<relativePath>../eden-architect/eden-components/eden-parent/pom.xml</relativePath>
 	</parent>
 	<artifactId>eden-archetype</artifactId>
 	<packaging>pom</packaging>
-	<version>2.4.13.20221019</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<description>项目脚手架</description>
 
 	<modules>
@@ -20,6 +20,18 @@
 		<module>eden-archetype-layer</module>
 		<module>eden-archetype-mvc</module>
 	</modules>
+
+	<developers>
+		<developer>
+			<id>sion</id>
+			<name>mengxiangge</name>
+			<email>shiyindaxiaojie@gmail.com</email>
+			<roles>
+				<role>Architect</role>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
 
 	<licenses>
 		<license>
@@ -30,34 +42,25 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/eden-lab/eden-archetype</url>
-		<connection>scm:git:git://github.com/eden-lab/eden-archetype.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/eden-lab/eden-archetype.git
-		</developerConnection>
+		<url>https://github.com/shiyindaxiaojie/eden-archetype</url>
+		<connection>scm:git:git://github.com/shiyindaxiaojie/eden-archetype.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/shiyindaxiaojie/eden-archetype.git</developerConnection>
 	</scm>
 
 	<issueManagement>
 		<system>Github</system>
-		<url>https://github.com/eden-lab/eden-archetype/issues</url>
+		<url>https://github.com/shiyindaxiaojie/eden-archetype/issues</url>
 	</issueManagement>
 
-	<developers>
-		<developer>
-			<id>sion</id>
-			<name>梦想歌</name>
-			<email>shiyindaxiaojie@gmail.com</email>
-			<roles>
-				<role>Developer</role>
-			</roles>
-		</developer>
-		<developer>
-			<id>zx</id>
-			<name>欣熙林林</name>
-			<roles>
-				<role>Developer</role>
-			</roles>
-		</developer>
-	</developers>
+	<properties>
+		<java.version>1.8</java.version>
+		<maven-release-plugin.version>3.0.0-M7</maven-release-plugin.version>
+		<maven-javadoc-plugin.version>3.5.0</maven-javadoc-plugin.version>
+		<maven-gpg-plugin.version>3.0.1</maven-gpg-plugin.version>
+		<versions-maven-plugin.version>2.7</versions-maven-plugin.version>
+		<git-commit-id-plugin.version>4.9.10</git-commit-id-plugin.version>
+		<nexus-staging-maven-plugin.version>1.6.13</nexus-staging-maven-plugin.version>
+	</properties>
 
 	<build>
 		<extensions>
@@ -73,34 +76,174 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-archetype-plugin</artifactId>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>${maven-release-plugin.version}</version>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>${maven-javadoc-plugin.version}</version>
+				<configuration>
+					<source>${java.version}</source>
+					<locale>en_US</locale>
+					<charset>UTF-8</charset>
+					<encoding>UTF-8</encoding>
+					<docencoding>UTF-8</docencoding>
+					<doclint>none</doclint>
+				</configuration>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>
+				<version>${versions-maven-plugin.version}</version>
+				<configuration>
+					<generateBackupPoms>false</generateBackupPoms>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>pl.project13.maven</groupId>
+				<artifactId>git-commit-id-plugin</artifactId>
+				<version>${git-commit-id-plugin.version}</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>revision</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<failOnNoGitDirectory>false</failOnNoGitDirectory>
+					<failOnUnableToExtractRepoInfo>false</failOnUnableToExtractRepoInfo>
+					<generateGitPropertiesFile>true</generateGitPropertiesFile>
+					<includeOnlyProperties>
+						<includeOnlyProperty>^git.commit.id.abbrev$</includeOnlyProperty>
+						<includeOnlyProperty>^git.commit.id.describe$</includeOnlyProperty>
+						<includeOnlyProperty>^git.branch$</includeOnlyProperty>
+					</includeOnlyProperties>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 
-	<distributionManagement>
-		<repository>
-			<id>github</id>
-			<name>GitHub Owner Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/eden-lab/eden-architect</url>
-		</repository>
-	</distributionManagement>
-
 	<profiles>
 		<profile>
-			<id>coding</id>
+			<id>github</id>
+			<properties>
+				<altReleaseDeploymentRepository>
+					github::default::https://maven.pkg.github.com/shiyindaxiaojie/eden-architect
+				</altReleaseDeploymentRepository>
+				<altSnapshotDeploymentRepository>
+					github::default::https://maven.pkg.github.com/shiyindaxiaojie/eden-architect
+				</altSnapshotDeploymentRepository>
+			</properties>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<name>Apache Maven Repository</name>
+					<url>https://repo1.maven.org/maven2/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+				<repository>
+					<id>github</id>
+					<name>GitHub OWNER Apache Maven Packages</name>
+					<url>https://maven.pkg.github.com/shiyindaxiaojie/eden-architect</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>sonatype-ossrh</id>
+			<properties>
+				<altReleaseDeploymentRepository>
+					sonatype-ossrh::default::https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+				</altReleaseDeploymentRepository>
+				<altSnapshotDeploymentRepository>
+					sonatype-ossrh::default::https://s01.oss.sonatype.org/content/repositories/snapshots/
+				</altSnapshotDeploymentRepository>
+			</properties>
+			<repositories>
+				<repository>
+					<id>central</id>
+					<name>Apache Maven Repository</name>
+					<url>https://repo1.maven.org/maven2/</url>
+					<releases>
+						<enabled>true</enabled>
+					</releases>
+					<snapshots>
+						<enabled>true</enabled>
+					</snapshots>
+				</repository>
+			</repositories>
 			<distributionManagement>
 				<repository>
-					<id>coding</id>
-					<url>https://shiyindaxiaojie-maven.pkg.coding.net/repository/eden-lab/maven/</url>
+					<id>sonatype-ossrh</id>
+					<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 				</repository>
 				<snapshotRepository>
-					<id>coding</id>
-					<url>https://shiyindaxiaojie-maven.pkg.coding.net/repository/eden-lab/maven/</url>
+					<id>sonatype-ossrh</id>
+					<url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
 				</snapshotRepository>
 			</distributionManagement>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-gpg-plugin</artifactId>
+						<version>${maven-gpg-plugin.version}</version>
+						<executions>
+							<execution>
+								<id>sign-artifacts</id>
+								<phase>verify</phase>
+								<goals>
+									<goal>sign</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.sonatype.plugins</groupId>
+						<artifactId>nexus-staging-maven-plugin</artifactId>
+						<version>${nexus-staging-maven-plugin.version}</version>
+						<extensions>true</extensions>
+						<executions>
+							<execution>
+								<phase>deploy</phase>
+							</execution>
+						</executions>
+						<configuration>
+							<serverId>ossrh</serverId>
+							<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+							<autoReleaseAfterClose>true</autoReleaseAfterClose>
+							<stagingProgressTimeoutMinutes>60</stagingProgressTimeoutMinutes>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
 		</profile>
 	</profiles>
 </project>
