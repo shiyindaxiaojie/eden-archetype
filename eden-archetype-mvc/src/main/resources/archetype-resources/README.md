@@ -1,5 +1,5 @@
 #set( $symbol_dollar = '$' )
-<img src="https://cdn.jsdelivr.net/gh/shiyindaxiaojie/eden-images/readme/icon.png" align="right" />
+<img src="https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/icon.png" align="right" />
 
 [license-apache2.0]:https://www.apache.org/licenses/LICENSE-2.0.html
 [github-action]:https://github.com/shiyindaxiaojie/${rootArtifactId}/actions
@@ -7,7 +7,7 @@
 
 # 分层架构
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/eden-images/readme/language-java-blue.svg) [![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/eden-images/readme/license-apache2.0-red.svg)][license-apache2.0] [![](https://github.com/shiyindaxiaojie/${rootArtifactId}/workflows/build/badge.svg)][github-action] [![](https://sonarcloud.io/api/project_badges/measure?project=shiyindaxiaojie_${rootArtifactId}&metric=alert_status)][sonarcloud-dashboard]
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/language-java-blue.svg) [![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/readme/license-apache2.0-red.svg)][license-apache2.0] [![](https://github.com/shiyindaxiaojie/${rootArtifactId}/workflows/build/badge.svg)][github-action] [![](https://sonarcloud.io/api/project_badges/measure?project=shiyindaxiaojie_${rootArtifactId}&metric=alert_status)][sonarcloud-dashboard]
 
 本项目使用 MVC 架构构建，MVC 架构是一种面向数据模型的传统架构风格，默认上层依赖于下层，例如控制层依赖业务层、业务层又依赖数据模型层，在垂直业务领域能够满足单一职责原则，通过 Maven 多模块化的开发模式，可以帮助降低复杂应用场景的系统熵值，提升系统开发和运维效率。
 
@@ -15,7 +15,7 @@
 
 ## 组件构成
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/eden-images/${rootArtifactId}/component.png)
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/${rootArtifactId}/component.png)
 
 * **${rootArtifactId}-dao**：数据持久层，与底层 MySQL 进行数据交互。
 * **${rootArtifactId}-service**：业务逻辑服务层
@@ -24,7 +24,7 @@
 
 ## 运行流程
 
-![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/eden-images/${rootArtifactId}/sequence.png)
+![](https://cdn.jsdelivr.net/gh/shiyindaxiaojie/images/${rootArtifactId}/sequence.png)
 
 ## 如何构建
 
