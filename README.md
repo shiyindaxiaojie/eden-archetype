@@ -1,11 +1,9 @@
 <img src="https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/readme/icon.png" align="right" />
 
 # 项目脚手架
-![](https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/readme/language-java-blue.svg) ![](https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/readme/license-apache2.0-red.svg) ![](https://github.com/eden-lab/eden-archetype/workflows/build/badge.svg) ![](https://sonarcloud.io/api/project_badges/measure?project=eden-lab_eden-archetype&metric=alert_status)
+![](https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/readme/language-java-blue.svg) ![](https://cdn.jsdelivr.net/gh/eden-lab/eden-lab-images/readme/license-apache2.0-red.svg) ![](https://github.com/eden-lab/eden-archetype/workflows/build/badge.svg) ![](https://sonarcloud.io/api/project_badges/measure?project=eden-lab_eden-archetype&metric=alert_status) [<img src="https://api.gitsponsors.com/api/badge/img?id=349464632" height="20">](https://api.gitsponsors.com/api/badge/link?p=CA7tyMG9pngm8jkB7OYUNvlZDrZKo65yPYEKCFkLth438E5xIm4lBvROfUjqFDzrbbtTBLI0IaEk8rO/JUYdAZXmj5o6qPS3zcZfhsQ6RXCCDNdNaMh9Oq/dzG+mKRqikCIDTqZ4AYwOqnh3XofXIg==)
 
 很多开发者在使用 `start.spring.io` 生成的工程骨架中，只有组件坐标信息，缺少对应的使用方法和 Demo 代码，开发者还是需要去寻找相关使用教程，或者样例代码，如果找的不对，或者是版本不匹匹配，还需要花费不少时间去排查和解决问题，这些问题都在无形中增加用户的工作量。基于我们打造的项目脚手架，提供了一套企业级通用的项目生成解决方案，您可以选择不同的架构风格来创建您的应用。
-
-> 参考文档请查看 [WIKI](https://github.com/eden-lab/eden-archetype/wiki) 。
 
 ## 组件构成
 
