@@ -1,0 +1,18 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "${project.artifactId}.fullname" . }}-test-connection"
+  labels:
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "${project.artifactId}.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

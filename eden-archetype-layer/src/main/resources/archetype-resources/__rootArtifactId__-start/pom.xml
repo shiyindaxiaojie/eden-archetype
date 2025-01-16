@@ -15,9 +15,8 @@
 	<description>应用启动入口</description>
 
 	<properties>
-		<start-class>${groupId}.Application</start-class>
+		<start-class>org.ylzl.eden.demo.MvcApplication</start-class>
 		<maven.deploy.skip>true</maven.deploy.skip>
-		<build.layers.enabled>true</build.layers.enabled>
 	</properties>
 
 	<build>
@@ -52,19 +51,25 @@
 						</entrypoint>
 						<ports>
 							<port>8080</port>
+							<port>9080</port>
 						</ports>
 						<environment>
 							<TZ>Asia/Shanghai</TZ>
-							<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-							<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
-							<ENV_OPTS />
-							<JAVA_SLEEP>1</JAVA_SLEEP>
+							<START_DELAY_SECS>1</START_DELAY_SECS>
+							<JVM_DEBUG>n</JVM_DEBUG>
+							<JVM_XMS>1g</JVM_XMS>
+							<JVM_XMX>1g</JVM_XMX>
+							<JVM_XMN>512m</JVM_XMN>
+							<JVM_MS>128m</JVM_MS>
+							<JVM_MMS>320m</JVM_MMS>
+							<JAVA_OPTS>-Dserver.port=8080 -Dmanagement.server.port=9080</JAVA_OPTS>
+							<SPRING_PROFILES_ACTIVE>320m</SPRING_PROFILES_ACTIVE>
 						</environment>
 						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
 						<mainClass>${start-class}</mainClass>
 					</container>
 					<extraDirectories>
-						<paths>src/main/docker</paths>
+						<paths>src/main/docker/jib</paths>
 						<permissions>
 							<permission>
 								<file>/entrypoint.sh</file>
@@ -74,10 +79,6 @@
 					</extraDirectories>
 					<allowInsecureRegistries>true</allowInsecureRegistries>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>ru.trylogic.maven.plugins</groupId>
-				<artifactId>redis-maven-plugin</artifactId>
 			</plugin>
 		</plugins>
 	</build>
@@ -96,56 +97,74 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-spring-framework</artifactId>
 		</dependency>
 
 		<!-- 测试组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spock-spring-boot-starter</artifactId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-spring-boot-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
 		<!-- 配置中心组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-nacos-config-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 注册中心组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-nacos-discovery-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 服务调用组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-dubbo-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 熔断降级组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-sentinel-spring-cloud-starter</artifactId>
 		</dependency>
+		<!--<dependency>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-datasource-zookeeper</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>-->
 
 		<!-- 链路跟踪组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-zipkin-spring-cloud-starter</artifactId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-cat-spring-boot-starter</artifactId>
 		</dependency>
+		<!--<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-zipkin2-spring-cloud-starter</artifactId>
+		</dependency>-->
+		<!--<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-jaeger-spring-cloud-starter</artifactId>
+		</dependency>-->
 
-		<!-- 服务监控组件 -->
+		<!-- 系统监控组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- 线上诊断组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-arthas-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>

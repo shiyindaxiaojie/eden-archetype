@@ -1,0 +1,89 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+@startuml
+
+!if %variable_exists("$THEME")
+title 阿里巴巴 COLA 应用架构组件图 - $THEME theme
+!else
+title 阿里巴巴 COLA 应用架构组件图
+!endif
+
+'skinparam BackgroundColor transparent
+
+[${project.artifactId}-adapter] <<适配层>>
+[${project.artifactId}-app] <<应用层>>
+[${project.artifactId}-client] <<API层>>
+[${project.artifactId}-domain] <<领域层>>
+[${project.artifactId}-infrastructure] <<基础设施层>>
+[${project.artifactId}-start] <<启动入口>>
+
+[${project.artifactId}-start] -u-> [${project.artifactId}-adapter]
+[${project.artifactId}-adapter] --> [${project.artifactId}-app]: 入站适配，数据组装
+[${project.artifactId}-app] --> [${project.artifactId}-client]: 实现接口
+[${project.artifactId}-app] --> [${project.artifactId}-domain]: CQRS 增删改命令
+[${project.artifactId}-app] --> [${project.artifactId}-infrastructure]: CQRS 查询视图
+[${project.artifactId}-infrastructure] -up-> [${project.artifactId}-domain]: 依赖倒置
+
+node "APP终端" <<主动适配器>>
+cloud "RPC调用方" <<主动适配器>>
+control "Job调度平台" <<主动适配器>>
+queue "MQ消息队列" <<主动适配器>>
+
+cloud "第三方接口" <<被动驱动器>>
+database "MySQL" <<被动驱动器>>
+database "Redis" <<被动驱动器>>
+database "MQ" <<被动驱动器>>
+database "Elasticsearch" <<被动驱动器>>
+database "MongoDB" <<被动驱动器>>
+
+[${project.artifactId}-adapter] -r- http: REST 接口
+[APP终端] .d.> http: 前后端对接
+[${project.artifactId}-adapter] -l- rpc: RPC 接口
+[RPC调用方] .d.> rpc: 网络调用
+[RPC调用方] ..> [${project.artifactId}-client]: 代码集成
+[Job调度平台] <.d.> [${project.artifactId}-adapter]: 任务调度
+[${project.artifactId}-adapter] <.u.> [MQ消息队列]: 消费消息
+
+[${project.artifactId}-infrastructure] .d.> MySQL: 读写数据
+[${project.artifactId}-infrastructure] .d.> Elasticsearch: 读写索引
+[${project.artifactId}-infrastructure] .d.> MongoDB: 读写数据
+[${project.artifactId}-infrastructure] .d.> MQ: 生产消息
+[${project.artifactId}-infrastructure] .d.> Redis: 读写缓存
+[${project.artifactId}-infrastructure] .d.> 第三方接口: 接口调用
+
+skinparam component {
+ 	backgroundColor<<适配层>> LightGreen
+    backgroundColor<<应用层>> LightGreen
+    backgroundColor<<领域层>> LightGreen
+    backgroundColor<<基础设施层>> LightGreen
+    backgroundColor<<启动入口>> LightGreen
+    backgroundColor<<API层>> Khaki
+}
+
+skinparam cloud {
+    backgroundColor<<主动适配器>> SkyBlue
+    backgroundColor<<被动驱动器>> Pink
+}
+
+skinparam database {
+    backgroundColor<<主动适配器>> SkyBlue
+    backgroundColor<<被动驱动器>> Pink
+}
+
+skinparam queue {
+    backgroundColor<<主动适配器>> SkyBlue
+    backgroundColor<<被动驱动器>> Pink
+}
+
+skinparam control {
+    backgroundColor<<主动适配器>> SkyBlue
+    backgroundColor<<被动驱动器>> Pink
+}
+
+skinparam node {
+    backgroundColor<<主动适配器>> SkyBlue
+    backgroundColor<<被动驱动器>> Pink
+}
+
+@enduml

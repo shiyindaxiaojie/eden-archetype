@@ -1,0 +1,18 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "${project.artifactId}.fullname" . }}
+  labels:
+    {{- include "${project.artifactId}.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "${project.artifactId}.selectorLabels" . | nindent 4 }}

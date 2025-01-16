@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<!--
+  ~ Copyright 2012-2019 the original author or authors.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      https://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  --><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
@@ -14,42 +28,17 @@
 	<description>启动入口</description>
 
 	<properties>
-		<start-class>${groupId}.Application</start-class>
+		<start-class>${groupId}.ColaApplication</start-class>
 		<maven.deploy.skip>true</maven.deploy.skip>
 		<build.layers.enabled>true</build.layers.enabled>
 	</properties>
 
 	<build>
-		<finalName>${project.name}-${project.version}</finalName>
+		<finalName>${project.name}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<executable>true</executable>
-					<fork>true</fork>
-					<mainClass>${start-class}</mainClass>
-					<layers>
-						<enabled>${build.layers.enabled}</enabled>
-						<includeLayerTools>true</includeLayerTools>
-						<configuration>${project.basedir}/src/main/docker/layers.xml</configuration>
-					</layers>
-				</configuration>
-				<executions>
-					<execution>
-						<id>spring-boot-build-info</id>
-						<phase>compile</phase>
-						<goals>
-							<goal>build-info</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>spring-boot-repackage</id>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>com.google.cloud.tools</groupId>
@@ -76,19 +65,25 @@
 						</entrypoint>
 						<ports>
 							<port>8080</port>
+							<port>9080</port>
 						</ports>
 						<environment>
 							<TZ>Asia/Shanghai</TZ>
-							<SPRING_OUTPUT_ANSI_ENABLED>ALWAYS</SPRING_OUTPUT_ANSI_ENABLED>
-							<JAVA_OPTS>-Xms256m -Xmx256m</JAVA_OPTS>
-							<ENV_OPTS />
-							<JAVA_SLEEP>1</JAVA_SLEEP>
+							<START_DELAY_SECS>1</START_DELAY_SECS>
+							<JVM_DEBUG>n</JVM_DEBUG>
+							<JVM_XMS>1g</JVM_XMS>
+							<JVM_XMX>1g</JVM_XMX>
+							<JVM_XMN>512m</JVM_XMN>
+							<JVM_MS>128m</JVM_MS>
+							<JVM_MMS>320m</JVM_MMS>
+							<JAVA_OPTS>-Dserver.port=8080 -Dmanagement.server.port=9080</JAVA_OPTS>
+							<SPRING_PROFILES_ACTIVE>320m</SPRING_PROFILES_ACTIVE>
 						</environment>
 						<creationTime>USE_CURRENT_TIMESTAMP</creationTime>
 						<mainClass>${start-class}</mainClass>
 					</container>
 					<extraDirectories>
-						<paths>src/main/docker</paths>
+						<paths>src/main/docker/jib</paths>
 						<permissions>
 							<permission>
 								<file>/entrypoint.sh</file>
@@ -99,14 +94,6 @@
 					<allowInsecureRegistries>true</allowInsecureRegistries>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>pl.project13.maven</groupId>
-				<artifactId>git-commit-id-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>ru.trylogic.maven.plugins</groupId>
-				<artifactId>redis-maven-plugin</artifactId>
-			</plugin>
 		</plugins>
 	</build>
 
@@ -115,6 +102,12 @@
 		<dependency>
 			<groupId>${groupId}</groupId>
 			<artifactId>${rootArtifactId}-adapter</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>curator-client</artifactId>
+					<groupId>org.apache.curator</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<!-- 开发组件 -->
@@ -123,59 +116,76 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<scope>provided</scope>
+		</dependency>
 
 		<!-- 测试组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spock-spring-boot-starter</artifactId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-spring-boot-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
 		<!-- 配置中心组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-nacos-config-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 注册中心组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-nacos-discovery-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 服务调用组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-dubbo-spring-cloud-starter</artifactId>
 		</dependency>
 
 		<!-- 熔断降级组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-sentinel-spring-cloud-starter</artifactId>
 		</dependency>
-
-		<!-- 链路跟踪组件 -->
 		<!--<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-zipkin-spring-cloud-starter</artifactId>
+			<groupId>com.alibaba.csp</groupId>
+			<artifactId>sentinel-datasource-zookeeper</artifactId>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
 		</dependency>-->
 
-		<!-- 服务监控组件 -->
+		<!-- 链路跟踪组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
-		</dependency>
-
-		<!-- 实时监控组件 -->
-		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-cat-spring-boot-starter</artifactId>
+		</dependency>
+		<!--<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-zipkin2-spring-cloud-starter</artifactId>
+		</dependency>-->
+		<!--<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-jaeger-spring-cloud-starter</artifactId>
+		</dependency>-->
+
+		<!-- 系统监控组件 -->
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-prometheus-spring-boot-starter</artifactId>
 		</dependency>
 
 		<!-- 线上诊断组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-arthas-spring-boot-starter</artifactId>
 		</dependency>
 	</dependencies>

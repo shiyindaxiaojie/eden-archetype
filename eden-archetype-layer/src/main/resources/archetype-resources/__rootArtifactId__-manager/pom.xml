@@ -35,40 +35,38 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spring-framework</artifactId>
-		</dependency>
 
 		<!-- 测试组件 -->
 		<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-spock-spring-boot-starter</artifactId>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-spring-boot-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 
-		<!-- 分布式缓存 -->
-		<!--<dependency>
-			<groupId>org.ylzl</groupId>
+		<!-- 缓存组件 -->
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-redis-spring-boot-starter</artifactId>
-		</dependency>-->
-
-		<!-- 本地缓存 -->
-		<!--<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-caffeine-spring-boot-starter</artifactId>
-		</dependency>-->
+		</dependency>
 
 		<!-- 消息队列 -->
-		<!--<dependency>
-			<groupId>org.ylzl</groupId>
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-rocketmq-spring-boot-starter</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-kafka-spring-boot-starter</artifactId>
-		</dependency>-->
+		</dependency>
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-dynamic-mq-spring-boot-starter</artifactId>
+		</dependency>
 
-		<!-- 任务调度 -->
-		<!--<dependency>
-			<groupId>org.ylzl</groupId>
-			<artifactId>eden-xxljob-spring-boot-starter</artifactId>
-		</dependency>-->
+		<!--  任务调度 -->
+		<dependency>
+			<groupId>io.github.shiyindaxiaojie</groupId>
+			<artifactId>eden-xxljob2-spring-boot-starter</artifactId>
+		</dependency>
 	</dependencies>
 </project>

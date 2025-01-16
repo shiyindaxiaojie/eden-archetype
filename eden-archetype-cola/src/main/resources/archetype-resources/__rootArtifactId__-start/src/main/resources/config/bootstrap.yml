@@ -1,28 +1,15 @@
+#set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
 spring:
   application:
-    name: ${rootArtifactId}
+    name: ${project.artifactId}
   cloud:
+    config:
+      enabled: false
     nacos:
       config:
-        name: ${symbol_dollar}{spring.application.name}
+        name: ${spring.application.name}
         file-extension: yaml
   profiles:
-    active: dev # 默认启用开发环境
-
-management:
-  server:
-    port: 9081
-  endpoints:
-    web:
-      base-path: /actuator
-      exposure:
-        include: health,info,prometheus,metrics
-  endpoint:
-    health:
-      show-details: ALWAYS
-  metrics:
-    tags:
-      application: ${symbol_dollar}{spring.application.name}
-
-
+    active: dev # 默认启用本地环境

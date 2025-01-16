@@ -5,61 +5,110 @@
 	xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<fileSets>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory>src/docs</directory>
-			<includes>
-				<include>**/*.puml</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory/>
-			<includes>
-				<include>README.md</include>
-			</includes>
-		</fileSet>
-		<fileSet filtered="true" encoding="UTF-8">
-			<directory/>
-			<includes>
-				<include>Dockerfile</include>
-			</includes>
-		</fileSet>
 		<fileSet encoding="UTF-8">
 			<directory>.coding</directory>
 			<includes>
-				<include>**/*</include>
+				<include>**/*.</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
-			<directory>.github/workflows</directory>
+			<directory>.devcontainer</directory>
 			<includes>
+				<include>**/*.</include>
+				<include>**/*.json</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>.github</directory>
+			<includes>
+				<include>**/maven-ci.yml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>.github</directory>
+			<includes>
+				<include>**/*.md</include>
 				<include>**/*.yml</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
 			<directory>.mvn/wrapper</directory>
 			<includes>
-				<include>**/*.jar</include>
 				<include>**/*.java</include>
 				<include>**/*.properties</include>
+				<include>**/*.jar</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>docker</directory>
+			<includes>
+				<include>Dockerfile</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
-			<directory>src</directory>
+			<directory>docker</directory>
 			<includes>
-				<include>**/*</include>
+				<include>**/*.sh</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>docs</directory>
+			<includes>
+				<include>**/*.puml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>docs</directory>
+			<includes>
+				<include>**/*.gitkeep</include>
+				<include>**/*.yaml</include>
+				<include>**/*.svg</include>
+				<include>**/*.png</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>extra</directory>
+			<includes>
+				<include>**/*.importorder</include>
+				<include>**/*.xml</include>
+			</includes>
+		</fileSet>
+		<fileSet encoding="UTF-8">
+			<directory>helm</directory>
+			<includes>
+				<include>**/*.gitkeep</include>
+				<include>**/*.txt</include>
+				<include>**/*.helmignore</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory>helm</directory>
+			<includes>
+				<include>**/*.tpl</include>
+				<include>**/*.yaml</include>
+			</includes>
+		</fileSet>
+		<fileSet filtered="true" encoding="UTF-8">
+			<directory/>
+			<includes>
+				<include>README-zh-CN.md</include>
+				<include>README.md</include>
 			</includes>
 		</fileSet>
 		<fileSet encoding="UTF-8">
 			<directory/>
 			<includes>
+				<include>.dockerignore</include>
 				<include>.editorconfig</include>
+				<include>.sonarcloud.properties</include>
 				<include>.gitattributes</include>
 				<include>.gitignore</include>
-				<include>.sonarcloud.properties</include>
 				<include>build.bat</include>
+				<include>CHANGELOG.md</include>
 				<include>LICENSE</include>
 				<include>mvnw</include>
 				<include>mvnw.cmd</include>
+				<include>SECURITY.md</include>
 			</includes>
 		</fileSet>
 	</fileSets>
@@ -109,13 +158,16 @@
 				<fileSet encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
+						<include>**/*.gitkeep</include>
 						<include>**/*.csv</include>
+						<include>**/*.sql</include>
+						<include>**/*.yaml</include>
 					</includes>
 				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/test/java</directory>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/test/groovy</directory>
 					<includes>
-						<include>**/*.gitkeep</include>
+						<include>**/*.groovy</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
@@ -198,6 +250,16 @@
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.css</include>
+						<include>**/*.ico</include>
+						<include>**/*.svg</include>
+						<include>**/*.gif</include>
+						<include>**/*.png</include>
+					</includes>
+				</fileSet>
+				<fileSet encoding="UTF-8">
 					<directory>src/test/java</directory>
 					<includes>
 						<include>**/*.gitkeep</include>
@@ -219,45 +281,47 @@
 						<include>**/*.java</include>
 					</includes>
 				</fileSet>
-				<fileSet filtered="true" encoding="UTF-8">
-					<directory>src/main/resources</directory>
+				<fileSet encoding="UTF-8">
+					<directory>src/main/docker</directory>
 					<includes>
-						<include>**/bootstrap.yml</include>
-						<include>**/application.yml</include>
+						<include>**/*.xml</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory>src/main/assembly</directory>
+					<includes>
+						<include>**/*.xml</include>
 					</includes>
 				</fileSet>
 				<fileSet filtered="true" encoding="UTF-8">
 					<directory>src/main/docker</directory>
 					<includes>
 						<include>**/*.sh</include>
-						<include>**/*.xml</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
 					<directory>src/main/resources</directory>
 					<includes>
-						<include>**/*.properties</include>
 						<include>**/*.yml</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
 					<directory>src/main/assembly</directory>
 					<includes>
-						<include>**/*.xml</include>
 						<include>**/*.bat</include>
 						<include>**/*.sh</include>
 					</includes>
 				</fileSet>
-				<fileSet encoding="UTF-8">
-					<directory>src/test/java</directory>
+				<fileSet filtered="true" packaged="true" encoding="UTF-8">
+					<directory>src/test/groovy</directory>
 					<includes>
-						<include>**/*.gitkeep</include>
+						<include>**/*.groovy</include>
 					</includes>
 				</fileSet>
 				<fileSet encoding="UTF-8">
 					<directory>src/test/resources</directory>
 					<includes>
-						<include>**/*.gitkeep</include>
+						<include>**/*.yml</include>
 					</includes>
 				</fileSet>
 			</fileSets>

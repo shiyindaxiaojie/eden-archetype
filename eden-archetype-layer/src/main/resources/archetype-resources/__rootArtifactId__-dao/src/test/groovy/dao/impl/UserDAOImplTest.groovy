@@ -6,8 +6,8 @@ package ${package}.dao.impl
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import ${package}.dao.repository.mybatis.dataobject.UserDO
-import ${package}.dao.repository.mybatis.mapper.UserMapper
+import ${package}.dao.database.dataobject.UserDO
+import ${package}.dao.database.mapper.UserMapper
 import spock.lang.Specification
 import spock.lang.Unroll
 
